@@ -64,6 +64,8 @@ export const it = {
   terms: {
     agent: { t: 'Agente AI', d: 'Un programma di intelligenza artificiale a cui diamo un compito preciso, per esempio preparare una pagina o provarla sul telefono. Lo porta avanti da solo, passo dopo passo. Poi controlliamo noi.' },
     assistant: { t: 'Assistente AI', d: 'Un’app come ChatGPT o Gemini a cui fai domande come a una persona. Sempre più gente la usa anche per scegliere cosa comprare.' },
+    seo: { t: 'SEO', d: 'Tutto quello che aiuta il tuo negozio a comparire più in alto su Google: testi, struttura delle pagine, velocità, dati dei prodotti.' },
+    geo: { t: 'GEO', d: 'Come la SEO, ma per gli assistenti AI come ChatGPT e Gemini: fa sì che capiscano i tuoi prodotti e li consiglino quando qualcuno chiede.' },
     shopify: { t: 'Shopify', d: 'La piattaforma su cui girano tanti negozi online: prodotti, carrello e pagamenti in un posto solo. È quella su cui lavoriamo.' }
   },
   privacy: {
@@ -161,6 +163,18 @@ export const it = {
       p: 'Sempre più persone, prima di comprare, chiedono consiglio a un [[assistant|assistente AI]] come ChatGPT o Gemini. Nell’analisi gratuita controlliamo se trova e capisce i tuoi prodotti, e ti diciamo cosa sistemare.',
       cta: 'Controlla il tuo negozio',
       more: 'Come funziona'
+    },
+    services: {
+      k: 'Cosa facciamo',
+      title: 'Dal primo schizzo <b>al negozio che vende.</b>',
+      items: [
+        { t: 'Negozi nuovi', d: 'Disegniamo e costruiamo il tuo negozio Shopify, pronto a vendere in circa tre settimane.' },
+        { t: 'Restyling', d: 'Rifacciamo pagine, schede prodotto e carrello del negozio che hai già, senza fermare le vendite.' },
+        { t: '[[seo|SEO]] e [[geo|GEO]]', d: 'Ti facciamo trovare su Google e dagli assistenti AI come ChatGPT e Gemini.' },
+        { t: 'Sviluppo su misura', d: 'Funzioni che il tema non ha, collegamenti con gli strumenti che usi già, e le modifiche di tutti i giorni.' }
+      ],
+      foot: 'Non sai da dove partire? Te lo dice l’analisi gratuita.',
+      link: 'Scrivici'
     },
     us: {
       k: 'Chi siamo',

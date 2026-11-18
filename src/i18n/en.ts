@@ -65,6 +65,8 @@ export const en: Dictionary = {
   terms: {
     agent: { t: 'AI agent', d: 'A piece of artificial intelligence software we give one precise task, like building a page or testing it on a phone. It works through it on its own, step by step. Then we check it.' },
     assistant: { t: 'AI assistant', d: 'An app like ChatGPT or Gemini that you ask questions as you would a person. More and more people use it to decide what to buy, too.' },
+    seo: { t: 'SEO', d: 'Everything that helps your store show up higher on Google: copy, page structure, speed, product data.' },
+    geo: { t: 'GEO', d: 'Like SEO, but for AI assistants like ChatGPT and Gemini: it helps them understand your products and recommend them when someone asks.' },
     shopify: { t: 'Shopify', d: 'The platform many online stores run on: products, cart and payments in one place. It’s what we build on.' }
   },
   privacy: {
@@ -163,6 +165,18 @@ export const en: Dictionary = {
       p: 'More and more people ask an [[assistant|AI assistant]] like ChatGPT or Gemini for advice before they buy. In the free review we check whether it finds and understands your products, and tell you what to fix.',
       cta: 'Check your store',
       more: 'How it works'
+    },
+    services: {
+      k: 'What we do',
+      title: 'From the first sketch <b>to a store that sells.</b>',
+      items: [
+        { t: 'New stores', d: 'We design and build your Shopify store, ready to sell in about three weeks.' },
+        { t: 'Redesigns', d: 'We rework the pages, product pages and checkout of the store you already have, without stopping sales.' },
+        { t: '[[seo|SEO]] and [[geo|GEO]]', d: 'We get you found on Google and by AI assistants like ChatGPT and Gemini.' },
+        { t: 'Custom development', d: 'Features your theme doesn’t have, connections to the tools you already use, and everyday changes.' }
+      ],
+      foot: 'Not sure where to start? The free review will tell you.',
+      link: 'Write to us'
     },
     us: {
       k: 'Who we are',
