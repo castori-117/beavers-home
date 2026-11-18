@@ -387,14 +387,18 @@ export const it = {
     p: 'Sempre più persone, prima di comprare, chiedono un consiglio a un [[assistant|assistente]] come ChatGPT o Gemini. Sistemiamo prodotti, schede e dati del tuo negozio perché l’assistente li capisca bene, e possa consigliarli.',
     chat: {
       k: 'Esempio · una persona chiede a un assistente',
-      q: 'Cerco una tazza in ceramica fatta a mano, da regalare. Sotto i 30 euro.',
       replies: 'L’assistente risponde',
-      a: 'Ti consiglio questa, da un piccolo laboratorio italiano:',
-      product: 'Tazza in gres, smalto bosco',
       store: 'tuonegozio.it',
-      price: '28 €',
       note: 'Gli assistenti scelgono da soli cosa consigliare. Noi facciamo in modo che capiscano bene i tuoi prodotti.',
-      again: 'Rifai la domanda'
+      /* one at random on each visit, then the next one by itself; art is the drawing next to the product */
+      asks: [
+        { art: 'cup', q: 'Cerco una tazza in ceramica fatta a mano, da regalare. Sotto i 30 euro.', a: 'Ti consiglio questa, da un piccolo laboratorio italiano:', product: 'Tazza in gres, smalto bosco', price: '28 €' },
+        { art: 'oil', q: 'Un olio extravergine buono da regalare, che arrivi entro venerdì.', a: 'Questo viene da un piccolo frantoio e parte in giornata:', product: 'Olio extravergine, latta da 500 ml', price: '18 €' },
+        { art: 'pack', q: 'Mi serve uno zaino da città impermeabile, per un portatile da 14 pollici.', a: 'Questo ha la tasca imbottita e il fondo in tela cerata:', product: 'Zaino in tela cerata, verde bosco', price: '89 €' },
+        { art: 'candle', q: 'Una candela profumata che non sappia di finto, per una casa nuova.', a: 'Questa è in cera di soia, versata a mano:', product: 'Candela di soia, legno e fico', price: '24 €' },
+        { art: 'sweater', q: 'Un maglione caldo che non pizzichi, taglia M.', a: 'Questo è in lana merino, lavorato in Italia:', product: 'Maglione in merino, grigio nebbia', price: '79 €' },
+        { art: 'book', q: 'Un quaderno bello per un regalo di laurea, con il nome inciso.', a: 'Questo si personalizza e arriva in tre giorni:', product: 'Quaderno in pelle, con incisione', price: '35 €' }
+      ]
     },
     next: { k: 'Lodge', v: 'La nostra prossima cosa' },
     lodgeTitle: 'Stiamo costruendo Lodge. <b>La tana dove il tuo negozio prende forma.</b>',

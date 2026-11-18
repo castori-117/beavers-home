@@ -1,0 +1,100 @@
+---
+/* Someone asks an assistant, and the assistant names your store. Six questions: one at random on
+   each visit, then the next one by itself while the chat is on screen (ai-chat). Same chat on the home and on Lodge. */
+import Cup from './Cup.astro';
+import { copy, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  class?: string;
+  threshold?: number;
+}
+
+const { lang, class: className, threshold = 0.3 } = Astro.props;
+const chat = copy[lang].lodge.chat;
+---
+<in-view class:list={['chat-wrap', className]} data-threshold={threshold}>
+  <ai-chat>
+    <figure class="chat">
+      <p class="chat-k">{chat.k}</p>
+      <div class="chat-ss">
+        {chat.asks.map((ask, index) => (
+          <div class="chat-s" data-off={index === 0 ? undefined : ''}>
+            <p class="chat-q">{ask.q}</p>
+            <div class="chat-body">
+              <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="chat-a">
+                <p class="chat-k">{chat.replies}</p>
+                <p>{ask.a}</p>
+                <div class="prod">
+                  {ask.art === 'cup' && <Cup />}
+                  {ask.art === 'oil' && (
+                    <svg viewBox="0 0 160 160" aria-hidden="true">
+                      <ellipse cx="80" cy="138" rx="40" ry="6" fill="#1D2A24" opacity=".12"></ellipse>
+                      <rect x="68" y="18" width="24" height="14" rx="3" fill="#B49A78"></rect>
+                      <path d="M48 42c0-6 5-10 11-10h42c6 0 11 4 11 10v88c0 4-3 7-7 7H55c-4 0-7-3-7-7z" fill="#2F4A3E"></path>
+                      <rect x="48" y="66" width="64" height="46" fill="#CDB89B"></rect>
+                      <path d="M68 89c6-10 18-12 24-6-6 1-12 6-14 12-3-2-7-4-10-6z" fill="#4A6A5A"></path>
+                      <circle cx="74" cy="96" r="4" fill="#2F4A3E"></circle>
+                    </svg>
+                  )}
+                  {ask.art === 'pack' && (
+                    <svg viewBox="0 0 160 160" aria-hidden="true">
+                      <ellipse cx="80" cy="140" rx="46" ry="6" fill="#1D2A24" opacity=".12"></ellipse>
+                      <path d="M62 34c0-10 8-16 18-16s18 6 18 16" fill="none" stroke="#1D2A24" stroke-width="6" stroke-linecap="round"></path>
+                      <rect x="38" y="34" width="84" height="102" rx="20" fill="#2F4A3E"></rect>
+                      <path d="M38 64c0-12 10-22 22-22h40c12 0 22 10 22 22v8H38z" fill="#26402F"></path>
+                      <rect x="56" y="90" width="48" height="30" rx="8" fill="#4A6A5A"></rect>
+                      <rect x="74" y="66" width="12" height="14" rx="3" fill="#CDB89B"></rect>
+                    </svg>
+                  )}
+                  {ask.art === 'candle' && (
+                    <svg viewBox="0 0 160 160" aria-hidden="true">
+                      <ellipse cx="80" cy="136" rx="38" ry="6" fill="#1D2A24" opacity=".12"></ellipse>
+                      <path d="M80 30c8 10 8 18 0 24-8-6-8-14 0-24z" fill="#FF8A3D"></path>
+                      <path d="M80 40c3 5 3 9 0 12-3-3-3-7 0-12z" fill="#FFE3A3"></path>
+                      <path d="M80 54v12" stroke="#1D2A24" stroke-width="2.4" stroke-linecap="round"></path>
+                      <rect x="46" y="64" width="68" height="70" rx="12" fill="#B4C6CE" opacity=".55"></rect>
+                      <rect x="50" y="70" width="60" height="60" rx="9" fill="#EFE6D8"></rect>
+                      <rect x="56" y="92" width="48" height="22" rx="3" fill="#2F4A3E"></rect>
+                    </svg>
+                  )}
+                  {ask.art === 'sweater' && (
+                    <svg viewBox="0 0 160 160" aria-hidden="true">
+                      <ellipse cx="80" cy="134" rx="52" ry="6" fill="#1D2A24" opacity=".12"></ellipse>
+                      <path d="M34 58l26-18h40l26 18-8 72H42z" fill="#9AA6A0"></path>
+                      <path d="M60 40c4 10 12 14 20 14s16-4 20-14" fill="#7E8C85"></path>
+                      <path d="M42 130h76" stroke="#7E8C85" stroke-width="8"></path>
+                      <path d="M52 70v52M66 70v52M80 70v52M94 70v52M108 70v52" stroke="#8A9690" stroke-width="2" opacity=".6"></path>
+                    </svg>
+                  )}
+                  {ask.art === 'book' && (
+                    <svg viewBox="0 0 160 160" aria-hidden="true">
+                      <ellipse cx="82" cy="138" rx="46" ry="6" fill="#1D2A24" opacity=".12"></ellipse>
+                      <rect x="40" y="24" width="84" height="108" rx="6" fill="#8E6E4E"></rect>
+                      <rect x="40" y="24" width="12" height="108" rx="3" fill="#6E5238"></rect>
+                      <path d="M110 24v108" stroke="#2F4A3E" stroke-width="5"></path>
+                      <rect x="62" y="62" width="40" height="22" rx="3" fill="none" stroke="#CDB89B" stroke-width="2"></rect>
+                      <path d="M70 73h24" stroke="#CDB89B" stroke-width="3" stroke-linecap="round"></path>
+                    </svg>
+                  )}
+                  <div>
+                    <p class="prod-n">{ask.product}</p>
+                    <p class="prod-s">{chat.store}</p>
+                    <p class="prod-p">{ask.price}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <figcaption class="note">{chat.note}</figcaption>
+    </figure>
+  </ai-chat>
+</in-view>
+
+<script>
+  import '../elements/in-view';
+  import '../elements/ai-chat';
+</script>
