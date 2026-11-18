@@ -1,0 +1,12 @@
+---
+/* The section label: a bold word and, optionally, a quiet one. */
+interface Props {
+  k: string;
+  v?: string;
+  class?: string;
+  style?: string;
+}
+
+const { k, v, class: className, style } = Astro.props;
+---
+<p class:list={['lab', className]} style={style}><b>{k}</b>{v && <span>{v}</span>}</p>

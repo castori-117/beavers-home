@@ -1,0 +1,75 @@
+---
+import '../styles/components/cover.css';
+import '../styles/components/contact.css';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import CopyButton from '../components/CopyButton.astro';
+import Label from '../components/Label.astro';
+import Mark from '../components/Mark.astro';
+import NextChapter from '../components/NextChapter.astro';
+import { site } from '../data/site';
+import { images } from '../lib/images';
+import { copy, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = copy[lang];
+const c = t.contact;
+const f = c.form;
+const action = site.formEndpoint || site.email.href;
+const check = 'M3.5 9.5l3.5 3.5 7.5-8';
+---
+<Base lang={lang} page="contact">
+  <section class="cv w" aria-labelledby="sc-t">
+    <div class="g in">
+      <Label class="cv-lab" k={t.chapters.contact} v={t.pages.contact} style="--i: 0" />
+      <h1 id="sc-t" class="d1 cv-h" style="--i: 1" set:html={c.title} />
+    </div>
+    <div class="g sc">
+      <div class="sc-l">
+        <p class="lead">{c.lead}</p>
+        <ol class="steps">
+          {c.steps.map((step, index) => <li><span class="num" aria-hidden="true">{index + 1}</span><span>{step}</span></li>)}
+        </ol>
+      </div>
+      <div class="sc-r">
+        <sentence-form class="form" data-you={f.you}>
+          <form action={action} method="post" enctype={site.formEndpoint ? undefined : 'text/plain'} novalidate data-subject={f.subject}>
+            <input type="hidden" name="form" value="store-review">
+            <input type="hidden" name="lang" value={lang}>
+            <p class="sentence">
+              {f.s1} <label class="sr" for="tb-f-name">{f.nameL}</label><span class="nw"><input id="tb-f-name" name="name" type="text" autocomplete="name" required placeholder={f.nameP} data-error={f.errors.name} aria-describedby="tb-f-err"><svg class="ok" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d={check}></path></svg>.</span>
+              {f.s2} <label class="sr" for="tb-f-shop">{f.shopL}</label><span class="nw"><input id="tb-f-shop" name="store" type="text" inputmode="url" autocomplete="url" required pattern=".*[a-zA-Z0-9\-]+\.[a-zA-Z]{2,}.*" placeholder={f.shopP} data-error={f.errors.shop} aria-describedby="tb-f-err"><svg class="ok" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d={check}></path></svg></span>
+              {f.s3} <label class="sr" for="tb-f-email">{f.emailL}</label><span class="nw"><input id="tb-f-email" name="email" type="email" inputmode="email" autocomplete="email" required pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" placeholder={f.emailP} data-error={f.errors.email} aria-describedby="tb-f-err"><svg class="ok" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d={check}></path></svg>.</span>
+            </p>
+            <p class="errmsg" id="tb-f-err" role="alert" hidden></p>
+            <div class="form-foot">
+              <button class="btn" type="submit">{f.send} <span class="ar" aria-hidden="true">→</span></button>
+              <p class="form-note">{f.reply}</p>
+            </div>
+          </form>
+          <div class="thanks-box" role="status" hidden>
+            <Mark class="thanks-mk" width={30} height={37} />
+            <p class="thanks">{f.thx1} <b data-who>{f.you}</b><b>.</b> {f.thx2}</p>
+            <p class="form-note">{f.reply}</p>
+          </div>
+        </sentence-form>
+        <p class="mailline">{c.mail} <a class="tl" href={site.email.href}>{site.email.value}</a> <CopyButton lang={lang} text={site.email.value} /></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="close unveil" aria-label={c.closeLabel}>
+    <Image class="par" src={images.lakeMorning} widths={[640, 960, 1280, 1600, 2400]} sizes="calc(100vw - 2 * var(--gut))" alt={c.closeAlt} loading="lazy" decoding="async" />
+    <p class="close-cap">{c.closeCap}</p>
+  </section>
+
+  <NextChapter lang={lang} page="contact" />
+</Base>
+
+<script>
+  import '../elements/sentence-form';
+</script>

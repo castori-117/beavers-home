@@ -1,0 +1,71 @@
+.nx {
+  position: relative;
+  display: block;
+  padding: clamp(36px, 4.4vw, 64px) var(--gut) clamp(56px, 7vw, 112px);
+  border-top: var(--hair) solid var(--rule);
+  text-decoration: none;
+  overflow: hidden;
+}
+.dk .nx {
+  border-top-color: rgb(244 245 242 / 0.3);
+}
+.nx-k {
+  display: block;
+  margin-bottom: clamp(18px, 2.2vw, 30px);
+  font-size: var(--fs-small);
+  font-weight: var(--w-medium);
+}
+.nx-k b {
+  font-weight: var(--w-strong);
+}
+.nx-t {
+  display: block;
+  max-width: calc(100% - clamp(200px, 26vw, 400px));
+  font-weight: var(--w-strong);
+  font-size: var(--fs-xl);
+  line-height: 0.92;
+  letter-spacing: var(--tr-tight);
+}
+.nx-t .ar {
+  display: inline;
+  position: relative;
+  left: 0;
+  transition: left 0.55s var(--e);
+}
+.nx:hover .nx-t .ar {
+  left: 0.16em;
+}
+.nx-img {
+  position: absolute;
+  right: var(--gut);
+  top: 50%;
+  display: block;
+  width: clamp(200px, 24vw, 360px);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--r-sm);
+  transform: translateY(-50%);
+}
+.nx-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.1s var(--e);
+}
+.nx:hover .nx-img img {
+  transform: scale(1.05);
+}
+@media (hover: none), (max-width: 760px) {
+  .nx-img {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
+    max-width: 420px;
+    margin-top: 28px;
+    transform: none;
+  }
+  .nx-t {
+    max-width: none;
+  }
+}

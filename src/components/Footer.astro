@@ -1,0 +1,53 @@
+---
+import '../styles/components/footer.css';
+import { Image } from 'astro:assets';
+import Clock from './Clock.astro';
+import CopyButton from './CopyButton.astro';
+import { site } from '../data/site';
+import { images } from '../lib/images';
+import { copy, pageKeys, routes, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = copy[lang];
+const f = t.footer;
+const word = 'beavers'.split('');
+---
+<footer class="ft">
+  <Image class="ft-bg" src={images.lakeNight} widths={[960, 1600, 2400]} sizes="100vw" alt="" loading="lazy" decoding="async" />
+  <span class="ft-flies" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+  <div class="g ft-top">
+    <div class="ft-col">
+      <p class="ft-k">{f.write}</p>
+      <p class="ft-mailrow"><a class="ft-mail" href={site.email.href}>{site.email.value}</a><CopyButton lang={lang} text={site.email.value} /></p>
+      <p>{f.reply}</p>
+    </div>
+    <nav class="ft-col" aria-label={f.story}>
+      <p class="ft-k">{f.story}</p>
+      {pageKeys.map((key) => <a href={routes[lang][key]}>{t.pages[key]}</a>)}
+    </nav>
+    <div class="ft-col">
+      <p class="ft-k">{f.who}</p>
+      {f.whoLines.map((line) => <p>{line}</p>)}
+      <p>{site.country[lang]}, <Clock><time data-time>--:--</time></Clock></p>
+    </div>
+    <div class="ft-col">
+      <p class="ft-k">{f.lodge}</p>
+      {f.lodgeLines.map((line) => <p>{line}</p>)}
+      <a href={`${routes[lang].lodge}#lodge`}>{f.notify}</a>
+    </div>
+  </div>
+  <div class="ft-mid">
+    <a class="ft-big" href={routes[lang].contact}>{f.big}&nbsp;<span class="ar" aria-hidden="true">→</span></a>
+  </div>
+  <div class="ft-wm" aria-hidden="true">
+    <span class="ft-word">{word.map((letter, index) => <span class="ft-l" style={`--i: ${index}`}>{letter}</span>)}</span>
+  </div>
+  <div class="ft-legal">
+    <span>© {new Date().getFullYear()} {site.name}</span>
+    <span class="ft-legal-r"><span>{f.privacy}</span><a class="totop" href="#top">{f.top} <span class="ar" aria-hidden="true">↑</span></a></span>
+  </div>
+</footer>

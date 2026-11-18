@@ -1,0 +1,390 @@
+/* ---------- chapter one: one night on the lake, scrubbed by a sun on a line ----------
+   The script only moves --day (0 night → 1 morning) and flags the moment; every colour is mixed here. */
+.nt {
+  --day: 0;
+  --ntbg: color-mix(in srgb, var(--night), var(--paper) calc(var(--day) * 100%));
+  --thumb: color-mix(in srgb, var(--moon), var(--signal) calc(var(--day) * 100%));
+  position: relative;
+  background-color: var(--ntbg);
+  color: var(--moon);
+  transition: color 0.7s var(--e);
+}
+.nt[data-day] {
+  color: var(--ink);
+}
+.nt-scene {
+  position: relative;
+  height: clamp(440px, 52vw, 800px);
+}
+.nt-pic {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--night);
+}
+.nt-pic img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 50%;
+}
+.nt-pic .nt-day {
+  opacity: var(--day);
+}
+/* the night cover melts into its own controls */
+.nt-pic::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 28%;
+  background: linear-gradient(to bottom, rgb(0 0 0 / 0), var(--ntbg));
+  pointer-events: none;
+}
+.nt-flies {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.nt-copy {
+  position: absolute;
+  inset: clamp(108px, 8.6vw, 136px) 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  align-items: end;
+  padding: 0 var(--gut);
+  color: var(--moon);
+  transition: color 0.7s var(--e);
+}
+.nt[data-sky] .nt-copy {
+  color: var(--ink);
+}
+.nt-copy .lab {
+  grid-column: 1 / -1;
+  margin-bottom: clamp(20px, 2.2vw, 32px);
+}
+.nt-copy .d2 {
+  grid-column: 1 / span 8;
+  max-width: 13.5em;
+}
+.nt-copy .p {
+  grid-column: 9 / span 4;
+  max-width: 30em;
+  margin: 0 0 0.35em;
+  color: inherit;
+  opacity: 0.86;
+}
+
+.nt-ctl {
+  padding-top: clamp(22px, 2.4vw, 34px);
+  padding-bottom: clamp(30px, 3vw, 44px);
+}
+.nt-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px 44px;
+}
+.nt-time {
+  min-width: 2.9em;
+  font-weight: var(--w-strong);
+  font-size: clamp(40px, 4vw, 62px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.nt-caps {
+  display: grid;
+}
+.nt-cap {
+  grid-area: 1 / 1;
+  max-width: 32em;
+  font-size: clamp(17px, 1.35vw, 20px);
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+.nt[data-cap="0"] .nt-cap:nth-child(1),
+.nt[data-cap="1"] .nt-cap:nth-child(2),
+.nt[data-cap="2"] .nt-cap:nth-child(3),
+.nt[data-cap="3"] .nt-cap:nth-child(4) {
+  opacity: 1;
+  transform: none;
+}
+.legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: var(--w-medium);
+}
+.fly {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--firefly);
+  box-shadow:
+    0 0 0 4px rgb(121 227 255 / 0.25),
+    0 0 16px 5px rgb(121 227 255 / 0.55);
+}
+.nt[data-day] .fly {
+  background: var(--ai-l);
+  box-shadow: none;
+}
+
+/* the line and its sun */
+.range-box {
+  position: relative;
+  margin-top: 28px;
+  padding-bottom: 30px;
+}
+.range {
+  appearance: none;
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 34px;
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  cursor: grab;
+}
+.range:active {
+  cursor: grabbing;
+}
+.range::-webkit-slider-runnable-track {
+  height: 2px;
+  background: currentColor;
+}
+.range::-moz-range-track {
+  height: 2px;
+  background: currentColor;
+}
+.range::-webkit-slider-thumb {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  margin-top: -14px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: var(--thumb);
+}
+.range::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: var(--thumb);
+}
+.ticks {
+  position: absolute;
+  inset: auto 0 0;
+  height: 18px;
+  font-size: 13px;
+}
+.tick {
+  position: absolute;
+  top: -6px;
+  min-height: 28px;
+  padding: 0 6px;
+  border: 0;
+  background: none;
+  font-size: 13px;
+  opacity: 0.7;
+  transform: translateX(-50%);
+  transition: opacity var(--t-fast);
+}
+.tick:is(:hover, [aria-current]) {
+  opacity: 1;
+}
+.tick[aria-current] {
+  font-weight: var(--w-strong);
+}
+
+/* ---------- who does what ---------- */
+.duo-h {
+  grid-column: 1 / span 10;
+  margin-bottom: clamp(48px, 5vw, 80px);
+}
+.duo-c {
+  grid-column: span 6;
+  padding-top: 20px;
+  border-top: var(--hair) solid var(--rule);
+}
+.duo-t {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  font-weight: var(--w-strong);
+  font-size: clamp(30px, 2.8vw, 44px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.duo-dot {
+  display: block;
+  width: 14px;
+  height: 14px;
+  background: var(--ai-l);
+}
+.duo-l li {
+  padding: 15px 0 16px;
+  border-top: var(--hair) solid var(--line);
+  font-size: clamp(17px, 1.3vw, 20px);
+  line-height: 1.4;
+}
+
+/* ---------- weeks, not months: the tiles fill in once, when they come into view ---------- */
+.wk-tx {
+  grid-column: 1 / span 5;
+}
+.wk-tx .p {
+  margin-top: 26px;
+}
+.wk {
+  grid-column: 7 / span 6;
+  align-self: center;
+}
+.wk figure {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.wk-lab {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 16px;
+  font-size: var(--fs-small);
+  font-weight: var(--w-strong);
+}
+.wk-lab span + span {
+  font-weight: var(--w-regular);
+  color: var(--ink-2);
+}
+.wk-tiles {
+  display: grid;
+  grid-template-columns: repeat(26, minmax(0, 1fr));
+  gap: 4px;
+}
+.wk-t {
+  height: 46px;
+  border-radius: 3px;
+  background: var(--mist);
+  transition:
+    background-color var(--t) ease,
+    box-shadow var(--t) ease;
+  transition-delay: calc(var(--i) * 0.11s);
+}
+.wk-t.wg {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--line);
+  transition-delay: calc(0.55s + (var(--i) - 3) * 0.035s);
+}
+.wk[data-seen] .wa {
+  background: #a3aaae;
+}
+.wk[data-seen] .wb {
+  background: var(--signal);
+}
+.wk[data-seen] .wg {
+  box-shadow: inset 0 0 0 1px #aeb4b7;
+}
+.wk-free {
+  margin-top: 20px;
+  font-weight: var(--w-strong);
+  font-size: clamp(20px, 1.7vw, 26px);
+  letter-spacing: -0.025em;
+  opacity: 0;
+  transition: opacity 0.9s ease 1.4s;
+}
+.wk[data-seen] .wk-free {
+  opacity: 1;
+}
+
+@media (max-width: 860px) {
+  .duo-h,
+  .duo-c,
+  .wk-tx,
+  .wk {
+    grid-column: 1 / -1;
+  }
+  .duo-c + .duo-c {
+    margin-top: 40px;
+  }
+  .wk {
+    margin-top: 48px;
+  }
+}
+@media (max-width: 760px) {
+  .nt-scene {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  .nt-copy {
+    order: -1;
+    position: relative;
+    inset: auto;
+    padding-top: 104px;
+    padding-bottom: 28px;
+    color: inherit;
+  }
+  .nt-copy .d2,
+  .nt-copy .p {
+    grid-column: 1 / -1;
+  }
+  .nt-copy .p {
+    margin-top: 20px;
+  }
+  .nt-pic {
+    position: relative;
+    height: 300px;
+  }
+  .nt-row {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .legend {
+    grid-column: 1 / -1;
+  }
+  .wk-tiles {
+    gap: 2px;
+  }
+  .wk-t {
+    height: 30px;
+  }
+}
+@media (max-width: 440px) {
+  /* the two middle hours become dots on the line, so the labels never collide */
+  .tick:nth-child(2),
+  .tick:nth-child(3) {
+    top: -35px;
+    width: 12px;
+    height: 12px;
+    min-height: 12px;
+    padding: 0;
+    font-size: 0;
+    pointer-events: none;
+  }
+  .tick:nth-child(2)::before,
+  .tick:nth-child(3)::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+}

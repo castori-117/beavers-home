@@ -1,0 +1,109 @@
+---
+import '../styles/components/cover.css';
+import '../styles/components/beavers.css';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Label from '../components/Label.astro';
+import Mark from '../components/Mark.astro';
+import NextChapter from '../components/NextChapter.astro';
+import { images } from '../lib/images';
+import { copy, routes, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = copy[lang];
+const b = t.beavers;
+---
+<Base lang={lang} page="beavers">
+  <section class="cv w" aria-labelledby="cs-t">
+    <div class="g in">
+      <Label class="cv-lab" k={t.chapters.beavers} v={t.pages.beavers} style="--i: 0" />
+      <h1 id="cs-t" class="d1 cv-h" style="--i: 1" set:html={b.title} />
+      <p class="lead cv-body cv-lead" style="--i: 2">{b.lead}</p>
+    </div>
+  </section>
+
+  <in-view class="dam-wrap" data-threshold="0.35">
+    <figure class="dam unveil">
+      <Image src={images.dam} widths={[640, 960, 1200]} sizes="calc(100vw - 2 * var(--gut))" alt={b.damAlt} loading="lazy" decoding="async" />
+      <svg class="dam-fx" viewBox="0 0 1200 860" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g class="stream" fill="none" stroke="#EEF4F6" stroke-linecap="round" stroke-dasharray="26 22">
+          <path d="M584 404C588 442 591 476 597 540" stroke-width="10"></path>
+          <path d="M600 409C605 446 608 480 613 546" stroke-width="9"></path>
+          <path d="M616 404C621 440 625 474 630 538" stroke-width="8"></path>
+        </g>
+        <g class="splash" fill="none" stroke="#F6F9FA" stroke-width="3.5">
+          <ellipse class="ring" cx="612" cy="552" rx="72" ry="14"></ellipse>
+          <ellipse class="ring" cx="612" cy="552" rx="72" ry="14"></ellipse>
+          <ellipse class="ring" cx="612" cy="552" rx="72" ry="14"></ellipse>
+        </g>
+        <g class="plug" stroke-linecap="round" fill="none">
+          <path d="M528 388L680 404" stroke="#9B7A55" stroke-width="24"></path>
+          <path d="M536 408L672 388" stroke="#C2A27C" stroke-width="17"></path>
+          <path d="M550 372L664 394" stroke="#86664A" stroke-width="14"></path>
+          <path d="M646 380l32-38" stroke="#8C6B4C" stroke-width="6"></path>
+          <ellipse cx="684" cy="336" rx="19" ry="7.5" fill="#6F8A5E" stroke="none" transform="rotate(-38 684 336)"></ellipse>
+          <ellipse cx="664" cy="346" rx="13" ry="5.5" fill="#86A070" stroke="none" transform="rotate(20 664 346)"></ellipse>
+        </g>
+      </svg>
+      <button class="again dam-again" type="button" data-replay>{b.again}</button>
+    </figure>
+  </in-view>
+
+  <section class="sec w" aria-labelledby="st-t">
+    <div class="g">
+      <div class="story-a">
+        <Label class="lab--head" k={b.story.k} />
+        <h2 id="st-t" class="sr">{b.story.title}</h2>
+        <p class="lead rv" set:html={b.story.lead} />
+      </div>
+      <in-view class="story-b" data-threshold="0.35">
+        <p class="d3 rv story-us" set:html={b.story.us} />
+        <ul class="leaks">
+          {b.story.leaks.map((leak, index) => <li style={`transition-delay: ${(index + 1) * 0.3}s`}><span class="drop" aria-hidden="true"></span>{leak}</li>)}
+        </ul>
+      </in-view>
+    </div>
+  </section>
+
+  <section class="sec sec--flush w" aria-labelledby="tr-t">
+    <div class="g">
+      <div class="tr-h">
+        <Label class="lab--head" k={b.traits.k} />
+        <h2 id="tr-t" class="d2 rv" set:html={b.traits.title} />
+      </div>
+    </div>
+    <ol class="tr">
+      {b.traits.items.map((item, index) => (
+        <li class="rv">
+          <span class="tr-n" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+          <h3 class="tr-t">{item.t}</h3>
+          <p class="tr-p"><Fragment set:html={item.p} />{item.link && <> <a class="tl" href={routes[lang].night}>{item.link}</a></>}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="w facts" aria-label={b.facts.label}>
+    <beaver-facts>
+      <div class="fact">
+        <Mark />
+        <p class="fact-t" aria-live="polite">
+          <b>{b.facts.k}</b>
+          {b.facts.items.map((fact, index) => <span class="fact-x" hidden={index > 0}>{fact}</span>)}
+        </p>
+        <button class="ghost" type="button" data-next>{b.facts.next}</button>
+      </div>
+    </beaver-facts>
+  </section>
+
+  <NextChapter lang={lang} page="beavers" />
+</Base>
+
+<script>
+  import '../elements/in-view';
+  import '../elements/beaver-facts';
+</script>

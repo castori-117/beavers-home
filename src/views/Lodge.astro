@@ -1,0 +1,150 @@
+---
+import '../styles/components/cover.css';
+import '../styles/components/lodge.css';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Label from '../components/Label.astro';
+import Mark from '../components/Mark.astro';
+import NextChapter from '../components/NextChapter.astro';
+import { site } from '../data/site';
+import { images } from '../lib/images';
+import { copy, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = copy[lang];
+const l = t.lodge;
+/* where each part of the lodge sits on the drawing, and when its label appears */
+const parts = [
+  { key: 'vent', x: '50.4%', y: '19.4%', delay: '.2s' },
+  { key: 'room', x: '51.3%', y: '47.6%', delay: '.6s' },
+  { key: 'water', x: '89%', y: '53.6%', delay: '1s' },
+  { key: 'door', x: '13.3%', y: '76.6%', delay: '1.4s' }
+] as const;
+const action = site.formEndpoint || site.email.href;
+---
+<Base lang={lang} page="lodge" dark>
+  <section class="cv w" aria-labelledby="ah-t">
+    <div class="g">
+      <div class="ah-tx in">
+        <Label k={t.chapters.lodge} v={t.pages.lodge} style="--i: 0" />
+        <h1 id="ah-t" class="d2" style="--i: 1" set:html={l.title} />
+        <p class="p" style="--i: 2">{l.p}</p>
+      </div>
+      <in-view class="chat-wrap" data-threshold="0.3">
+        <figure class="chat">
+          <p class="chat-k">{l.chat.k}</p>
+          <p class="chat-q">{l.chat.q}</p>
+          <div class="chat-body">
+            <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="chat-a">
+              <p class="chat-k">{l.chat.replies}</p>
+              <p>{l.chat.a}</p>
+              <div class="prod">
+                <svg viewBox="0 0 160 160" aria-hidden="true">
+                  <ellipse cx="80" cy="134" rx="48" ry="7" fill="#1D2A24" opacity=".12"></ellipse>
+                  <path d="M114 70c16 0 22 8 22 19s-8 21-25 21" fill="none" stroke="#2F4A3E" stroke-width="9" stroke-linecap="round"></path>
+                  <path d="M114 70c16 0 22 8 22 19s-8 21-25 21" fill="none" stroke="#4A6A5A" stroke-width="2" stroke-linecap="round" opacity=".5"></path>
+                  <path d="M38 54h80v64c0 9-7 16-16 16H54c-9 0-16-7-16-16z" fill="#CDB89B"></path>
+                  <path d="M38 54h80v46c-3 3-6 2-8 6-2 5-5 9-9 5-4-5-6 3-11 2s-6-7-11-5-6 6-11 3-5-8-10-6-6 4-10 1c-3-2-5-6-10-4z" fill="#2F4A3E"></path>
+                  <ellipse cx="78" cy="54" rx="40" ry="7.5" fill="#26402F"></ellipse>
+                  <ellipse cx="78" cy="54.5" rx="34.5" ry="5.4" fill="#162820"></ellipse>
+                  <path d="M50 66v34" stroke="#7E9C8A" stroke-width="3.2" stroke-linecap="round" opacity=".55"></path>
+                  <path d="M58 124h40" stroke="#B19C7E" stroke-width="1.4" stroke-linecap="round" opacity=".6"></path>
+                </svg>
+                <div>
+                  <p class="prod-n">{l.chat.product}</p>
+                  <p class="prod-s">{l.chat.store}</p>
+                  <p class="prod-p">{l.chat.price}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption class="note">{l.chat.note}</figcaption>
+          <button class="again chat-again" type="button" data-replay>{l.chat.again}</button>
+        </figure>
+      </in-view>
+    </div>
+  </section>
+
+  <section id="lodge" class="sec w lg" aria-labelledby="lg-t">
+    <div class="g">
+      <Label class="span-all lab--head" k={l.next.k} v={l.next.v} />
+      <h2 id="lg-t" class="d2 lg-h rv" set:html={l.lodgeTitle} />
+      <p class="p lg-p">{l.lodgeP}</p>
+    </div>
+    <lodge-figure class="lfig-wrap">
+      <figure class="lfig">
+        <div class="lfig-art">
+          <Image src={images.lodgeCutaway} widths={[640, 960, 1280, 1600]} sizes="(max-width: 760px) 116vw, min(100vw, 1600px)" alt={l.alt} loading="lazy" decoding="async" />
+          <svg class="lfig-fx" viewBox="0 0 1600 1000" aria-hidden="true">
+            <defs>
+              <radialGradient id="lf-glow"><stop offset="0" stop-color="#FFC27A" stop-opacity=".75"></stop><stop offset=".55" stop-color="#FFA54E" stop-opacity=".22"></stop><stop offset="1" stop-color="#FFA54E" stop-opacity="0"></stop></radialGradient>
+            </defs>
+            <ellipse class="fx fx-room" cx="822" cy="482" rx="250" ry="96" fill="url(#lf-glow)"></ellipse>
+            <g class="fx fx-air" fill="none" stroke="#E4ECEE" stroke-width="3" stroke-linecap="round">
+              <path d="M798 284C788 264 810 250 800 230S790 202 802 186"></path>
+              <path d="M810 286C820 266 800 252 812 232S822 206 812 190"></path>
+              <path d="M790 288C778 270 796 258 786 240S778 214 790 198"></path>
+            </g>
+            <g class="fx fx-water" stroke="#79E3FF" stroke-width="2.4" stroke-linecap="round">
+              <line x1="0" y1="540" x2="1600" y2="540"></line>
+            </g>
+            <g class="fx-beaver">
+              <g>
+                <animateMotion begin="indefinite" dur="3.2s" fill="freeze" rotate="auto" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines=".42 0 .3 1" path="M40 842C120 812 170 784 212 770Q650 730 725 520Q738 498 778 504"></animateMotion>
+                <ellipse cx="-38" cy="2" rx="16" ry="5.5" fill="#2E2219"></ellipse>
+                <ellipse cx="0" cy="0" rx="29" ry="12.5" fill="#7A5638"></ellipse>
+                <ellipse cx="26" cy="-3" rx="11.5" ry="9" fill="#7A5638"></ellipse>
+                <circle cx="21" cy="-11" r="2.6" fill="#5E412B"></circle>
+                <circle cx="36" cy="-4" r="2.3" fill="#1A120D"></circle>
+                <circle cx="29" cy="-7" r="1.5" fill="#0B0806"></circle>
+                <g class="bubbles" fill="none" stroke="#BFE6F5" stroke-width="1.6">
+                  <circle cx="-14" cy="-18" r="3"></circle>
+                  <circle cx="-26" cy="-26" r="2.2"></circle>
+                  <circle cx="-6" cy="-30" r="1.6"></circle>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+        {parts.map((part) => (
+          <button type="button" class="lfig-lab" data-part={part.key} style={`left: ${part.x}; top: ${part.y}; transition-delay: ${part.delay}`} aria-pressed="false" aria-controls="lfig-note">
+            <span class="lfig-pill">{l.parts[part.key].label}</span>
+          </button>
+        ))}
+      </figure>
+      <div class="lfig-note" id="lfig-note" aria-live="polite">
+        <p data-note="">{l.note}</p>
+        {parts.map((part) => <p data-note={part.key}>{l.parts[part.key].note}</p>)}
+      </div>
+    </lodge-figure>
+    <ol class="verbs">
+      {l.verbs.map((verb) => <li class="rv"><span class="verb">{verb.v}</span><span class="verb-t">{verb.t}</span></li>)}
+    </ol>
+    <waitlist-form class="wl">
+      <form action={action} method="post" enctype={site.formEndpoint ? undefined : 'text/plain'} novalidate data-subject={l.waitlist.subject}>
+        <input type="hidden" name="form" value="lodge-waitlist">
+        <input type="hidden" name="lang" value={lang}>
+        <label class="wl-t" for="tb-wl-email">{l.waitlist.label}</label>
+        <div class="wl-row">
+          <input id="tb-wl-email" name="email" type="email" inputmode="email" autocomplete="email" required pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" placeholder={l.waitlist.placeholder} aria-describedby="tb-wl-msg">
+          <button class="btn btn--l" type="submit">{l.waitlist.submit} <span class="ar" aria-hidden="true">→</span></button>
+        </div>
+        <p class="wl-msg" id="tb-wl-msg" role="alert" hidden>{l.waitlist.error}</p>
+      </form>
+      <p class="wl-done" role="status" hidden><Mark class="wl-mk" width={20} height={24} />{l.waitlist.done}</p>
+    </waitlist-form>
+  </section>
+
+  <NextChapter lang={lang} page="lodge" />
+</Base>
+
+<script>
+  import '../elements/in-view';
+  import '../elements/lodge-figure';
+  import '../elements/waitlist-form';
+</script>

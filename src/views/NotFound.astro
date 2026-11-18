@@ -1,0 +1,23 @@
+---
+import '../styles/components/cover.css';
+import Base from '../layouts/Base.astro';
+import Label from '../components/Label.astro';
+import { copy, routes, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = copy[lang].notFound;
+---
+<Base lang={lang} page={null}>
+  <section class="cv w" aria-labelledby="nf-t">
+    <div class="g in">
+      <Label class="cv-lab" k="404" v={t.k} style="--i: 0" />
+      <h1 id="nf-t" class="d1 cv-h" style="--i: 1" set:html={t.title} />
+      <p class="lead cv-body cv-lead" style="--i: 2">{t.p}</p>
+      <p class="cv-lab cv-body" style="--i: 3"><a class="btn" href={routes[lang].home}>{t.cta} <span class="ar" aria-hidden="true">→</span></a></p>
+    </div>
+  </section>
+</Base>

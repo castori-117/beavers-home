@@ -1,0 +1,16 @@
+---
+/* Time in Italy, filled on the client. Put a <time data-time> inside: the server prints --:-- there. */
+import { site } from '../data/site';
+
+interface Props {
+  day?: string;
+  night?: string;
+}
+
+const { day, night } = Astro.props;
+---
+<it-clock data-tz={site.timeZone} data-day={day} data-night-label={night}><slot /></it-clock>
+
+<script>
+  import '../elements/it-clock';
+</script>

@@ -1,0 +1,22 @@
+---
+/* The next chapter, at the end of every page: a big link with the picture of where it goes. */
+import '../styles/components/next.css';
+import { Image } from 'astro:assets';
+import { thumbFor } from '../lib/images';
+import { copy, nextPage, routes, type Lang, type PageKey } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  page: PageKey;
+}
+
+const { lang, page } = Astro.props;
+const t = copy[lang];
+const next = nextPage[page];
+const title = next === 'home' ? t.contact.back : t.pages[next];
+---
+<a class="nx" href={routes[lang][next]}>
+  <span class="nx-k"><b>{t.chapters[next]}</b></span>
+  <span class="nx-t">{title}&nbsp;<span class="ar" aria-hidden="true">→</span></span>
+  <span class="nx-img" aria-hidden="true"><Image src={thumbFor[next]} widths={[400, 720]} sizes="(max-width: 760px) 420px, 24vw" alt="" loading="lazy" decoding="async" /></span>
+</a>

@@ -1,0 +1,19 @@
+---
+import type { Lang } from '../i18n';
+import { copy } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  text: string;
+}
+
+const { lang, text } = Astro.props;
+const t = copy[lang].copy;
+---
+<copy-text>
+  <button class="copy" type="button" data-copy={text} aria-live="polite"><span data-idle>{t.idle}</span><span data-done>{t.done}</span></button>
+</copy-text>
+
+<script>
+  import '../elements/copy-text';
+</script>

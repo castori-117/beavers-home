@@ -1,0 +1,68 @@
+---
+import '../styles/components/nav.css';
+import Clock from './Clock.astro';
+import Mark from './Mark.astro';
+import { site } from '../data/site';
+import { chapterKeys, copy, languages, pageKeys, routes, type Lang, type PageKey } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  page: PageKey | null;
+  /* colour at the top of the page, and once it sticks on the way back up */
+  tone?: 'light' | 'dark';
+  stuckTone?: 'light' | 'dark';
+  /* the home page hides it while the intro plays */
+  intro?: boolean;
+}
+
+const { lang, page, tone = 'light', stuckTone = 'light', intro = false } = Astro.props;
+const t = copy[lang];
+const current = (key: PageKey) => (key === page ? 'page' : undefined);
+const alternate = (code: Lang) => routes[code][page ?? 'home'];
+---
+<div class:list={['navwrap', { 'navwrap--intro': intro }]}>
+  <site-nav>
+    <header class="nav" data-tone={tone} data-stuck-tone={stuckTone}>
+      <a class="nav-logo chomp" href={routes[lang].home} aria-label={t.nav.home}>
+        <Mark />
+        <span>beavers</span>
+      </a>
+      <nav class="nav-links" aria-label={t.nav.chapters}>
+        {chapterKeys.map((key) => <a href={routes[lang][key]} aria-current={current(key)}>{t.pages[key]}</a>)}
+      </nav>
+      <div class="nav-r">
+        <p class="nav-clock">
+          <Clock day={t.nav.day} night={t.nav.night}><i class="nav-dot"></i><b>{site.country[lang]}, <time data-time>--:--</time></b></Clock>
+        </p>
+        <div class="lang" role="group" aria-label={t.language}>
+          {languages.map((code) => <a href={alternate(code)} hreflang={code} lang={code} aria-current={code === lang ? 'true' : undefined}>{code.toUpperCase()}</a>)}
+        </div>
+        <a class="btn nav-cta" href={routes[lang].contact} aria-current={current('contact')}>{t.nav.cta} <span class="ar" aria-hidden="true">→</span></a>
+        <button class="nav-menu" type="button" commandfor="site-menu" command="show-modal" aria-haspopup="dialog"><i aria-hidden="true"></i>{t.nav.menu}</button>
+      </div>
+      <span class="nav-prog" aria-hidden="true"></span>
+    </header>
+    <dialog class="menu" id="site-menu" aria-label={t.nav.menu}>
+      <div class="menu-top">
+        <a class="nav-logo" href={routes[lang].home} aria-label={t.nav.home}>
+          <Mark />
+          <span>beavers</span>
+        </a>
+        <button class="menu-x" type="button" commandfor="site-menu" command="close" autofocus>{t.nav.close}</button>
+      </div>
+      <nav class="menu-links" aria-label={t.nav.chapters}>
+        {pageKeys.map((key, index) => <a href={routes[lang][key]} style={`--i: ${index}`} aria-current={current(key)}>{t.pages[key]}</a>)}
+      </nav>
+      <div class="menu-foot">
+        <a href={site.email.href}>{site.email.value}</a>
+        <div class="lang" role="group" aria-label={t.language}>
+          {languages.map((code) => <a href={alternate(code)} hreflang={code} lang={code} aria-current={code === lang ? 'true' : undefined}>{code.toUpperCase()}</a>)}
+        </div>
+      </div>
+    </dialog>
+  </site-nav>
+</div>
+
+<script>
+  import '../elements/site-nav';
+</script>

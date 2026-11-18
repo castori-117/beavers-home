@@ -1,0 +1,105 @@
+---
+import '../styles/components/seal.css';
+import '../styles/components/home.css';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Label from '../components/Label.astro';
+import Seal from '../components/Seal.astro';
+import { images, thumbFor } from '../lib/images';
+import { chapterKeys, copy, routes, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = copy[lang];
+const h = t.home;
+const indexKeys = [...chapterKeys, 'contact'] as const;
+const camera = 'M4 8h3l2-3h6l2 3h3v11H4z';
+---
+<Base lang={lang} page="home" intro>
+  <home-intro slot="before">
+    <button class="intro" type="button" aria-label={h.skipIntro} data-skip>
+      <span class="intro-skip" aria-hidden="true">{h.skip}</span>
+    </button>
+  </home-intro>
+
+  <section class="hero" aria-label={h.opening}>
+    <lake-ripples class="hero-media">
+      <Image class="hero-img" src={images.lakeDawn} widths={[640, 960, 1280, 1600, 2000, 2400]} sizes="100vw" alt={h.heroAlt} loading="eager" fetchpriority="high" decoding="async" />
+      <div class="mist" aria-hidden="true"></div>
+      <canvas class="hero-rip" aria-hidden="true"></canvas>
+    </lake-ripples>
+    <div class="hero-c">
+      <div class="seal-slot">
+        <div class="seal"><Seal lang={lang} /></div>
+      </div>
+      <h1 class="d1 hero-h" set:html={h.title} />
+    </div>
+    <div class="hero-foot">
+      <p class="hero-sub">{h.sub}</p>
+      <span class="hint" aria-hidden="true"><i></i><span class="hint-hover">{h.hintHover}</span><span class="hint-touch">{h.hintTouch}</span></span>
+      <a class="btn hero-cta" href={routes[lang].contact}><span>{h.cta}<span class="xs-hide">{h.ctaMore}</span></span> <span class="ar" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="sec w mf" aria-labelledby="mf-t">
+    <div class="g">
+      <Label class="rv mf-lab" k={h.prologue.k} v={h.prologue.v} />
+      <p id="mf-t" class="st rv">
+        <Fragment set:html={h.manifesto[0]} /> <span class="pill" aria-hidden="true"><Image src={images.lakeNight} widths={[160, 320]} sizes="8em" alt="" loading="lazy" decoding="async" /></span><Fragment set:html={h.manifesto[1]} /> <span class="pill" aria-hidden="true"><Image src={images.lakeMorning} widths={[160, 320]} sizes="8em" alt="" loading="lazy" decoding="async" /></span><Fragment set:html={h.manifesto[2]} />
+      </p>
+      <div class="mf-foot rv">
+        <p class="p">{h.manifestoFoot}</p>
+        <a class="ln" href={routes[lang].night}>{h.manifestoLink} <span class="ar" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--flush w" aria-labelledby="noi-t">
+    <div class="g">
+      <div class="us-ph">
+        {h.us.photos.map((photo) => (
+          <div class="ph rv">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={camera}></path><circle cx="12" cy="13" r="3.5"></circle></svg>
+            <b>{photo.name}</b>
+            <span>{photo.hint}</span>
+          </div>
+        ))}
+      </div>
+      <div class="us-tx">
+        <Label class="lab--head" k={h.us.k} />
+        <h2 id="noi-t" class="d2 rv" set:html={h.us.title} />
+        {h.us.p.map((paragraph) => <p class="p">{paragraph}</p>)}
+        <p class="sign">{h.us.sign}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--flush w" aria-labelledby="ix-t">
+    <div class="g">
+      <div class="ix-h">
+        <Label class="lab--head" k={h.index.k} />
+        <h2 id="ix-t" class="d2 rv" set:html={h.index.title} />
+      </div>
+    </div>
+    <ol class="ix">
+      {indexKeys.map((key) => (
+        <li>
+          <a href={routes[lang][key]}>
+            <span class="ix-n">{t.chapters[key]}</span>
+            <span class="ix-t">{t.pages[key]}</span>
+            <span class="ix-d">{h.index.items[key]}</span>
+            <span class="ix-img" aria-hidden="true"><Image src={thumbFor[key]} widths={[240, 480]} sizes="(max-width: 860px) 33vw, 16vw" alt="" loading="lazy" decoding="async" /></span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>
+
+<script>
+  import '../elements/home-intro';
+  import '../elements/lake-ripples';
+</script>

@@ -1,0 +1,88 @@
+---
+import '../styles/site.css';
+import { getImage } from 'astro:assets';
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav.astro';
+import { site } from '../data/site';
+import { pageImage, images } from '../lib/images';
+import { structuredData } from '../lib/seo';
+import { copy, languages, routes, type Lang, type PageKey } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  /* null for pages outside the story, like the 404 */
+  page: PageKey | null;
+  dark?: boolean;
+  tone?: 'light' | 'dark';
+  stuckTone?: 'light' | 'dark';
+  intro?: boolean;
+}
+
+const { lang, page, dark = false, tone = dark ? 'dark' : 'light', stuckTone = dark ? 'dark' : 'light', intro = false } = Astro.props;
+const t = copy[lang];
+const base = Astro.site ?? new URL(Astro.url.origin);
+const absolute = (path: string) => new URL(path, base).href;
+const { title, description } = page ? t.meta[page] : t.meta.notFound;
+const url = page ? absolute(routes[lang][page]) : undefined;
+const social = await getImage({ src: page ? pageImage[page] : images.lakeDawn, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 82 });
+const image = absolute(social.src);
+const jsonLd = page ? structuredData({ lang, page, base, image }) : null;
+const surface = dark ? '#070b14' : site.themeColor;
+---
+<!doctype html>
+<html lang={lang} class={dark ? 'dk' : 'lt'}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  {page ? <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"> : <meta name="robots" content="noindex, follow">}
+  <meta name="theme-color" content={surface}>
+  <meta name="color-scheme" content={dark ? 'dark' : 'light'}>
+  <meta name="author" content={site.founders.join(', ')}>
+  <meta name="format-detection" content="telephone=no">
+  {url && <link rel="canonical" href={url}>}
+  {page && languages.map((code) => <link rel="alternate" hreflang={code} href={absolute(routes[code][page])}>)}
+  {page && <link rel="alternate" hreflang="x-default" href={absolute(routes.it[page])}>}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content={site.name}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  {url && <meta property="og:url" content={url}>}
+  <meta property="og:locale" content={t.locale}>
+  <meta property="og:locale:alternate" content={copy[lang === 'it' ? 'en' : 'it'].locale}>
+  <meta property="og:image" content={image}>
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content={title}>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={image}>
+  {jsonLd && <script is:inline type="application/ld+json" set:html={jsonLd}></script>}
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+  <link rel="preload" href="/fonts/schibsted-grotesk.v1.woff2" as="font" type="font/woff2" crossorigin>
+  {intro && (
+    /* decided before the first paint, so the night never flashes in or out: once per visit, never with reduced motion */
+    <script is:inline>try{var d=document.documentElement,q=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!q&&sessionStorage.getItem('tb-intro')!=='1'&&!/nointro/.test(location.search)&&scrollY<40)d.dataset.intro='run'}catch(e){}</script>
+  )}
+  <slot name="head" />
+</head>
+<body>
+  <div id="top" class="site">
+    <div class="grain" aria-hidden="true"></div>
+    <a class="skip" href="#contenuto">{t.skip}</a>
+    <slot name="before" />
+    <Nav lang={lang} page={page} tone={tone} stuckTone={stuckTone} intro={intro} />
+    <main id="contenuto">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </div>
+</body>
+</html>

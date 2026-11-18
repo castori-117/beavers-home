@@ -1,0 +1,22 @@
+{
+  "name": "beavers-home",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "fonts": "node scripts/copy-fonts.mjs"
+  },
+  "dependencies": {
+    "astro": "^7.4.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@fontsource-variable/schibsted-grotesk": "^5.2.0",
+    "esbuild": "^0.28.2",
+    "typescript": "^6.0.3"
+  }
+}

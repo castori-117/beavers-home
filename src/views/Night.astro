@@ -1,0 +1,107 @@
+---
+import '../styles/components/night.css';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Label from '../components/Label.astro';
+import Mark from '../components/Mark.astro';
+import NextChapter from '../components/NextChapter.astro';
+import { images } from '../lib/images';
+import { copy, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = copy[lang];
+const n = t.night;
+/* the four moments of the night, as positions on the line and as clock times (22:00 → 09:00) */
+const KEYS = [0, 0.364, 0.864, 1];
+const START = 22 * 60;
+const SPAN = 660;
+const clock = (v: number) => {
+  const m = (Math.round((START + v * SPAN) / 5) * 5) % 1440;
+  return `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
+};
+const left = (k: number) => (k === 0 ? '15px' : k === 1 ? 'calc(100% - 15px)' : `calc(15px + (100% - 30px) * ${k})`);
+const WEEKS = 26;
+const OURS = 3;
+---
+<Base lang={lang} page="night" tone="dark" stuckTone="light">
+  <night-shift data-keys={KEYS.join(',')} data-start={START} data-span={SPAN}>
+    <section class="nt" aria-labelledby="nt-t" data-cap="0">
+      <div class="nt-scene">
+        <div class="nt-pic">
+          <Image src={images.lakeNight} widths={[640, 960, 1280, 1600, 2400]} sizes="100vw" alt={n.nightAlt} loading="eager" fetchpriority="high" decoding="async" />
+          <Image class="nt-day" src={images.lakeMorning} widths={[640, 960, 1280, 1600, 2400]} sizes="100vw" alt={n.dayAlt} loading="lazy" decoding="async" />
+          <canvas class="nt-flies" aria-hidden="true"></canvas>
+        </div>
+        <div class="nt-copy in">
+          <Label k={t.chapters.night} v={t.pages.night} style="--i: 0" />
+          <h1 id="nt-t" class="d2" style="--i: 1" set:html={n.title} />
+          <p class="p" style="--i: 2">{n.intro}</p>
+        </div>
+      </div>
+      <div class="w nt-ctl">
+        <div class="nt-row">
+          <p class="nt-time" aria-hidden="true" data-clock>{clock(0)}</p>
+          <div class="nt-caps" aria-live="polite">
+            {n.caps.map((caption) => <p class="nt-cap">{caption}</p>)}
+          </div>
+          <p class="legend"><span class="fly" aria-hidden="true"></span>{n.legend}</p>
+        </div>
+        <div class="range-box">
+          <label class="sr" for="tb-ora">{n.range}</label>
+          <input id="tb-ora" class="range" type="range" min="0" max="1000" step="1" value="0" aria-valuetext={clock(0)}>
+          <div class="ticks">
+            {KEYS.map((k) => <button type="button" class="tick" style={`left: ${left(k)}`} data-key={k} aria-label={n.goto + clock(k)}>{clock(k)}</button>)}
+          </div>
+        </div>
+      </div>
+    </section>
+  </night-shift>
+
+  <section class="sec w" aria-labelledby="duo-t">
+    <div class="g">
+      <div class="duo-h">
+        <Label class="lab--head" k={n.duo.k} />
+        <h2 id="duo-t" class="d2 rv" set:html={n.duo.title} />
+      </div>
+      <div class="duo-c rv">
+        <h3 class="duo-t"><span class="duo-dot" aria-hidden="true"></span>{n.duo.agents}</h3>
+        <ul class="duo-l">{n.duo.agentsList.map((item) => <li>{item}</li>)}</ul>
+      </div>
+      <div class="duo-c rv">
+        <h3 class="duo-t"><Mark teeth width={22} height={20} />{n.duo.us}</h3>
+        <ul class="duo-l">{n.duo.usList.map((item) => <li>{item}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--flush w" aria-labelledby="wk-t">
+    <div class="g">
+      <div class="wk-tx">
+        <Label class="lab--head" k={n.weeks.k} />
+        <h2 id="wk-t" class="d2 rv" set:html={n.weeks.title} />
+        <p class="p">{n.weeks.p}</p>
+      </div>
+      <in-view class="wk" data-threshold="0.3">
+        <figure role="img" aria-label={n.weeks.chart}>
+          <p class="wk-lab"><span>{n.weeks.agency[0]}</span><span>{n.weeks.agency[1]}</span></p>
+          <div class="wk-tiles">{Array.from({ length: WEEKS }, (_, i) => <span class="wk-t wa" style={`--i: ${i}`}></span>)}</div>
+          <p class="wk-lab"><span>{n.weeks.us[0]}</span><span>{n.weeks.us[1]}</span></p>
+          <div class="wk-tiles">{Array.from({ length: WEEKS }, (_, i) => <span class:list={['wk-t', i < OURS ? 'wb' : 'wg']} style={`--i: ${i}`}></span>)}</div>
+        </figure>
+        <p class="wk-free">{n.weeks.free}</p>
+        <p class="note">{n.weeks.note}</p>
+      </in-view>
+    </div>
+  </section>
+
+  <NextChapter lang={lang} page="night" />
+</Base>
+
+<script>
+  import '../elements/night-shift';
+  import '../elements/in-view';
+</script>

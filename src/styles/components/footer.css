@@ -1,0 +1,203 @@
+/* footer: the night lake, the agents at work, the name across the water */
+.ft {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(760px, 72vw, 1080px);
+  padding: clamp(150px, 14vw, 220px) var(--gut) 22px;
+  color: var(--moon);
+}
+.ft::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: var(--night);
+  mask-image: linear-gradient(to bottom, transparent, #000 190px);
+}
+.ft-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 78%;
+  mask-image: linear-gradient(to bottom, transparent, #000 260px);
+}
+
+/* a few agents still at work around the lodge, while you read the end */
+.ft-flies {
+  position: absolute;
+  left: 53%;
+  top: 55%;
+  z-index: -1;
+  width: 28%;
+  height: 17%;
+  pointer-events: none;
+}
+.ft-flies i {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--firefly);
+  box-shadow:
+    0 0 0 3px rgb(121 227 255 / 0.16),
+    0 0 14px 4px rgb(121 227 255 / 0.45);
+  animation:
+    firefly 11s ease-in-out infinite alternate,
+    twinkle 3.4s ease-in-out infinite;
+}
+.ft-flies i:nth-child(1) { left: 6%; top: 38%; animation-delay: -2s, -0.6s; }
+.ft-flies i:nth-child(2) { left: 24%; top: 12%; animation-delay: -5s, -1.4s; }
+.ft-flies i:nth-child(3) { left: 41%; top: 58%; animation-delay: -8s, -2.2s; }
+.ft-flies i:nth-child(4) { left: 63%; top: 22%; animation-delay: -3s, -0.2s; }
+.ft-flies i:nth-child(5) { left: 79%; top: 66%; animation-delay: -6s, -2.8s; }
+.ft-flies i:nth-child(6) { left: 93%; top: 30%; animation-delay: -9s, -1.9s; }
+@keyframes firefly {
+  35% { transform: translate(16px, -9px); }
+  70% { transform: translate(-11px, 7px); }
+  100% { transform: translate(9px, 11px); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 0.3; }
+}
+
+.ft-top {
+  row-gap: 36px;
+  font-size: var(--fs-small);
+  line-height: 1.5;
+}
+.ft-col {
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.ft-k {
+  margin-bottom: 10px;
+  font-weight: var(--w-black);
+}
+.ft-col a {
+  padding: 3px 0;
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 var(--hair) no-repeat;
+  transition: background-size var(--t) var(--e);
+}
+.ft-col a:hover {
+  background-size: 100% var(--hair);
+}
+.ft-mail {
+  font-weight: var(--w-black);
+}
+.ft-mailrow {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+.ft .copy:hover {
+  background: var(--moon);
+  color: var(--night);
+}
+
+.ft-mid {
+  margin-top: auto;
+  padding-top: 120px;
+}
+.ft-big {
+  display: inline-block;
+  font-weight: var(--w-strong);
+  font-size: clamp(30px, 3.6vw, 58px);
+  line-height: 1;
+  letter-spacing: var(--tr-tight);
+  text-decoration: none;
+}
+/* inline, so the arrow never drops to a line of its own */
+.ft-big .ar {
+  display: inline;
+  position: relative;
+  left: 0;
+  transition: left 0.55s var(--e);
+}
+.ft-big:hover .ar {
+  left: 0.2em;
+}
+
+/* the name fills the width exactly, whatever the screen */
+.ft-wm {
+  container-type: inline-size;
+  margin-top: clamp(24px, 3vw, 44px);
+}
+.ft-word {
+  display: block;
+  margin-left: -0.065em;
+  font-weight: var(--w-black);
+  font-size: calc(100cqw / 3.737);
+  line-height: 0.76;
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+  cursor: default;
+  user-select: none;
+}
+.ft-l {
+  display: inline-block;
+  transform-origin: 50% 100%;
+}
+.ft-wm:hover .ft-l {
+  animation: wave 0.9s var(--e) both;
+  animation-delay: calc(var(--i) * 42ms);
+}
+@keyframes wave {
+  30% { transform: translateY(-9%) scaleY(1.04); }
+  62% { transform: translateY(2%); }
+  100% { transform: none; }
+}
+
+.ft-legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: var(--hair) solid rgb(244 245 242 / 0.4);
+  font-size: var(--fs-xs);
+  line-height: 1.4;
+}
+.ft-legal-r {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 22px;
+}
+.totop {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  font-weight: var(--w-strong);
+  text-decoration: none;
+}
+.totop:hover .ar {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 860px) {
+  .ft-col {
+    grid-column: span 6;
+  }
+}
+@media (max-width: 520px) {
+  .ft-col {
+    grid-column: 1 / -1;
+  }
+  .ft-legal {
+    flex-direction: column;
+  }
+}

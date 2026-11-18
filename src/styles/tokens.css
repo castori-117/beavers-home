@@ -1,0 +1,102 @@
+/* Beavers design tokens: the single source for colour, type, space, shape, motion and layering.
+   Birch paper and spruce ink from the paintings, one loud orange for the teeth, ice blue for the agents. */
+:root {
+  /* palette: day */
+  --paper: #eef1ec;
+  --mist: #e2e7e1;
+  --mist-2: #d5dcd5;
+  --ink: #16201c;
+  --ink-2: #4c5a54;
+  --line: #c8d0c9;
+  --rule: rgb(22 32 28 / 0.4);
+  --placeholder: #7d8489;
+  --error: #b42318;
+
+  /* palette: the brand */
+  --signal: #ff4f00;
+  --ai-l: #1a93bd;
+  --ice: #79e3ff;
+  --ice-ink: #0c6c8c;
+  --firefly: #e6faff;
+
+  /* palette: night */
+  --night: #070b14;
+  --night-2: #0e1524;
+  --night-line: rgb(244 245 242 / 0.18);
+  --moon: #f4f5f2;
+  --moon-2: #a9b2bc;
+
+  /* palette: painting grounds, shown while images load */
+  --sky: #c3ced4;
+  --water: #b4c6ce;
+
+  /* type */
+  --f: "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs-body: 18px;
+  --fs-small: 15px;
+  --fs-xs: 13.5px;
+  --fs-p: clamp(17px, 1.2vw, 18px);
+  --fs-lead: clamp(19px, 1.5vw, 23px);
+  --fs-d1: clamp(42px, 5.7vw, 98px);
+  --fs-d2: clamp(36px, 4.4vw, 74px);
+  --fs-d3: clamp(30px, 3.3vw, 54px);
+  --fs-st: clamp(30px, 4vw, 66px);
+  --fs-xl: clamp(44px, 7.6vw, 132px);
+  --lh-body: 1.5;
+  --tr-body: -0.006em;
+  --tr-display: -0.034em;
+  --tr-tight: -0.045em;
+  --w-regular: 400;
+  --w-medium: 500;
+  --w-strong: 700;
+  --w-black: 800;
+
+  /* space and layout */
+  --gut: clamp(20px, 2.8vw, 40px);
+  --gap: clamp(12px, 1.6vw, 24px);
+  --sec: clamp(96px, 10vw, 176px);
+  --sec-head: clamp(40px, 4.4vw, 72px);
+  --nav-h: 76px;
+  --tap: 44px;
+  --max-art: 1600px;
+
+  /* shape */
+  --r: 26px;
+  --r-md: 20px;
+  --r-sm: 16px;
+  --r-xs: 14px;
+  --pill: 999px;
+  --hair: 1px;
+  --stroke: 1.5px;
+
+  /* motion */
+  --e: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --eio: cubic-bezier(0.7, 0, 0.2, 1);
+  --t-fast: 0.25s;
+  --t: 0.45s;
+  --t-slow: 0.75s;
+
+  /* layers */
+  --z-grain: 45;
+  --z-nav: 50;
+  --z-stuck: 60;
+  --z-intro: 60;
+  --z-seal: 70;
+  --z-menu: 90;
+  --z-skip: 120;
+}
+
+/* surfaces: day by default */
+:root,
+.lt {
+  --surface: var(--paper);
+  --on-surface: var(--ink);
+  --on-surface-2: var(--ink-2);
+}
+
+/* a page on the night side flips the surface tokens once, everything else follows */
+.dk {
+  --surface: var(--night);
+  --on-surface: var(--moon);
+  --on-surface-2: var(--moon-2);
+}

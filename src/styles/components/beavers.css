@@ -1,0 +1,249 @@
+/* ---------- chapter two: the dam, the leaks, the beavers ---------- */
+.dam {
+  position: relative;
+  height: clamp(400px, 50vw, 760px);
+  margin-inline: var(--gut);
+  overflow: hidden;
+  border-radius: var(--r);
+  background: var(--water);
+}
+.dam img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+}
+.dam-fx {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  overflow: visible;
+}
+.dam-again {
+  position: absolute;
+  right: var(--gut);
+  top: clamp(6px, 1.2vw, 16px);
+  color: var(--ink);
+}
+
+/* the leak runs until the dam is in view; a moment later a branch closes it */
+.stream path {
+  animation: flow 0.7s linear infinite;
+  transition: opacity 0.5s ease;
+}
+@keyframes flow {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+.splash {
+  transition: opacity 0.6s ease;
+}
+.ring {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  opacity: 0;
+  animation: ring 1.8s ease-out infinite;
+}
+.ring:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.ring:nth-child(3) {
+  animation-delay: 1.2s;
+}
+@keyframes ring {
+  0% {
+    transform: scale(0.3);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+.plug {
+  transform-box: view-box;
+  transform-origin: 604px 392px;
+  transform: translate(-330px, -260px) rotate(-26deg);
+  opacity: 0;
+  transition:
+    transform 1.05s cubic-bezier(0.2, 0.9, 0.25, 1),
+    opacity 0.35s ease;
+}
+.dam-wrap {
+  --close-after: 1.5s;
+}
+.dam-wrap[data-seen] .plug {
+  transform: none;
+  opacity: 1;
+  transition-delay: var(--close-after);
+}
+.dam-wrap[data-seen] .stream path {
+  opacity: 0;
+  transition-delay: calc(var(--close-after) + 0.75s);
+}
+.dam-wrap[data-seen] .splash {
+  opacity: 0;
+  transition-delay: calc(var(--close-after) + 1s);
+}
+
+/* the story and the leaks in your store */
+.story-a {
+  grid-column: 1 / span 5;
+}
+.story-b {
+  grid-column: 7 / span 6;
+}
+.story-us {
+  margin-bottom: clamp(28px, 3vw, 44px);
+}
+.leaks {
+  border-top: var(--hair) solid var(--rule);
+}
+.leaks li {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 17px 0;
+  border-bottom: var(--hair) solid var(--line);
+  font-size: 18px;
+  line-height: 1.45;
+}
+/* a drop that becomes an orange plank, one per line */
+.drop {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: #6f95a6;
+  transition:
+    width 0.6s var(--e),
+    height 0.6s var(--e),
+    border-radius 0.6s ease,
+    transform 0.6s ease,
+    background-color 0.6s ease;
+  transition-delay: inherit;
+}
+.story-b[data-seen] .drop {
+  width: 22px;
+  height: 5px;
+  border-radius: 0;
+  transform: rotate(-14deg);
+  background: var(--signal);
+}
+
+/* why beavers */
+.tr-h {
+  grid-column: 1 / -1;
+  margin-bottom: var(--sec-head);
+}
+.tr {
+  border-top: var(--hair) solid var(--rule);
+}
+.tr li {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  row-gap: 14px;
+  padding: 26px 0 34px;
+  border-bottom: var(--hair) solid var(--line);
+}
+.tr-n {
+  grid-column: 1 / span 1;
+  padding-top: 8px;
+  font-size: var(--fs-small);
+  font-weight: var(--w-black);
+}
+.tr-t {
+  grid-column: 2 / span 5;
+  font-weight: var(--w-strong);
+  font-size: clamp(30px, 3vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.042em;
+}
+.tr-p {
+  grid-column: 8 / span 5;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.tr-p b {
+  color: var(--ink);
+  font-weight: var(--w-strong);
+}
+
+/* did you know? a nibble between one fact and the next */
+.facts {
+  padding-bottom: var(--sec);
+}
+.fact {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 22px 36px;
+  padding: clamp(28px, 3.4vw, 52px);
+  border-radius: var(--r);
+  background: var(--mist);
+}
+.fact .mk {
+  width: 40px;
+  height: 49px;
+}
+.fact-t {
+  font-size: clamp(22px, 2.1vw, 32px);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+.fact-t b {
+  display: block;
+  margin-bottom: 12px;
+  font-size: var(--fs-small);
+  font-weight: var(--w-black);
+  letter-spacing: 0;
+}
+.fact-x {
+  display: block;
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease;
+}
+.fact--bite .fact-x {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.fact--bite .mk-t {
+  animation: bite 0.3s ease-in-out;
+}
+.fact--bite .mk-t + .mk-t {
+  animation-delay: 0.04s;
+}
+
+@media (max-width: 860px) {
+  .story-a,
+  .story-b {
+    grid-column: 1 / -1;
+  }
+  .story-b {
+    margin-top: 48px;
+  }
+  .tr-n,
+  .tr-t,
+  .tr-p {
+    grid-column: 1 / -1;
+  }
+  .tr-n {
+    padding-top: 0;
+  }
+  .fact {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .fact .ghost {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}

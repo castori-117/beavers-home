@@ -1,0 +1,26 @@
+/* chapter covers: label, a big line, and a lead set to the right */
+.cv {
+  padding-top: clamp(132px, 13vw, 210px);
+  padding-bottom: clamp(56px, 6vw, 96px);
+}
+.cv .lab {
+  margin-bottom: clamp(22px, 2.6vw, 40px);
+}
+.cv-lab {
+  grid-column: 1 / -1;
+}
+.cv-h {
+  grid-column: 1 / span 10;
+}
+.cv-body {
+  margin-top: clamp(28px, 3vw, 48px);
+}
+.cv-lead {
+  grid-column: 7 / span 5;
+}
+@media (max-width: 860px) {
+  .cv-h,
+  .cv-lead {
+    grid-column: 1 / -1;
+  }
+}
