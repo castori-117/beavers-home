@@ -1,4 +1,8 @@
 /* new words: a dotted line under them, a short explanation on hover, focus or tap */
+/* the word keeps the punctuation after it on the same line */
+.term-w {
+  white-space: nowrap;
+}
 .term {
   display: inline;
   margin: 0;
