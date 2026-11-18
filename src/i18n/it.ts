@@ -14,6 +14,7 @@ export const it = {
   },
   pages: {
     home: 'Prologo',
+    services: 'Cosa facciamo',
     night: 'Come lavoriamo',
     beavers: 'Perché castori',
     lodge: 'Guardiamo avanti',
@@ -21,15 +22,20 @@ export const it = {
   },
   chapters: {
     home: 'Prologo',
-    night: 'Capitolo uno',
-    beavers: 'Capitolo due',
-    lodge: 'Capitolo tre',
+    services: 'Capitolo uno',
+    night: 'Capitolo due',
+    beavers: 'Capitolo tre',
+    lodge: 'Capitolo quattro',
     contact: 'Epilogo'
   },
   meta: {
     home: {
       title: 'Beavers · Sviluppatori Shopify con agenti AI, dall’Italia',
       description: 'Siamo Andrea e Lorenzo, sviluppatori Shopify. Con una squadra di agenti AI un negozio nuovo arriva in circa tre settimane. Analisi gratuita, anche per farti trovare da ChatGPT e Gemini.'
+    },
+    services: {
+      title: 'Cosa facciamo: negozi Shopify, restyling, SEO e GEO, sviluppo su misura · Beavers',
+      description: 'Negozi Shopify nuovi in circa tre settimane, restyling senza fermare le vendite, SEO e GEO per farti trovare su Google e dagli assistenti AI, sviluppo su misura. Tutto parte dall’analisi gratuita.'
     },
     night: {
       title: 'Come lavoriamo: agenti AI di notte, noi al mattino · Beavers',
@@ -88,6 +94,7 @@ export const it = {
         list: [
           'Se ci scrivi dal modulo «Il primo passo è gratis»: il tuo nome, l’indirizzo del negozio e la tua email.',
           'Se ti iscrivi alla lista di Lodge: la tua email.',
+          'Se ci dici il tuo nome in «Cosa facciamo»: resta nel tuo browser e serve solo a chiamarti per nome sul sito. Non lo riceviamo, a meno che tu non ci scriva dal modulo.',
           'Se ci scrivi per email: quello che decidi di mandarci.',
           'Statistiche, solo se dici di sì: pagine viste, da quale sito arrivi, paese, tipo di dispositivo e browser, velocità delle pagine. Non sappiamo chi sei.',
           'Come ogni sito, il server registra per poco tempo alcuni dati tecnici, come l’indirizzo IP, per funzionare e proteggersi.'
@@ -132,6 +139,8 @@ export const it = {
     story: 'Il racconto',
     who: 'Chi siamo',
     whoLines: ['Andrea e Lorenzo,', 'più una squadra di agenti.'],
+    /* the link text for each founder's profile: «Andrea su LinkedIn» */
+    profile: '{n} su LinkedIn',
     country: 'Italia',
     lodge: 'Lodge',
     lodgeLines: ['La tana dove il tuo negozio prende forma.', 'In costruzione.'],
@@ -164,18 +173,6 @@ export const it = {
       cta: 'Controlla il tuo negozio',
       more: 'Come funziona'
     },
-    services: {
-      k: 'Cosa facciamo',
-      title: 'Dal primo schizzo <b>al negozio che vende.</b>',
-      items: [
-        { t: 'Negozi nuovi', d: 'Disegniamo e costruiamo il tuo negozio Shopify, pronto a vendere in circa tre settimane.' },
-        { t: 'Restyling', d: 'Rifacciamo pagine, schede prodotto e carrello del negozio che hai già, senza fermare le vendite.' },
-        { t: '[[seo|SEO]] e [[geo|GEO]]', d: 'Ti facciamo trovare su Google e dagli assistenti AI come ChatGPT e Gemini.' },
-        { t: 'Sviluppo su misura', d: 'Funzioni che il tema non ha, collegamenti con gli strumenti che usi già, e le modifiche di tutti i giorni.' }
-      ],
-      foot: 'Non sai da dove partire? Te lo dice l’analisi gratuita.',
-      link: 'Scrivici'
-    },
     us: {
       k: 'Chi siamo',
       title: 'Ciao, siamo <b>Andrea e Lorenzo.</b>',
@@ -191,13 +188,124 @@ export const it = {
     },
     index: {
       k: 'Il racconto',
-      title: 'Tre capitoli <b>e un epilogo.</b>',
+      title: 'Quattro capitoli <b>e un epilogo.</b>',
       items: {
+        services: 'Negozi nuovi, restyling, SEO e GEO, sviluppo su misura.',
         night: 'Di notte gli agenti, al mattino noi. E settimane, non mesi.',
         beavers: 'Sentono dove perde, e chiudono la falla. Noi lo facciamo con il tuo negozio.',
         lodge: 'Fatti trovare dall’AI. E la tana che stiamo costruendo.',
         contact: 'Il primo passo è gratis. Risponde uno di noi.'
       }
+    }
+  },
+  services: {
+    title: 'Dal primo schizzo <b>al negozio che vende.</b>',
+    /* with the visitor's name: «Marta, ecco cosa <b>possiamo fare per te.</b>» */
+    named: ['ecco cosa', 'possiamo fare per te.'],
+    lead: 'Quattro cose che facciamo ogni giorno, sempre in due e con gli [[agent|agenti]]. Ognuna parte dall’analisi gratuita: prima guardiamo, poi ti diciamo cosa serve davvero.',
+    index: 'I quattro servizi',
+    items: [
+      {
+        id: 'negozi',
+        chip: 'Negozi nuovi',
+        tag: '01',
+        title: 'Negozi <b>nuovi.</b>',
+        p: 'Disegniamo e costruiamo il tuo negozio [[shopify|Shopify]], dalla prima pagina al carrello. Tu ci racconti cosa vendi, noi lo mettiamo in vetrina.',
+        list: ['Un design pensato per i tuoi prodotti, non un tema preso a caso.', 'Pagine veloci sul telefono, dove compra la maggior parte delle persone.', 'Pagamenti, spedizioni e tasse configurati prima di andare online.'],
+        meta: ['Tempi', 'circa tre settimane, per un negozio di medie dimensioni.']
+      },
+      {
+        id: 'restyling',
+        chip: 'Restyling',
+        tag: '02',
+        title: '<b>Restyling.</b>',
+        p: 'Hai già un negozio, ma non ti rappresenta più o vende meno di quanto potrebbe. Lo rifacciamo pezzo per pezzo, senza fermare le vendite.',
+        list: ['Home, schede prodotto e carrello, nell’ordine che conta di più.', 'Le tue foto e i tuoi testi, messi in una pagina che li fa respirare.', 'Ogni modifica la vedi prima che vada online.']
+      },
+      {
+        id: 'farsi-trovare',
+        chip: 'SEO e GEO',
+        tag: '03 · [[seo|SEO]] e [[geo|GEO]]',
+        title: 'Farsi <b>trovare.</b>',
+        p: 'Su Google e, sempre di più, sugli assistenti AI come ChatGPT e Gemini. Sistemiamo testi, pagine e dati dei prodotti perché ti trovino e ti capiscano.',
+        list: ['Le parole che usano i tuoi clienti, nei punti giusti.', 'Schede prodotto complete, che un assistente può leggere e consigliare.', 'Un controllo ogni mese: dove compari, e dove no.'],
+        meta: ['Incluso', 'nell’analisi gratuita, guardiamo già se ChatGPT e Gemini ti trovano.']
+      },
+      {
+        id: 'sviluppo',
+        chip: 'Sviluppo su misura',
+        tag: '04',
+        title: 'Sviluppo <b>su misura.</b>',
+        p: 'Quando il tema non basta: funzioni nuove, collegamenti con gli strumenti che usi già, e le modifiche di tutti i giorni. Ci scrivi due righe la sera, la mattina è fatto e controllato.',
+        list: ['Funzioni che il tuo tema non ha, costruite per il tuo negozio.', 'Il negozio che parla con magazzino, spedizioni ed email.', 'Piccole modifiche quando servono, senza aspettare settimane.']
+      }
+    ],
+    /* the example store in the pictures; {n} is the visitor's name, {s} the same name as a web address */
+    store: {
+      shop: 'tuonegozio.it',
+      site: 'negoziodi{s}.it',
+      of: 'Il negozio di {n}.',
+      cap1: ['Fatto a mano,', 'vicino a te.'],
+      cap1n: 'Fatto a mano.',
+      cap2: ['Ceramiche del lago.', 'Fatte a mano.'],
+      cap2n: 'Rifatto.',
+      weeks: ['Settimana 1 · design', 'Settimana 2 · costruzione', 'Settimana 3 · online']
+    },
+    ba: {
+      label: 'Prima e dopo: sposta la linea',
+      before: 'Prima',
+      after: 'Dopo',
+      top: 'SALDI!!! SPEDIZIONE GRATIS SOPRA 49€ · NOVITÀ · SALDI!!!',
+      logo: 'Il Mio Negozio Online',
+      menu: ['HOME', 'PRODOTTI', 'OFFERTE', 'CHI SIAMO', 'CONTATTI', 'BLOG'],
+      banner: 'BENVENUTI NEL NOSTRO SHOP!!'
+    },
+    serp: {
+      q: 'tazza ceramica fatta a mano',
+      ask: 'Dove trovo una tazza fatta a mano?',
+      answer: ['Ti consiglio', ': piccolo laboratorio, smalti fatti a mano, sotto i 30 euro.']
+    },
+    overnight: {
+      k: 'Scegli una richiesta, e guarda la notte passare.',
+      label: 'Richieste di esempio',
+      picks: ['Un filtro per colore', 'Le taglie in una tabella', 'Spedizione gratis sopra 49 €'],
+      asks: ['Puoi aggiungere un filtro per colore?', 'Si possono mettere le taglie in una tabella?', 'Spedizione gratis sopra i 49 euro?'],
+      done: 'Fatto, e controllato stamattina. È già online.',
+      doneN: 'Fatto, {n}, e controllato stamattina. È già online.',
+      ship: 'Ti mancano 12 € per la spedizione gratis',
+      category: 'Ceramiche',
+      count: '24 prodotti',
+      height: 'Altezza',
+      litres: 'Litri'
+    },
+    more: {
+      title: 'E molto <b>di più.</b>',
+      p: 'Le cose che un negozio chiede dopo i primi mesi. Le facciamo con lo stesso metodo: di notte gli agenti, al mattino noi.',
+      again: 'Fai scorrere di nuovo',
+      items: ['Migrazioni da WooCommerce', 'Negozi in più lingue', 'Vendite all’estero', 'Pagine più veloci', 'Schede prodotto', 'Filtri e ricerca', 'Pagine per le campagne', 'Kit e bundle', 'Abbonamenti', 'Recensioni', 'Email automatiche', 'Carrelli abbandonati', 'Listini per rivenditori', 'Feed per Google Shopping', 'Dati strutturati', 'App e integrazioni', 'Accessibilità', 'Tema su misura', 'Analisi delle vendite', 'Formazione al tuo team', 'Modifiche di tutti i giorni'],
+      end: '…e quello che ti serve.',
+      endN: '…e quello che serve a {n}.'
+    },
+    call: {
+      k: 'Parliamone a voce',
+      kN: 'Parliamone a voce, {n}',
+      title: 'Se ti serve qualcosa che non vedi qui, chiedi. <b>Se possiamo farlo bene te lo diciamo, se no ti diciamo chi può.</b>',
+      cta: 'Chiedi una chiamata',
+      subject: 'Vorrei una chiamata',
+      note: 'Senza impegno. Dicci quando ti va bene: ti rispondiamo noi, entro un giorno lavorativo.',
+      write: 'Preferisci scrivere?'
+    },
+    /* asked once, a whole screen, before the page: Andrea and Lorenzo say hello first */
+    who: {
+      lines: ['Ciao, siamo Andrea e Lorenzo.', 'Prima di raccontarti cosa facciamo, ci piacerebbe sapere con chi stiamo parlando.'],
+      title: 'Come <b>ti chiami?</b>',
+      label: 'Il tuo nome',
+      placeholder: 'il tuo nome',
+      go: 'Continua',
+      skip: 'Preferisco di no',
+      note: 'Ti chiamiamo per nome in questa pagina, e ti prepariamo il negozio di esempio. Resta nel tuo browser: noi non lo riceviamo.',
+      hello: 'Piacere, {n}.',
+      sub: 'Adesso ti raccontiamo cosa possiamo fare per te.'
     }
   },
   night: {
@@ -279,14 +387,18 @@ export const it = {
     p: 'Sempre più persone, prima di comprare, chiedono un consiglio a un [[assistant|assistente]] come ChatGPT o Gemini. Sistemiamo prodotti, schede e dati del tuo negozio perché l’assistente li capisca bene, e possa consigliarli.',
     chat: {
       k: 'Esempio · una persona chiede a un assistente',
-      q: 'Cerco una tazza in ceramica fatta a mano, da regalare. Sotto i 30 euro.',
       replies: 'L’assistente risponde',
-      a: 'Ti consiglio questa, da un piccolo laboratorio italiano:',
-      product: 'Tazza in gres, smalto bosco',
       store: 'tuonegozio.it',
-      price: '28 €',
       note: 'Gli assistenti scelgono da soli cosa consigliare. Noi facciamo in modo che capiscano bene i tuoi prodotti.',
-      again: 'Rifai la domanda'
+      /* one at random on each visit, then the next one by itself; art is the drawing next to the product */
+      asks: [
+        { art: 'cup', q: 'Cerco una tazza in ceramica fatta a mano, da regalare. Sotto i 30 euro.', a: 'Ti consiglio questa, da un piccolo laboratorio italiano:', product: 'Tazza in gres, smalto bosco', price: '28 €' },
+        { art: 'oil', q: 'Un olio extravergine buono da regalare, che arrivi entro venerdì.', a: 'Questo viene da un piccolo frantoio e parte in giornata:', product: 'Olio extravergine, latta da 500 ml', price: '18 €' },
+        { art: 'pack', q: 'Mi serve uno zaino da città impermeabile, per un portatile da 14 pollici.', a: 'Questo ha la tasca imbottita e il fondo in tela cerata:', product: 'Zaino in tela cerata, verde bosco', price: '89 €' },
+        { art: 'candle', q: 'Una candela profumata che non sappia di finto, per una casa nuova.', a: 'Questa è in cera di soia, versata a mano:', product: 'Candela di soia, legno e fico', price: '24 €' },
+        { art: 'sweater', q: 'Un maglione caldo che non pizzichi, taglia M.', a: 'Questo è in lana merino, lavorato in Italia:', product: 'Maglione in merino, grigio nebbia', price: '79 €' },
+        { art: 'book', q: 'Un quaderno bello per un regalo di laurea, con il nome inciso.', a: 'Questo si personalizza e arriva in tre giorni:', product: 'Quaderno in pelle, con incisione', price: '35 €' }
+      ]
     },
     next: { k: 'Lodge', v: 'La nostra prossima cosa' },
     lodgeTitle: 'Stiamo costruendo Lodge. <b>La tana dove il tuo negozio prende forma.</b>',

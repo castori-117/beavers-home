@@ -50,14 +50,30 @@ function pageText(lang: Lang, page: PageKey) {
         `## ${h.prologue.k}: ${h.prologue.v}`,
         md(h.manifesto.join(' ')),
         h.manifestoFoot,
-        `## ${h.services.k}`,
-        md(h.services.title),
-        ...h.services.items.map((item) => `- **${md(item.t)}**: ${md(item.d)}`),
         `## ${h.us.k}`,
         md(h.us.title),
         ...h.us.p,
         `## ${h.index.k}`,
         ...[...chapterKeys, 'contact' as const].map((key) => `- **${t.chapters[key]} · ${t.pages[key]}**: ${h.index.items[key]}`)
+      ];
+    }
+    case 'services': {
+      const s = t.services;
+      return [
+        `# ${md(s.title)}`,
+        md(s.lead),
+        ...s.items.flatMap((item) => [
+          `## ${md(item.title)}`,
+          md(item.p),
+          ...item.list.map((line) => `- ${line}`),
+          ...('meta' in item && item.meta ? [`${item.meta[0]}: ${item.meta[1]}`] : [])
+        ]),
+        `## ${md(s.more.title)}`,
+        s.more.p,
+        ...s.more.items.map((line) => `- ${line}`),
+        `## ${s.call.k}`,
+        md(s.call.title),
+        `${s.call.cta}: ${site.email.value}`
       ];
     }
     case 'night': {
@@ -100,8 +116,7 @@ function pageText(lang: Lang, page: PageKey) {
       return [
         `# ${md(l.title)}`,
         md(l.p),
-        `> ${l.chat.q}`,
-        `> ${l.chat.a} ${l.chat.product}, ${l.chat.price}`,
+        ...l.chat.asks.flatMap((ask) => [`> ${ask.q}`, `> ${ask.a} ${ask.product}, ${ask.price}`]),
         l.chat.note,
         `## ${l.next.k}: ${l.next.v}`,
         md(l.lodgeTitle),

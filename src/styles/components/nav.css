@@ -75,6 +75,7 @@
   display: inline-flex;
   align-items: center;
   min-height: var(--tap);
+  white-space: nowrap;
   text-decoration: none;
 }
 .nav-links a::after {
@@ -321,12 +322,14 @@ html:has(.menu[open]) {
   overflow: hidden;
 }
 
-@media (max-width: 1060px) {
+/* four chapters in the bar: the clock steps aside first */
+@media (max-width: 1240px) {
   .nav-clock {
     display: none;
   }
 }
-@media (max-width: 860px) {
+/* four links need room: below this the menu button takes over */
+@media (max-width: 960px) {
   .nav {
     grid-template-columns: minmax(0, 1fr) auto;
   }

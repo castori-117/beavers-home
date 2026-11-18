@@ -92,6 +92,10 @@
 .ft-col a:hover {
   background-size: 100% var(--hair);
 }
+/* the first profile link sits a little apart from the lines above */
+.ft-in:first-of-type {
+  margin-top: 10px;
+}
 .ft-mail {
   font-weight: var(--w-black);
 }
@@ -179,7 +183,8 @@
 .ft-legal-a {
   display: inline-flex;
   align-items: center;
-  min-height: 32px;
+  min-height: var(--tap);
+  margin: -6px 0;
   padding: 0;
   border: 0;
   background: none;
@@ -197,9 +202,15 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  min-height: 32px;
+  min-height: var(--tap);
+  margin: -6px -10px;
+  padding: 0 10px;
   font-weight: var(--w-strong);
   text-decoration: none;
+}
+.totop:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .totop:hover .ar {
   transform: translateY(-3px);

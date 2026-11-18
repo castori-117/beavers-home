@@ -9,6 +9,7 @@ export const images = { dam, lakeDawn, lakeMorning, lakeNight, lodgeCutaway };
 
 export const pageImage = {
   home: lakeDawn,
+  services: lakeMorning,
   night: lakeNight,
   beavers: dam,
   lodge: lodgeCutaway,
@@ -18,6 +19,7 @@ export const pageImage = {
 /* the small pictures in the index and in the next-chapter links */
 export const thumbFor = {
   home: lakeDawn,
+  services: lakeDawn,
   night: lakeNight,
   beavers: dam,
   lodge: lodgeCutaway,

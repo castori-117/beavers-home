@@ -33,6 +33,7 @@ const word = 'beavers'.split('');
       <p class="ft-k">{f.who}</p>
       {f.whoLines.map((line) => <p>{line}</p>)}
       <p>{site.country[lang]}, <Clock><time data-time>--:--</time></Clock></p>
+      {site.profiles.map((person) => <a class="ft-in" href={person.linkedin} rel="me noopener" target="_blank">{f.profile.replace('{n}', person.name)} <span class="ar" aria-hidden="true">↗</span></a>)}
     </div>
     <div class="ft-col">
       <p class="ft-k">{f.lodge}</p>

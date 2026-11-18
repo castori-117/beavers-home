@@ -4,7 +4,7 @@ import '../styles/components/chat.css';
 import '../styles/components/lodge.css';
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import Cup from '../components/Cup.astro';
+import AiChat from '../components/AiChat.astro';
 import Label from '../components/Label.astro';
 import Mark from '../components/Mark.astro';
 import NextChapter from '../components/NextChapter.astro';
@@ -37,29 +37,7 @@ const action = site.formEndpoint || site.email.href;
         <h1 id="ah-t" class="d2" style="--i: 1" set:html={l.title} />
         <p class="p" style="--i: 2" set:html={terms(l.p)} />
       </div>
-      <in-view class="chat-wrap" data-threshold="0.3">
-        <figure class="chat">
-          <p class="chat-k">{l.chat.k}</p>
-          <p class="chat-q">{l.chat.q}</p>
-          <div class="chat-body">
-            <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
-            <div class="chat-a">
-              <p class="chat-k">{l.chat.replies}</p>
-              <p>{l.chat.a}</p>
-              <div class="prod">
-                <Cup />
-                <div>
-                  <p class="prod-n">{l.chat.product}</p>
-                  <p class="prod-s">{l.chat.store}</p>
-                  <p class="prod-p">{l.chat.price}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <figcaption class="note">{l.chat.note}</figcaption>
-          <button class="again chat-again" type="button" data-replay>{l.chat.again}</button>
-        </figure>
-      </in-view>
+      <AiChat lang={lang} threshold={0.3} />
     </div>
   </section>
 
