@@ -498,12 +498,9 @@ html:active-view-transition-type(intro)::view-transition-new(root) {
   .ph + .ph {
     margin-top: 40px;
   }
-  /* on a phone the panel reaches the edges, like the paintings */
-  .ai {
-    padding-inline: 0;
-  }
+  /* on a phone the panel keeps its rounded corners, a little tighter */
   .ai-door {
-    border-radius: 0;
+    border-radius: var(--r-md);
     padding-inline: var(--gut);
   }
 }
