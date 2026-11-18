@@ -36,6 +36,12 @@ const check = 'M3.5 9.5l3.5 3.5 7.5-8';
         </ol>
       </div>
       <div class="sc-r">
+        <div class="mailfirst">
+          <p class="mf-k">{c.mailK}</p>
+          <p class="mf-row"><a class="mf-a" href={`${site.email.href}?subject=${encodeURIComponent(c.mailSubject)}`}>{site.email.value}</a> <CopyButton lang={lang} text={site.email.value} /></p>
+          <p class="mf-p">{c.mailP}</p>
+        </div>
+        <p class="mf-or">{c.or}</p>
         <sentence-form class="form" data-you={f.you}>
           <form action={action} method="post" enctype={site.formEndpoint ? undefined : 'text/plain'} novalidate data-subject={f.subject}>
             <input type="hidden" name="form" value="store-review">
@@ -57,7 +63,6 @@ const check = 'M3.5 9.5l3.5 3.5 7.5-8';
             <p class="form-note">{f.reply}</p>
           </div>
         </sentence-form>
-        <p class="mailline">{c.mail} <a class="tl" href={site.email.href}>{site.email.value}</a> <CopyButton lang={lang} text={site.email.value} /></p>
       </div>
     </div>
   </section>
