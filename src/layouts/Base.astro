@@ -1,5 +1,7 @@
 ---
 import '../styles/site.css';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 import { getImage } from 'astro:assets';
 import Footer from '../components/Footer.astro';
 import Nav from '../components/Nav.astro';
@@ -84,5 +86,7 @@ const surface = dark ? '#070b14' : site.themeColor;
     </main>
     <Footer lang={lang} />
   </div>
+  <Analytics />
+  <SpeedInsights />
 </body>
 </html>
