@@ -21,9 +21,12 @@ Notes for AI agents and assistants that read this site, answer questions about i
 
 ## What we offer
 
-- New Shopify stores, in about ${site.facts.targetWeeks} weeks for a mid-sized store (indicative; real timing comes after the review). A traditional agency can take up to ${site.facts.agencyMonths} months.
-- Fixing the "leaks" of an existing store: slow pages on phones, checkouts that ask too much, photos that do not sell, products that cannot be found on Google.
-- Getting a store understood by AI assistants (ChatGPT, Gemini and others): products, pages and data set up so an assistant can recommend them.
+Four services, described on ${absolute(routes.en.services)} (English) and ${absolute(routes.it.services)} (Italian):
+
+- **New stores:** new Shopify stores, in about ${site.facts.targetWeeks} weeks for a mid-sized store (indicative; real timing comes after the review). A traditional agency can take up to ${site.facts.agencyMonths} months.
+- **Redesigns:** an existing store rebuilt piece by piece without stopping sales, closing its "leaks": slow pages on phones, checkouts that ask too much, photos that do not sell.
+- **SEO and GEO:** getting a store found on Google and understood by AI assistants (ChatGPT, Gemini and others): products, pages and data set up so an assistant can recommend them.
+- **Custom development:** features the theme lacks, connections with stock, shipping and email tools, and everyday changes, written in the evening and done and reviewed by morning.
 - **Lodge** (in development, no launch date yet): a quiet place where a store owner works on their store with us and our agents. Ask, preview the design, have it reviewed, learn what was built.
 
 ## The first step is free

@@ -23,6 +23,14 @@ export class SentenceForm extends HTMLElement {
     const { signal } = this.controller;
     form.addEventListener('submit', this.onSubmit, { signal });
     form.addEventListener('input', this.onInput, { signal });
+    /* the name given on "What we do" fills the first blank; it stays in the browser until the form is sent */
+    const nameField = form.elements.namedItem('name') as HTMLInputElement | null;
+    try {
+      const known = localStorage.getItem('tb-name');
+      if (nameField && !nameField.value && known) nameField.value = known;
+    } catch {
+      /* storage can be off */
+    }
     if (!CSS.supports('field-sizing', 'content')) {
       this.fields.forEach((field) => this.fit(field));
       document.fonts?.ready.then(() => this.fields.forEach((field) => this.fit(field)));

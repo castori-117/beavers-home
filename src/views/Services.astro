@@ -1,0 +1,234 @@
+---
+import '../styles/components/cover.css';
+import '../styles/components/services.css';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Label from '../components/Label.astro';
+import NextChapter from '../components/NextChapter.astro';
+import { site } from '../data/site';
+import { images } from '../lib/images';
+import { terms } from '../lib/text';
+import { copy, routes, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = copy[lang];
+const s = t.services;
+const [stores, redesigns, found, custom] = s.items;
+const o = s.overnight;
+/* the words the page rewrites with the visitor's name; {n} is the name, {s} the name as a web address */
+const words = {
+  shop: s.store.shop,
+  site: s.store.site,
+  of: s.store.of,
+  cap1: s.store.cap1,
+  cap1n: s.store.cap1n,
+  cap2: s.store.cap2,
+  cap2n: s.store.cap2n,
+  end: s.more.end,
+  endN: s.more.endN,
+  call: s.call.k,
+  callN: s.call.kN,
+  done: o.done,
+  doneN: o.doneN,
+  asks: o.asks,
+  hello: s.who.hello
+};
+const callHref = `${site.email.href}?subject=${encodeURIComponent(s.call.subject)}`;
+---
+<Base lang={lang} page="services">
+  <Fragment slot="head">
+    {/* decided before the first paint: the name screen shows once, unless a name is known or was declined in this visit */}
+    <script is:inline>try{var d=document.documentElement;if(!localStorage.getItem('tb-name')&&sessionStorage.getItem('tb-name-skip')!=='1'&&!/noname/.test(location.search))d.dataset.who='ask'}catch(e){}</script>
+  </Fragment>
+
+  <what-we-do data-words={JSON.stringify(words)}>
+    <div class="who" role="dialog" aria-modal="true" aria-labelledby="who-t">
+      <div class="who-in">
+        <div class="who-ask">
+          <div class="who-pair" aria-hidden="true"><span>A</span><span>L</span></div>
+          <p class="who-lines">{s.who.lines.map((line) => <span>{line}</span>)}</p>
+          <h2 id="who-t" class="d1 who-h"><label for="who-n" set:html={s.who.title} /></h2>
+          <input id="who-n" class="who-input" type="text" autocomplete="given-name" maxlength="24" placeholder={s.who.placeholder} enterkeyhint="go" data-who-input>
+          <div class="who-b">
+            <button class="btn" type="button" data-who-go>{s.who.go} <span class="ar" aria-hidden="true">→</span></button>
+            <button class="who-skip" type="button" data-who-skip>{s.who.skip}</button>
+          </div>
+          <p class="who-note">{s.who.note}</p>
+        </div>
+        <div class="who-greet" aria-live="polite">
+          <div class="who-pair who-pair--wave" aria-hidden="true"><span>A</span><span>L</span></div>
+          <p class="d1 who-hello" data-who-hello></p>
+          <p class="lead who-sub">{s.who.sub}</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="cv w" aria-labelledby="sv-top" data-cover>
+      <div class="g in">
+        <Label class="cv-lab" k={t.chapters.services} v={t.pages.services} style="--i: 0" />
+        <h1 id="sv-top" class="d1 cv-h" style="--i: 1" data-a={s.named[0]} data-b={s.named[1]} set:html={s.title} />
+        <p class="lead cv-body cv-lead" style="--i: 2" set:html={terms(s.lead)} />
+        <nav class="svx" style="--i: 3" aria-label={s.index}>
+          {s.items.map((item, index) => <a href={`#${item.id}`}><span class="svx-n">{String(index + 1).padStart(2, '0')}</span>{item.chip}</a>)}
+        </nav>
+      </div>
+    </section>
+    {/* a known name goes into the title before the first paint, so it never flashes */}
+    <script is:inline>try{var n=localStorage.getItem('tb-name'),h=document.getElementById('sv-top');if(n&&h){var b=document.createElement('b');b.textContent=h.dataset.b;h.textContent=n+', '+h.dataset.a+' ';h.appendChild(b)}}catch(e){}</script>
+
+    <section id={stores.id} class="sec w svc" aria-labelledby="s1-t">
+      <div class="g">
+        <div class="svc-tx">
+          <p class="svc-n" set:html={terms(stores.tag)} />
+          <h2 id="s1-t" class="d2" set:html={stores.title} />
+          <p class="lead" set:html={terms(stores.p)} />
+          <ul class="svc-l">{stores.list.map((line) => <li>{line}</li>)}</ul>
+          {stores.meta && <p class="svc-m"><b>{stores.meta[0]}</b> {stores.meta[1]}</p>}
+        </div>
+        <figure class="svc-v vb" data-view="paint" aria-hidden="true">
+          <div class="mock">
+            <div class="mock-bar"><i></i><i></i><i></i><span data-name-site>{s.store.shop}</span></div>
+            <div class="mock-in">
+              <div class="mk-nav"><b></b><span></span><span></span><span></span></div>
+              <div class="mk-hero">
+                <Image src={images.lakeMorning} widths={[480, 960]} sizes="(max-width: 860px) 90vw, 40vw" alt="" loading="lazy" decoding="async" />
+                <p><span data-name-cap="1a">{s.store.cap1[0]}</span> <b data-name-cap="1b">{s.store.cap1[1]}</b></p>
+              </div>
+              <div class="mk-grid"><div><i></i><b></b><span></span></div><div><i></i><b></b><span></span></div><div><i></i><b></b><span></span></div></div>
+            </div>
+          </div>
+          <ol class="weeks3">{s.store.weeks.map((week) => <li><i></i>{week}</li>)}</ol>
+        </figure>
+      </div>
+    </section>
+
+    <section id={redesigns.id} class="sec w svc svc--flip" aria-labelledby="s2-t">
+      <div class="g">
+        <div class="svc-tx">
+          <p class="svc-n" set:html={terms(redesigns.tag)} />
+          <h2 id="s2-t" class="d2" set:html={redesigns.title} />
+          <p class="lead" set:html={terms(redesigns.p)} />
+          <ul class="svc-l">{redesigns.list.map((line) => <li>{line}</li>)}</ul>
+        </div>
+        <figure class="svc-v" data-view="sweep">
+          <div class="ba" style="--ba: 50%">
+            <div class="ba-old" aria-hidden="true">
+              <p class="old-top">{s.ba.top}</p>
+              <p class="old-logo">{s.ba.logo}</p>
+              <div class="old-menu">{s.ba.menu.map((item) => <span>{item}</span>)}</div>
+              <div class="old-banner">{s.ba.banner}</div>
+              <div class="old-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="ba-new" aria-hidden="true">
+              <div class="mk-nav"><b></b><span></span><span></span><span></span></div>
+              <div class="mk-hero mk-hero--tall">
+                <Image src={images.lakeDawn} widths={[480, 960]} sizes="(max-width: 860px) 90vw, 40vw" alt="" loading="lazy" decoding="async" />
+                <p><span data-name-cap="2a">{s.store.cap2[0]}</span> <b data-name-cap="2b">{s.store.cap2[1]}</b></p>
+              </div>
+              <div class="mk-grid"><div><i></i><b></b><span></span></div><div><i></i><b></b><span></span></div><div><i></i><b></b><span></span></div></div>
+            </div>
+            <span class="ba-tag ba-tag--old" aria-hidden="true">{s.ba.before}</span>
+            <span class="ba-tag ba-tag--new" aria-hidden="true">{s.ba.after}</span>
+            <span class="ba-line" aria-hidden="true"><i></i></span>
+            <input class="ba-range" type="range" min="4" max="96" value="50" aria-label={s.ba.label}>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section id={found.id} class="sec w svc" aria-labelledby="s3-t">
+      <div class="g">
+        <div class="svc-tx">
+          <p class="svc-n" set:html={terms(found.tag)} />
+          <h2 id="s3-t" class="d2" set:html={found.title} />
+          <p class="lead" set:html={terms(found.p)} />
+          <ul class="svc-l">{found.list.map((line) => <li>{line}</li>)}</ul>
+          {found.meta && <p class="svc-m"><b>{found.meta[0]}</b> {found.meta[1]}</p>}
+        </div>
+        <figure class="svc-v vs" data-view="climb" aria-hidden="true">
+          <div class="serp">
+            <p class="serp-q"><i></i>{s.serp.q}</p>
+            <ol class="serp-l">
+              <li class="serp-us"><b data-name-site>{s.store.shop}</b><span></span><span></span></li>
+              <li><b></b><span></span><span></span></li>
+              <li><b></b><span></span><span></span></li>
+              <li><b></b><span></span><span></span></li>
+            </ol>
+          </div>
+          <div class="ask">
+            <p class="ask-q">{s.serp.ask}</p>
+            <p class="ask-a">{s.serp.answer[0]} <b data-name-site>{s.store.shop}</b>{s.serp.answer[1]}</p>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section id={custom.id} class="sec w svc svc--flip" aria-labelledby="s4-t">
+      <div class="g">
+        <div class="svc-tx">
+          <p class="svc-n" set:html={terms(custom.tag)} />
+          <h2 id="s4-t" class="d2" set:html={custom.title} />
+          <p class="lead" set:html={terms(custom.p)} />
+          <ul class="svc-l">{custom.list.map((line) => <li>{line}</li>)}</ul>
+        </div>
+        <figure class="svc-v vd r0 p-idle" data-view="night">
+          <p class="vd-k">{o.k}</p>
+          <div class="vd-asks" role="group" aria-label={o.label}>
+            {o.picks.map((pick, index) => <button type="button" class:list={[{ on: index === 0 }]} aria-pressed={index === 0 ? 'true' : 'false'} data-req={index}>{pick}</button>)}
+          </div>
+          <div class="vd-chat" aria-live="polite">
+            <p class="vd-q"><span class="vd-t" data-night-who>22:40</span><span data-night-ask>{o.asks[0]}</span></p>
+            <p class="vd-clock" aria-hidden="true"><i></i><span data-night-clock>22:40</span></p>
+            <p class="vd-a"><span class="vd-t">07:30</span><span data-name-done>{o.done}</span></p>
+          </div>
+          <div class="vd-shop" aria-hidden="true">
+            <div class="vd-ship"><span>{o.ship}</span><i><b></b></i></div>
+            <div class="vd-head"><b>{o.category}</b><span>{o.count}</span></div>
+            <div class="vd-sw"><i class="sw-a on"></i><i class="sw-b"></i><i class="sw-c"></i><i class="sw-d"></i></div>
+            <div class="vd-grid"><i class="g-a"></i><i class="g-b"></i><i class="g-a"></i><i class="g-c"></i></div>
+            <div class="vd-size"><span></span><b>S</b><b>M</b><b>L</b><span>{o.height}</span><em>8 cm</em><em>10 cm</em><em>12 cm</em><span>{o.litres}</span><em>0,25</em><em>0,35</em><em>0,45</em></div>
+            <span class="vd-ai vd-ai1"></span><span class="vd-ai vd-ai2"></span><span class="vd-ai vd-ai3"></span>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="sec w more" aria-labelledby="more-t">
+      <div class="g more-g">
+        <div class="more-tx">
+          <h2 id="more-t" class="d1 rv" set:html={s.more.title} />
+          <p class="lead more-p">{s.more.p}</p>
+          <button class="again" type="button" data-roll-again>{s.more.again}</button>
+        </div>
+        <div class="roll" data-view="roll" aria-hidden="true">
+          <ol class="roll-l" style={`--n: ${s.more.items.length + 1}`}>
+            {s.more.items.map((item) => <li>{item}</li>)}
+            <li class="roll-end" data-name-end>{s.more.end}</li>
+          </ol>
+        </div>
+      </div>
+      <ul class="sr">{s.more.items.map((item) => <li>{item}</li>)}</ul>
+      <div class="g call">
+        <div class="call-tx">
+          <p class="lab call-k"><b data-name-call>{s.call.k}</b></p>
+          <p class="d3 rv" set:html={s.call.title} />
+        </div>
+        <div class="call-cta">
+          <a class="btn btn--call" href={callHref}>{s.call.cta} <span class="ar" aria-hidden="true">→</span></a>
+          <p class="call-note">{s.call.note}</p>
+          <a class="ln" href={routes[lang].contact}>{s.call.write} <span class="ar" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+  </what-we-do>
+
+  <NextChapter lang={lang} page="services" />
+</Base>
+
+<script>
+  import '../elements/what-we-do';
+</script>

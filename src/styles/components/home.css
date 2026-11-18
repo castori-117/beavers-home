@@ -343,53 +343,6 @@ html:active-view-transition-type(intro)::view-transition-new(root) {
   grid-column: 8 / span 5;
 }
 
-/* ---------- what we do ---------- */
-.sv {
-  padding-bottom: var(--sec);
-}
-.sv-h {
-  grid-column: 1 / span 9;
-  margin-bottom: var(--sec-head);
-}
-.sv-l {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0 var(--gap);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.sv-l li {
-  padding: 22px 0 8px;
-  border-top: var(--hair) solid var(--rule);
-}
-.sv-n {
-  display: block;
-  margin-bottom: clamp(28px, 3.4vw, 56px);
-  font-size: var(--fs-small);
-  font-weight: var(--w-medium);
-}
-.sv-t {
-  font-weight: var(--w-strong);
-  font-size: clamp(24px, 2.1vw, 32px);
-  line-height: 1.1;
-  letter-spacing: -0.035em;
-}
-.sv-d {
-  margin-top: 12px;
-  max-width: 22em;
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--ink-2);
-}
-.sv-foot {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px 24px;
-  margin-top: clamp(40px, 4.4vw, 72px);
-}
 
 /* ---------- who we are ---------- */
 .us-ph {
@@ -508,13 +461,6 @@ html:active-view-transition-type(intro)::view-transition-new(root) {
   .ai-door .ai-chat {
     margin-top: 44px;
   }
-  .sv-h {
-    grid-column: 1 / -1;
-  }
-  .sv-l {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: 36px;
-  }
   .us-tx {
     margin-top: 48px;
   }
@@ -551,13 +497,6 @@ html:active-view-transition-type(intro)::view-transition-new(root) {
   }
   .ph + .ph {
     margin-top: 40px;
-  }
-  .sv-l {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 28px;
-  }
-  .sv-n {
-    margin-bottom: 14px;
   }
   /* on a phone the panel reaches the edges, like the paintings */
   .ai {

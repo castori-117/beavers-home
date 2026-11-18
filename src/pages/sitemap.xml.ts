@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { defaultLang, languages, pageKeys, privacyRoutes, routes } from '../i18n';
 
-const priority = { home: '1.0', contact: '0.9', night: '0.8', beavers: '0.8', lodge: '0.8' } as const;
+const priority = { home: '1.0', services: '0.9', contact: '0.9', night: '0.8', beavers: '0.8', lodge: '0.8' } as const;
 
 export const GET: APIRoute = ({ site }) => {
   const escape = (value: string) => value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');

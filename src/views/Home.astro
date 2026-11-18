@@ -96,28 +96,6 @@ const camera = 'M4 8h3l2-3h6l2 3h3v11H4z';
     </div>
   </section>
 
-  <section class="sec sec--flush w sv" aria-labelledby="sv-t">
-    <div class="g">
-      <div class="sv-h">
-        <Label class="lab--head" k={h.services.k} />
-        <h2 id="sv-t" class="d2 rv" set:html={h.services.title} />
-      </div>
-    </div>
-    <ol class="sv-l">
-      {h.services.items.map((item, index) => (
-        <li class="rv">
-          <span class="sv-n" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
-          <h3 class="sv-t" set:html={terms(item.t)} />
-          <p class="sv-d" set:html={terms(item.d)} />
-        </li>
-      ))}
-    </ol>
-    <div class="sv-foot rv">
-      <p class="p">{h.services.foot}</p>
-      <a class="ln" href={routes[lang].contact}>{h.services.link} <span class="ar" aria-hidden="true">→</span></a>
-    </div>
-  </section>
-
   <section class="sec sec--flush w" aria-labelledby="noi-t">
     <div class="g">
       <div class="us-ph">

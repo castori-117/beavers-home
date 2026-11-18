@@ -16,6 +16,7 @@ export const en: Dictionary = {
   },
   pages: {
     home: 'Prologue',
+    services: 'What we do',
     night: 'How we work',
     beavers: 'Why beavers',
     lodge: 'Looking ahead',
@@ -23,15 +24,20 @@ export const en: Dictionary = {
   },
   chapters: {
     home: 'Prologue',
-    night: 'Chapter one',
-    beavers: 'Chapter two',
-    lodge: 'Chapter three',
+    services: 'Chapter one',
+    night: 'Chapter two',
+    beavers: 'Chapter three',
+    lodge: 'Chapter four',
     contact: 'Epilogue'
   },
   meta: {
     home: {
       title: 'Beavers · Shopify developers with AI agents, from Italy',
       description: 'We’re Andrea and Lorenzo, Shopify developers. With a team of AI agents, a new store arrives in about three weeks. Free store review, including whether ChatGPT and Gemini can find you.'
+    },
+    services: {
+      title: 'What we do: Shopify stores, redesigns, SEO and GEO, custom development · Beavers',
+      description: 'New Shopify stores in about three weeks, redesigns without stopping sales, SEO and GEO to get found on Google and by AI assistants, and custom development. Everything starts with the free review.'
     },
     night: {
       title: 'How we work: AI agents at night, us in the morning · Beavers',
@@ -89,6 +95,7 @@ export const en: Dictionary = {
         list: [
           'If you write to us through the “The first step is free” form: your name, your store’s address and your email.',
           'If you join the Lodge waitlist: your email.',
+          'If you tell us your name on “What we do”: it stays in your browser and is only used to call you by name on the site. We don’t receive it unless you write to us through the form.',
           'If you email us: whatever you choose to send.',
           'Analytics, only if you say yes: pages viewed, the site you came from, country, device type and browser, page speed. We don’t know who you are.',
           'Like every website, the server briefly logs some technical data, such as the IP address, to run and protect itself.'
@@ -166,18 +173,6 @@ export const en: Dictionary = {
       cta: 'Check your store',
       more: 'How it works'
     },
-    services: {
-      k: 'What we do',
-      title: 'From the first sketch <b>to a store that sells.</b>',
-      items: [
-        { t: 'New stores', d: 'We design and build your Shopify store, ready to sell in about three weeks.' },
-        { t: 'Redesigns', d: 'We rework the pages, product pages and checkout of the store you already have, without stopping sales.' },
-        { t: '[[seo|SEO]] and [[geo|GEO]]', d: 'We get you found on Google and by AI assistants like ChatGPT and Gemini.' },
-        { t: 'Custom development', d: 'Features your theme doesn’t have, connections to the tools you already use, and everyday changes.' }
-      ],
-      foot: 'Not sure where to start? The free review will tell you.',
-      link: 'Write to us'
-    },
     us: {
       k: 'Who we are',
       title: 'Hi, we’re <b>Andrea and Lorenzo.</b>',
@@ -193,13 +188,122 @@ export const en: Dictionary = {
     },
     index: {
       k: 'The story',
-      title: 'Three chapters <b>and an epilogue.</b>',
+      title: 'Four chapters <b>and an epilogue.</b>',
       items: {
+        services: 'New stores, redesigns, SEO and GEO, custom development.',
         night: 'Agents at night, us in the morning. And weeks, not months.',
         beavers: 'They hear where it leaks, and they close the gap. We do the same with your store.',
         lodge: 'Get found by AI. And the lodge we’re building.',
         contact: 'The first step is free. One of us replies.'
       }
+    }
+  },
+  services: {
+    title: 'From the first sketch <b>to a store that sells.</b>',
+    /* with the visitor's name: «Marta, here’s what <b>we can do for you.</b>» */
+    named: ['here’s what', 'we can do for you.'],
+    lead: 'Four things we do every day, always the two of us and the [[agent|agents]]. Each one starts with the free review: first we look, then we tell you what you actually need.',
+    index: 'The four services',
+    items: [
+      {
+        id: 'new-stores',
+        chip: 'New stores',
+        tag: '01',
+        title: 'New <b>stores.</b>',
+        p: 'We design and build your [[shopify|Shopify]] store, from the first page to the checkout. You tell us what you sell, we put it in the window.',
+        list: ['A design made for your products, not a theme picked at random.', 'Pages that are fast on a phone, where most people buy.', 'Payments, shipping and taxes set up before you go live.'],
+        meta: ['Timing', 'about three weeks, for a mid-sized store.']
+      },
+      {
+        id: 'redesigns',
+        chip: 'Redesigns',
+        tag: '02',
+        title: '<b>Redesigns.</b>',
+        p: 'You already have a store, but it no longer looks like you or sells less than it could. We rebuild it piece by piece, without stopping sales.',
+        list: ['Home page, product pages and checkout, in the order that matters most.', 'Your photos and your words, on a page that lets them breathe.', 'You see every change before it goes live.']
+      },
+      {
+        id: 'getting-found',
+        chip: 'SEO and GEO',
+        tag: '03 · [[seo|SEO]] and [[geo|GEO]]',
+        title: 'Getting <b>found.</b>',
+        p: 'On Google and, more and more, on AI assistants like ChatGPT and Gemini. We fix copy, pages and product data so they find you and understand you.',
+        list: ['The words your customers use, in the right places.', 'Complete product pages that an assistant can read and recommend.', 'A check every month: where you show up, and where you don’t.'],
+        meta: ['Included', 'in the free review, we already check whether ChatGPT and Gemini find you.']
+      },
+      {
+        id: 'custom',
+        chip: 'Custom development',
+        tag: '04',
+        title: 'Custom <b>development.</b>',
+        p: 'When the theme isn’t enough: new features, connections to the tools you already use, and everyday changes. You write us two lines in the evening, by morning it’s done and checked.',
+        list: ['Features your theme doesn’t have, built for your store.', 'Your store talking to your stock, shipping and email.', 'Small changes when you need them, without waiting weeks.']
+      }
+    ],
+    store: {
+      shop: 'yourstore.com',
+      site: '{s}shop.com',
+      of: '{n}’s store.',
+      cap1: ['Handmade,', 'close to you.'],
+      cap1n: 'Handmade.',
+      cap2: ['Lake ceramics.', 'Made by hand.'],
+      cap2n: 'Redone.',
+      weeks: ['Week 1 · design', 'Week 2 · build', 'Week 3 · live']
+    },
+    ba: {
+      label: 'Before and after: move the line',
+      before: 'Before',
+      after: 'After',
+      top: 'SALE!!! FREE SHIPPING OVER €49 · NEW IN · SALE!!!',
+      logo: 'My Online Shop',
+      menu: ['HOME', 'PRODUCTS', 'OFFERS', 'ABOUT', 'CONTACT', 'BLOG'],
+      banner: 'WELCOME TO OUR SHOP!!'
+    },
+    serp: {
+      q: 'handmade ceramic mug',
+      ask: 'Where can I find a handmade mug?',
+      answer: ['I’d suggest', ': a small workshop, hand-made glazes, under 30 euros.']
+    },
+    overnight: {
+      k: 'Pick a request, and watch the night go by.',
+      label: 'Example requests',
+      picks: ['A colour filter', 'Sizes in a table', 'Free shipping over €49'],
+      asks: ['Could you add a colour filter?', 'Can the sizes go in a table?', 'Free shipping over 49 euros?'],
+      done: 'Done, and checked this morning. It’s already live.',
+      doneN: 'Done, {n}, and checked this morning. It’s already live.',
+      ship: '€12 to go for free shipping',
+      category: 'Ceramics',
+      count: '24 products',
+      height: 'Height',
+      litres: 'Litres'
+    },
+    more: {
+      title: 'And much <b>more.</b>',
+      p: 'What a store asks for after the first few months. We do them the same way: agents at night, us in the morning.',
+      again: 'Run it again',
+      items: ['Moves from WooCommerce', 'Multilingual stores', 'Selling abroad', 'Faster pages', 'Product pages', 'Filters and search', 'Campaign pages', 'Kits and bundles', 'Subscriptions', 'Reviews', 'Automated emails', 'Abandoned carts', 'Wholesale price lists', 'Google Shopping feeds', 'Structured data', 'Apps and integrations', 'Accessibility', 'Custom theme', 'Sales insights', 'Training for your team', 'Everyday changes'],
+      end: '…and whatever you need.',
+      endN: '…and whatever {n} needs.'
+    },
+    call: {
+      k: 'Let’s talk it through',
+      kN: 'Let’s talk it through, {n}',
+      title: 'If you need something you don’t see here, ask. <b>If we can do it well we’ll say so, if not we’ll tell you who can.</b>',
+      cta: 'Ask for a call',
+      subject: 'I’d like a call',
+      note: 'No strings attached. Tell us when suits you: we reply ourselves, within one working day.',
+      write: 'Rather write?'
+    },
+    who: {
+      lines: ['Hi, we’re Andrea and Lorenzo.', 'Before we tell you what we do, we’d like to know who we’re talking to.'],
+      title: 'What’s <b>your name?</b>',
+      label: 'Your name',
+      placeholder: 'your name',
+      go: 'Continue',
+      skip: 'I’d rather not',
+      note: 'We’ll use your name on this page and build the example store for you. It stays in your browser: we don’t receive it.',
+      hello: 'Nice to meet you, {n}.',
+      sub: 'Now let us tell you what we can do for you.'
     }
   },
   night: {

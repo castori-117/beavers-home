@@ -69,7 +69,7 @@ export function structuredData({ lang, page, base, image }: { lang: Lang; page: 
   ];
 
   const webpage = {
-    '@type': page === 'contact' ? 'ContactPage' : page === 'home' ? 'WebPage' : 'AboutPage',
+    '@type': page === 'contact' ? 'ContactPage' : page === 'home' || page === 'services' ? 'WebPage' : 'AboutPage',
     '@id': `${url}#webpage`,
     url,
     name: t.meta[page].title,
@@ -79,11 +79,24 @@ export function structuredData({ lang, page, base, image }: { lang: Lang; page: 
     about: { '@id': orgId },
     primaryImageOfPage: { '@type': 'ImageObject', url: image },
     ...(crumbs.length ? { breadcrumb: { '@id': `${url}#breadcrumb` } } : {}),
-    ...(page === 'home' || page === 'contact' ? { mainEntity: { '@id': service['@id'] } } : {})
+    ...(page === 'home' || page === 'contact' ? { mainEntity: { '@id': service['@id'] } } : {}),
+    ...(page === 'services' ? { mainEntity: { '@id': `${url}#services` } } : {})
+  };
+
+  /* the services page: the four services, each one a Service by the same company */
+  const catalog = {
+    '@type': 'OfferCatalog',
+    '@id': `${url}#services`,
+    name: t.pages.services,
+    itemListElement: t.services.items.map((item) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: item.chip, description: plain(item.p), provider: { '@id': orgId }, areaServed: site.country[lang] }
+    }))
   };
 
   const graph: object[] = [organization, website, webpage];
   if (crumbs.length) graph.push({ '@type': 'BreadcrumbList', '@id': `${url}#breadcrumb`, itemListElement: crumbs });
   if (page === 'home' || page === 'contact') graph.push(service);
+  if (page === 'services') graph.push(catalog);
   return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
 }
