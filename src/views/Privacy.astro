@@ -1,0 +1,40 @@
+---
+import '../styles/components/cover.css';
+import '../styles/components/privacy.css';
+import Base from '../layouts/Base.astro';
+import Label from '../components/Label.astro';
+import { site } from '../data/site';
+import { copy, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const p = copy[lang].privacy;
+---
+<Base lang={lang} page={null} legal>
+  <section class="cv w" aria-labelledby="pv-t">
+    <div class="g in">
+      <Label class="cv-lab" k={p.k} v={p.updated} style="--i: 0" />
+      <h1 id="pv-t" class="d1 cv-h" style="--i: 1" set:html={p.title} />
+      <p class="lead cv-body cv-lead" style="--i: 2">{p.lead}</p>
+    </div>
+  </section>
+
+  <section class="sec sec--flush w pv">
+    <div class="g">
+      <div class="pv-body">
+        {p.sections.map((section) => (
+          <section class="pv-s" id={'id' in section ? section.id : undefined}>
+            <h2 class="pv-h">{section.h}</h2>
+            {'list' in section && section.list && <ul class="pv-l">{section.list.map((item) => <li set:html={item} />)}</ul>}
+            {'p' in section && section.p && section.p.map((paragraph) => <p class="p" set:html={paragraph} />)}
+            {'id' in section && section.id === 'statistiche' && <p><button class="btn" type="button" data-consent-open>{p.change} <span class="ar" aria-hidden="true">→</span></button></p>}
+          </section>
+        ))}
+        {site.legal.vat && <p class="pv-vat">{site.name} · P. IVA {site.legal.vat}</p>}
+      </div>
+    </div>
+  </section>
+</Base>

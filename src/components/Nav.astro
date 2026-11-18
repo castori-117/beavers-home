@@ -13,12 +13,14 @@ interface Props {
   stuckTone?: 'light' | 'dark';
   /* the home page hides it while the intro plays */
   intro?: boolean;
+  /* this page in each language, when it is not one of the story pages */
+  alternates?: Record<Lang, string>;
 }
 
-const { lang, page, tone = 'light', stuckTone = 'light', intro = false } = Astro.props;
+const { lang, page, tone = 'light', stuckTone = 'light', intro = false, alternates } = Astro.props;
 const t = copy[lang];
 const current = (key: PageKey) => (key === page ? 'page' : undefined);
-const alternate = (code: Lang) => routes[code][page ?? 'home'];
+const alternate = (code: Lang) => alternates?.[code] ?? routes[code][page ?? 'home'];
 ---
 <div class:list={['navwrap', { 'navwrap--intro': intro }]}>
   <site-nav>

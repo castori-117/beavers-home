@@ -5,7 +5,7 @@ import Clock from './Clock.astro';
 import CopyButton from './CopyButton.astro';
 import { site } from '../data/site';
 import { images } from '../lib/images';
-import { copy, pageKeys, routes, type Lang } from '../i18n';
+import { copy, pageKeys, privacyRoutes, routes, type Lang } from '../i18n';
 
 interface Props {
   lang: Lang;
@@ -47,7 +47,7 @@ const word = 'beavers'.split('');
     <span class="ft-word">{word.map((letter, index) => <span class="ft-l" style={`--i: ${index}`}>{letter}</span>)}</span>
   </div>
   <div class="ft-legal">
-    <span>© {new Date().getFullYear()} {site.name}</span>
-    <span class="ft-legal-r"><span>{f.privacy}</span><a class="totop" href="#top">{f.top} <span class="ar" aria-hidden="true">↑</span></a></span>
+    <span>© {new Date().getFullYear()} {site.name}{site.legal.vat && <> · P. IVA {site.legal.vat}</>}</span>
+    <span class="ft-legal-r"><a class="ft-legal-a" href={privacyRoutes[lang]}>{f.privacy}</a><button class="ft-legal-a" type="button" data-consent-open>{f.consent}</button><a class="totop" href="#top">{f.top} <span class="ar" aria-hidden="true">↑</span></a></span>
   </div>
 </footer>

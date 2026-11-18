@@ -43,7 +43,10 @@ function pageText(lang: Lang, page: PageKey) {
       const h = t.home;
       return [
         `# ${plain(h.title)}`,
-        h.sub,
+        md(h.sub),
+        `## ${h.ai.k}`,
+        md(h.ai.title),
+        md(h.ai.p),
         `## ${h.prologue.k}: ${h.prologue.v}`,
         md(h.manifesto.join(' ')),
         h.manifestoFoot,
@@ -58,7 +61,7 @@ function pageText(lang: Lang, page: PageKey) {
       const n = t.night;
       return [
         `# ${md(n.title)}`,
-        n.intro,
+        md(n.intro),
         ...n.caps.map((caption, index) => `${index + 1}. ${caption}`),
         `## ${n.duo.k}`,
         md(n.duo.title),
@@ -93,7 +96,7 @@ function pageText(lang: Lang, page: PageKey) {
       const l = t.lodge;
       return [
         `# ${md(l.title)}`,
-        l.p,
+        md(l.p),
         `> ${l.chat.q}`,
         `> ${l.chat.a} ${l.chat.product}, ${l.chat.price}`,
         l.chat.note,

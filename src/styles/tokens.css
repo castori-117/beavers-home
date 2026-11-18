@@ -82,6 +82,8 @@
   --z-stuck: 60;
   --z-intro: 60;
   --z-seal: 70;
+  --z-consent: 75;
+  --z-tip: 80;
   --z-menu: 90;
   --z-skip: 120;
 }

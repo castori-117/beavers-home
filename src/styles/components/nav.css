@@ -1,4 +1,4 @@
-/* nav: centred chapters, clock and language on the right, sticky on the way back up */
+/* nav: logo and chapters on the left, clock, language and the way in on the right; sticky on the way back up */
 .navwrap {
   position: absolute;
   inset: 0 0 auto;
@@ -15,7 +15,7 @@
   --nav-cta-fg: var(--paper);
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 20px;
   min-height: var(--nav-h);
@@ -62,9 +62,11 @@
 }
 
 .nav-links {
+  justify-self: start;
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: clamp(22px, 2.2vw, 32px);
+  margin-left: clamp(28px, 4vw, 64px);
   font-size: var(--fs-small);
   font-weight: var(--w-medium);
 }
@@ -319,16 +321,6 @@ html:has(.menu[open]) {
   overflow: hidden;
 }
 
-@media (max-width: 1320px) {
-  /* the links give up the exact centre before anything is hidden */
-  .nav {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-  }
-  .nav-links {
-    justify-self: center;
-    gap: 24px;
-  }
-}
 @media (max-width: 1060px) {
   .nav-clock {
     display: none;

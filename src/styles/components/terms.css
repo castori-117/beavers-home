@@ -1,0 +1,110 @@
+/* new words: a dotted line under them, a short explanation on hover, focus or tap */
+.term {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+  text-decoration: underline dotted;
+  text-decoration-thickness: 0.09em;
+  text-decoration-color: color-mix(in srgb, currentColor 55%, transparent);
+  text-underline-offset: 0.2em;
+  cursor: help;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  transition: text-decoration-color var(--t-fast);
+}
+.term:hover,
+.term[data-open] {
+  text-decoration-color: currentColor;
+}
+.term:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.tip {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: var(--z-tip);
+  width: max-content;
+  max-width: min(320px, calc(100vw - 24px));
+  padding: 13px 16px 15px;
+  border-radius: var(--r-sm);
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: 0 16px 40px -18px rgb(7 11 20 / 0.55);
+  font: var(--w-regular) 14.5px/1.45 var(--f);
+  letter-spacing: -0.003em;
+  text-align: left;
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s var(--e);
+}
+.tip[hidden] {
+  display: none;
+}
+.tip[data-show] {
+  opacity: 1;
+  transform: none;
+}
+.tip[data-up] {
+  transform: translateY(-4px);
+}
+.tip[data-up][data-show] {
+  transform: none;
+}
+/* a little arrow towards the word */
+.tip::before {
+  content: "";
+  position: absolute;
+  left: var(--ax, 50%);
+  top: -5px;
+  width: 10px;
+  height: 10px;
+  background: inherit;
+  transform: translateX(-50%) rotate(45deg);
+  border-radius: 2px;
+}
+.tip[data-up]::before {
+  top: auto;
+  bottom: -5px;
+}
+.tip b {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  font-weight: var(--w-strong);
+  font-size: 13.5px;
+}
+/* the agents' square, so the word reads as ours */
+.tip b::before {
+  content: "";
+  flex: none;
+  width: 7px;
+  height: 7px;
+  background: var(--ice);
+}
+.tip[data-light] {
+  background: var(--moon);
+  color: var(--night);
+}
+.tip[data-light] b::before {
+  background: var(--ai-l);
+}
+@media (prefers-reduced-motion: reduce) {
+  .tip {
+    transition: none;
+  }
+}

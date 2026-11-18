@@ -31,7 +31,7 @@ export const en: Dictionary = {
   meta: {
     home: {
       title: 'Beavers · Shopify developers with AI agents, from Italy',
-      description: 'We’re Andrea and Lorenzo, two Shopify developers. With a team of AI agents that keeps working through the night, a new store arrives in about three weeks. Free store review.'
+      description: 'We’re Andrea and Lorenzo, Shopify developers. With a team of AI agents, a new store arrives in about three weeks. Free store review, including whether ChatGPT and Gemini can find you.'
     },
     night: {
       title: 'How we work: AI agents at night, us in the morning · Beavers',
@@ -54,6 +54,77 @@ export const en: Dictionary = {
       description: 'This page isn’t here. Go back to the start of the story.'
     }
   },
+  consent: {
+    label: 'Analytics',
+    text: 'Anonymous, no cookies, to see which pages help. We only turn them on if you say yes.',
+    yes: 'Fine by me',
+    no: 'No, thanks',
+    more: 'Privacy'
+  },
+  /* words that are new for most people, explained on hover or tap where the copy marks them [[key|word]] */
+  terms: {
+    agent: { t: 'AI agent', d: 'A piece of artificial intelligence software we give one precise task, like building a page or testing it on a phone. It works through it on its own, step by step. Then we check it.' },
+    assistant: { t: 'AI assistant', d: 'An app like ChatGPT or Gemini that you ask questions as you would a person. More and more people use it to decide what to buy, too.' },
+    shopify: { t: 'Shopify', d: 'The platform many online stores run on: products, cart and payments in one place. It’s what we build on.' }
+  },
+  privacy: {
+    meta: {
+      title: 'Privacy · Beavers',
+      description: 'What data we collect, why, how long we keep it and what you can ask us. Cookieless analytics, only if you say yes.'
+    },
+    k: 'Privacy',
+    title: 'Your data, <b>in plain words.</b>',
+    lead: 'We collect very little: what we need to reply to you and to see whether the site works. Here is what, why, and what you can ask us.',
+    updated: 'Last updated: 18 November 2026',
+    change: 'Change your analytics choice',
+    sections: [
+      {
+        h: 'Who we are',
+        p: ['This site belongs to Beavers: Andrea and Lorenzo, Shopify developers in Italy. We decide how the data you leave us is used: in legal terms, we are the data controllers.', 'For any question, write to <a href="mailto:ciao@thebeavers.company">ciao@thebeavers.company</a>.']
+      },
+      {
+        h: 'What we collect',
+        list: [
+          'If you write to us through the “The first step is free” form: your name, your store’s address and your email.',
+          'If you join the Lodge waitlist: your email.',
+          'If you email us: whatever you choose to send.',
+          'Analytics, only if you say yes: pages viewed, the site you came from, country, device type and browser, page speed. We don’t know who you are.',
+          'Like every website, the server briefly logs some technical data, such as the IP address, to run and protect itself.'
+        ]
+      },
+      {
+        h: 'Why',
+        list: [
+          'To reply to you and prepare the review you ask for: a step before a possible agreement (Art. 6(1)(b) GDPR).',
+          'To tell you when Lodge opens: because you ask us to (consent, Art. 6(1)(a)).',
+          'For analytics: only with your consent (Art. 6(1)(a)), which you can withdraw at any time.',
+          'To run and protect the site: our legitimate interest (Art. 6(1)(f)).'
+        ],
+        p: ['We don’t sell data, we don’t use it for advertising and we don’t profile anyone.']
+      },
+      {
+        h: 'Who else sees it',
+        p: ['A few providers who process it on our behalf: Vercel Inc. for hosting and analytics, and the services we use to receive forms and email. Vercel is based in the United States: transfers rely on the safeguards the GDPR provides, such as standard contractual clauses or the EU-US Data Privacy Framework.']
+      },
+      {
+        h: 'How long',
+        list: [
+          'Requests and reviews: up to 24 months if you don’t become a client. If you do, for as long as the work and the law require.',
+          'Lodge waitlist: until Lodge opens, or until you ask us to remove you.',
+          'Analytics: aggregated only. The session that links them is deleted after 24 hours.'
+        ]
+      },
+      {
+        id: 'statistiche',
+        h: 'Cookies and analytics',
+        p: ['This site uses no profiling or advertising cookies. For analytics we use Vercel Web Analytics and Speed Insights, which use no cookies, and they only start if you press “Fine by me” in the box at the bottom. Your choice is saved in your browser: it is technical data and doesn’t identify you. You can change it whenever you like.']
+      },
+      {
+        h: 'Your rights',
+        p: ['At any time you can ask to see your data, correct it, delete it, restrict its use, object, or receive it in a readable format. You can withdraw consent with no consequences. Just email <a href="mailto:ciao@thebeavers.company">ciao@thebeavers.company</a>: we reply within 30 days.', 'If you think we are not handling your data properly, you can complain to the Italian data protection authority, the Garante per la protezione dei dati personali, at <a href="https://www.garanteprivacy.it" rel="noopener">garanteprivacy.it</a>.']
+      }
+    ]
+  },
   copy: { idle: 'Copy', done: 'Copied' },
   footer: {
     write: 'Write to us',
@@ -66,7 +137,8 @@ export const en: Dictionary = {
     lodgeLines: ['The den where your store takes shape.', 'Under construction.'],
     notify: 'Notify me when it opens',
     big: 'The first step is free.',
-    privacy: 'Privacy [to be added]',
+    privacy: 'Privacy',
+    consent: 'Analytics',
     top: 'Back to top'
   },
   home: {
@@ -75,7 +147,7 @@ export const en: Dictionary = {
     skip: 'Skip',
     heroAlt: 'A northern lake at dawn, the forest mirrored in still water',
     title: '<b>There are two of us.</b><br> We work like a whole team.',
-    sub: 'Two Shopify developers and a team of AI agents that keeps working through the night. In the morning, one of us checks everything.',
+    sub: 'Two [[shopify|Shopify]] developers and a team of [[agent|AI agents]] that keeps working through the night. In the morning, one of us checks everything.',
     hintHover: 'Skim the water',
     hintTouch: 'Tap the water',
     cta: 'Free store review',
@@ -84,6 +156,14 @@ export const en: Dictionary = {
     manifesto: ['While you sleep', ', <b>the agents get the work ready.</b> In the morning', ' <b>we check it ourselves.</b>'],
     manifestoFoot: 'That’s how a new store arrives in weeks, not months. And no change goes live before we’ve looked at it.',
     manifestoLink: 'See how we work',
+    ai: {
+      k: 'Get found by AI',
+      v: 'Part of the free review',
+      title: 'People ask AI now. <b>Is your store there?</b>',
+      p: 'More and more people ask an [[assistant|AI assistant]] like ChatGPT or Gemini for advice before they buy. In the free review we check whether it finds and understands your products, and tell you what to fix.',
+      cta: 'Check your store',
+      more: 'How it works'
+    },
     us: {
       k: 'Who we are',
       title: 'Hi, we’re <b>Andrea and Lorenzo.</b>',
@@ -103,14 +183,14 @@ export const en: Dictionary = {
       items: {
         night: 'Agents at night, us in the morning. And weeks, not months.',
         beavers: 'They hear where it leaks, and they close the gap. We do the same with your store.',
-        lodge: 'The new AI shop windows, and the lodge we’re building.',
+        lodge: 'Get found by AI. And the lodge we’re building.',
         contact: 'The first step is free. One of us replies.'
       }
     }
   },
   night: {
     title: 'Beavers work at night. <b>So do our agents.</b>',
-    intro: 'While you sleep, the agents get the work ready. In the morning, we check it ourselves. Drag the sun along the line, or let the night go by on its own.',
+    intro: 'While you sleep, the [[agent|agents]] get the work ready. In the morning, we check it ourselves. Drag the sun along the line, or let the night go by on its own.',
     nightAlt: 'Night on the lake: the moon, the forest and a beaver lodge on the water',
     dayAlt: 'The same lake in the morning, with someone on the jetty',
     caps: [
@@ -162,7 +242,7 @@ export const en: Dictionary = {
       k: 'Why beavers, exactly',
       title: 'They’re more like us <b>than you’d think.</b>',
       items: [
-        { t: 'They work at night.', p: 'Beavers do most of their work after dark. It’s the same with us: the agents take the night shift, we take the morning one.', link: 'See a night of work' },
+        { t: 'They work at night.', p: 'Beavers do most of their work after dark. It’s the same with us: the [[agent|agents]] take the night shift, we take the morning one.', link: 'See a night of work' },
         { t: 'They work as a family.', p: 'Two parents who stay together for life, and their young, who help with the dam and the lodge from their very first autumn. <b>A small team that knows each other well.</b>' },
         { t: 'They build to last.', p: 'The longest known beaver dam is in Canada, in Wood Buffalo National Park: about 850 metres, visible from space. Beavers have worked on it since the 1970s, one generation after another. <b>We build with what comes next in mind, too.</b>' }
       ]
@@ -184,7 +264,7 @@ export const en: Dictionary = {
   },
   lodge: {
     title: 'Today people ask AI. <b>Be found.</b>',
-    p: 'More and more people ask an assistant like ChatGPT or Gemini for advice before they buy. We set up your store’s products, pages and data so the assistant understands them well, and can recommend them.',
+    p: 'More and more people ask an [[assistant|assistant]] like ChatGPT or Gemini for advice before they buy. We set up your store’s products, pages and data so the assistant understands them well, and can recommend them.',
     chat: {
       k: 'Example · someone asks an assistant',
       q: 'I’m looking for a handmade ceramic mug as a gift. Under 30 euros.',
@@ -227,7 +307,7 @@ export const en: Dictionary = {
     lead: 'Three steps, no strings attached. At the end you know what to do, and what it costs.',
     steps: [
       'You send us your store’s address.',
-      'We look at it calmly and send you a short list, with a price next to each item.',
+      'We look at it calmly, through the eyes of ChatGPT and Gemini too, and send you a short list, with a price next to each item.',
       'If it convinces you, we fix it. If not, the list is yours to keep.'
     ],
     form: {

@@ -29,7 +29,7 @@ export const it = {
   meta: {
     home: {
       title: 'Beavers · Sviluppatori Shopify con agenti AI, dall’Italia',
-      description: 'Siamo Andrea e Lorenzo, due sviluppatori Shopify. Con una squadra di agenti AI che lavora anche di notte, un negozio nuovo arriva in circa tre settimane. Analisi gratuita del negozio.'
+      description: 'Siamo Andrea e Lorenzo, sviluppatori Shopify. Con una squadra di agenti AI un negozio nuovo arriva in circa tre settimane. Analisi gratuita, anche per farti trovare da ChatGPT e Gemini.'
     },
     night: {
       title: 'Come lavoriamo: agenti AI di notte, noi al mattino · Beavers',
@@ -53,6 +53,77 @@ export const it = {
     }
   },
   copy: { idle: 'Copia', done: 'Copiata' },
+  consent: {
+    label: 'Statistiche',
+    text: 'Anonime e senza cookie, per capire quali pagine servono. Le attiviamo solo se ci dici di sì.',
+    yes: 'Va bene',
+    no: 'No, grazie',
+    more: 'Privacy'
+  },
+  /* words that are new for most people, explained on hover or tap where the copy marks them [[key|word]] */
+  terms: {
+    agent: { t: 'Agente AI', d: 'Un programma di intelligenza artificiale a cui diamo un compito preciso, per esempio preparare una pagina o provarla sul telefono. Lo porta avanti da solo, passo dopo passo. Poi controlliamo noi.' },
+    assistant: { t: 'Assistente AI', d: 'Un’app come ChatGPT o Gemini a cui fai domande come a una persona. Sempre più gente la usa anche per scegliere cosa comprare.' },
+    shopify: { t: 'Shopify', d: 'La piattaforma su cui girano tanti negozi online: prodotti, carrello e pagamenti in un posto solo. È quella su cui lavoriamo.' }
+  },
+  privacy: {
+    meta: {
+      title: 'Privacy · Beavers',
+      description: 'Quali dati raccogliamo, perché, per quanto li teniamo e cosa puoi chiederci. Statistiche senza cookie, solo se dici di sì.'
+    },
+    k: 'Privacy',
+    title: 'I tuoi dati, <b>in chiaro.</b>',
+    lead: 'Raccogliamo pochi dati: quelli che servono per risponderti e per capire se il sito funziona. Qui trovi quali, perché, e cosa puoi chiederci.',
+    updated: 'Ultimo aggiornamento: 18 novembre 2026',
+    change: 'Cambia la scelta sulle statistiche',
+    sections: [
+      {
+        h: 'Chi siamo',
+        p: ['Il sito è di Beavers: Andrea e Lorenzo, sviluppatori Shopify in Italia. Siamo noi a decidere come usare i dati che ci lasci: in termini legali, siamo i titolari del trattamento.', 'Per qualsiasi domanda scrivici a <a href="mailto:ciao@thebeavers.company">ciao@thebeavers.company</a>.']
+      },
+      {
+        h: 'Cosa raccogliamo',
+        list: [
+          'Se ci scrivi dal modulo «Il primo passo è gratis»: il tuo nome, l’indirizzo del negozio e la tua email.',
+          'Se ti iscrivi alla lista di Lodge: la tua email.',
+          'Se ci scrivi per email: quello che decidi di mandarci.',
+          'Statistiche, solo se dici di sì: pagine viste, da quale sito arrivi, paese, tipo di dispositivo e browser, velocità delle pagine. Non sappiamo chi sei.',
+          'Come ogni sito, il server registra per poco tempo alcuni dati tecnici, come l’indirizzo IP, per funzionare e proteggersi.'
+        ]
+      },
+      {
+        h: 'Perché',
+        list: [
+          'Per risponderti e preparare l’analisi che ci chiedi: è un passo prima di un eventuale accordo (art. 6.1.b del GDPR).',
+          'Per avvisarti quando apre Lodge: perché ce lo chiedi tu (consenso, art. 6.1.a).',
+          'Per le statistiche: solo con il tuo consenso (art. 6.1.a), che puoi ritirare quando vuoi.',
+          'Per far funzionare e proteggere il sito: il nostro legittimo interesse (art. 6.1.f).'
+        ],
+        p: ['Non vendiamo i dati, non li usiamo per la pubblicità e non facciamo profilazione.']
+      },
+      {
+        h: 'Chi altro li vede',
+        p: ['Pochi fornitori, che li trattano per conto nostro: Vercel Inc. per l’hosting del sito e le statistiche, e i servizi che usiamo per ricevere i moduli e le email. Vercel ha sede negli Stati Uniti: il trasferimento avviene con le garanzie previste dal GDPR, come le clausole contrattuali standard o il Data Privacy Framework UE-USA.']
+      },
+      {
+        h: 'Per quanto tempo',
+        list: [
+          'Richieste e analisi: fino a 24 mesi se non diventi cliente. Se lo diventi, per il tempo del lavoro e degli obblighi di legge.',
+          'Lista di Lodge: finché Lodge apre, o finché ci chiedi di toglierti.',
+          'Statistiche: solo in forma aggregata. La sessione che le collega si cancella dopo 24 ore.'
+        ]
+      },
+      {
+        id: 'statistiche',
+        h: 'Cookie e statistiche',
+        p: ['Il sito non usa cookie di profilazione né di pubblicità. Per le statistiche usiamo Vercel Web Analytics e Speed Insights, che non usano cookie, e si attivano solo se premi «Va bene» nel riquadro in basso. La tua scelta resta salvata nel tuo browser: è un dato tecnico, non ti identifica. Puoi cambiarla quando vuoi.']
+      },
+      {
+        h: 'I tuoi diritti',
+        p: ['Puoi chiederci in ogni momento di vedere i tuoi dati, correggerli, cancellarli, limitarne l’uso, opporti, o riceverli in un formato leggibile. Puoi ritirare il consenso senza nessuna conseguenza. Basta una email a <a href="mailto:ciao@thebeavers.company">ciao@thebeavers.company</a>: rispondiamo entro 30 giorni.', 'Se pensi che non trattiamo bene i tuoi dati, puoi rivolgerti al Garante per la protezione dei dati personali, su <a href="https://www.garanteprivacy.it" rel="noopener">garanteprivacy.it</a>.']
+      }
+    ]
+  },
   footer: {
     write: 'Scrivici',
     reply: 'Risponde uno di noi, non un bot.',
@@ -64,7 +135,8 @@ export const it = {
     lodgeLines: ['La tana dove il tuo negozio prende forma.', 'In costruzione.'],
     notify: 'Avvisami quando apre',
     big: 'Il primo passo è gratis.',
-    privacy: 'Privacy [da inserire]',
+    privacy: 'Privacy',
+    consent: 'Statistiche',
     top: 'Torna su'
   },
   home: {
@@ -73,7 +145,7 @@ export const it = {
     skip: 'Salta',
     heroAlt: 'Un lago del nord all’alba, con il bosco che si specchia nell’acqua ferma',
     title: '<b>Siamo in due.</b><br> Lavoriamo come una squadra intera.',
-    sub: 'Due sviluppatori Shopify e una squadra di agenti AI che lavora anche di notte. Al mattino, uno di noi controlla tutto.',
+    sub: 'Due sviluppatori [[shopify|Shopify]] e una squadra di [[agent|agenti AI]] che lavora anche di notte. Al mattino, uno di noi controlla tutto.',
     hintHover: 'Sfiora l’acqua',
     hintTouch: 'Tocca l’acqua',
     cta: 'Analisi gratuita',
@@ -82,6 +154,14 @@ export const it = {
     manifesto: ['Mentre tu dormi', ', <b>gli agenti preparano il lavoro.</b> Al mattino', ' <b>lo controlliamo noi.</b>'],
     manifestoFoot: 'Così un negozio nuovo arriva in settimane, non in mesi. E ogni modifica, prima di andare online, passa dai nostri occhi.',
     manifestoLink: 'Guarda come lavoriamo',
+    ai: {
+      k: 'Fatti trovare dall’AI',
+      v: 'Dentro l’analisi gratuita',
+      title: 'Oggi si chiede all’AI. <b>Il tuo negozio c’è?</b>',
+      p: 'Sempre più persone, prima di comprare, chiedono consiglio a un [[assistant|assistente AI]] come ChatGPT o Gemini. Nell’analisi gratuita controlliamo se trova e capisce i tuoi prodotti, e ti diciamo cosa sistemare.',
+      cta: 'Controlla il tuo negozio',
+      more: 'Come funziona'
+    },
     us: {
       k: 'Chi siamo',
       title: 'Ciao, siamo <b>Andrea e Lorenzo.</b>',
@@ -101,14 +181,14 @@ export const it = {
       items: {
         night: 'Di notte gli agenti, al mattino noi. E settimane, non mesi.',
         beavers: 'Sentono dove perde, e chiudono la falla. Noi lo facciamo con il tuo negozio.',
-        lodge: 'Le nuove vetrine dell’AI, e la tana che stiamo costruendo.',
+        lodge: 'Fatti trovare dall’AI. E la tana che stiamo costruendo.',
         contact: 'Il primo passo è gratis. Risponde uno di noi.'
       }
     }
   },
   night: {
     title: 'I castori lavorano di notte. <b>Anche i nostri agenti.</b>',
-    intro: 'Mentre tu dormi, gli agenti preparano il lavoro. Al mattino lo controlliamo noi. Trascina il sole lungo la linea, oppure lascia che la notte passi da sola.',
+    intro: 'Mentre tu dormi, gli [[agent|agenti]] preparano il lavoro. Al mattino lo controlliamo noi. Trascina il sole lungo la linea, oppure lascia che la notte passi da sola.',
     nightAlt: 'Notte sul lago: la luna, il bosco e una tana di castori sull’acqua',
     dayAlt: 'Lo stesso lago al mattino, con una persona sul pontile',
     caps: [
@@ -160,7 +240,7 @@ export const it = {
       k: 'Perché proprio i castori',
       title: 'Ci somigliano <b>più di quanto pensi.</b>',
       items: [
-        { t: 'Lavorano di notte.', p: 'I castori lavorano soprattutto col buio. Da noi è uguale: il turno di notte lo fanno gli agenti, quello del mattino lo facciamo noi.', link: 'Guarda una notte di lavoro' },
+        { t: 'Lavorano di notte.', p: 'I castori lavorano soprattutto col buio. Da noi è uguale: il turno di notte lo fanno gli [[agent|agenti]], quello del mattino lo facciamo noi.', link: 'Guarda una notte di lavoro' },
         { t: 'Lavorano in famiglia.', p: 'Due genitori, insieme per tutta la vita, e i figli, che già dal primo autunno aiutano con la diga e con la tana. <b>Una squadra piccola, che si conosce bene.</b>' },
         { t: 'Costruiscono per durare.', p: 'La diga più lunga che si conosca è in Canada, nel parco di Wood Buffalo: circa 850 metri, si vede dallo spazio. Ci lavorano dagli anni Settanta, una generazione dopo l’altra. <b>Anche noi costruiamo pensando a dopo.</b>' }
       ]
@@ -182,7 +262,7 @@ export const it = {
   },
   lodge: {
     title: 'Oggi si chiede all’AI. <b>Fatti trovare.</b>',
-    p: 'Sempre più persone, prima di comprare, chiedono un consiglio a un assistente come ChatGPT o Gemini. Sistemiamo prodotti, schede e dati del tuo negozio perché l’assistente li capisca bene, e possa consigliarli.',
+    p: 'Sempre più persone, prima di comprare, chiedono un consiglio a un [[assistant|assistente]] come ChatGPT o Gemini. Sistemiamo prodotti, schede e dati del tuo negozio perché l’assistente li capisca bene, e possa consigliarli.',
     chat: {
       k: 'Esempio · una persona chiede a un assistente',
       q: 'Cerco una tazza in ceramica fatta a mano, da regalare. Sotto i 30 euro.',
@@ -225,7 +305,7 @@ export const it = {
     lead: 'Tre passi, senza impegno. Alla fine sai cosa fare, e quanto costa.',
     steps: [
       'Ci mandi l’indirizzo del tuo negozio.',
-      'Lo guardiamo con calma e ti mandiamo una lista corta, con il prezzo accanto a ogni voce.',
+      'Lo guardiamo con calma, anche con gli occhi di ChatGPT e Gemini, e ti mandiamo una lista corta, con il prezzo accanto a ogni voce.',
       'Se ti convince, lo sistemiamo. Se no, la lista resta tua.'
     ],
     form: {

@@ -3,6 +3,7 @@ import '../styles/components/cover.css';
 import '../styles/components/beavers.css';
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import { terms } from '../lib/text';
 import Label from '../components/Label.astro';
 import Mark from '../components/Mark.astro';
 import NextChapter from '../components/NextChapter.astro';
@@ -81,7 +82,7 @@ const b = t.beavers;
         <li class="rv">
           <span class="tr-n" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
           <h3 class="tr-t">{item.t}</h3>
-          <p class="tr-p"><Fragment set:html={item.p} />{item.link && <> <a class="tl" href={routes[lang].night}>{item.link}</a></>}</p>
+          <p class="tr-p"><Fragment set:html={terms(item.p)} />{item.link && <> <a class="tl" href={routes[lang].night}>{item.link}</a></>}</p>
         </li>
       ))}
     </ol>
