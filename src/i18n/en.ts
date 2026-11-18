@@ -287,13 +287,13 @@ export const en: Dictionary = {
       endN: '…and whatever {n} needs.'
     },
     call: {
-      k: 'Let’s talk it through',
-      kN: 'Let’s talk it through, {n}',
+      k: 'Write to us',
+      kN: 'Write to us, {n}',
       title: 'If you need something you don’t see here, ask. <b>If we can do it well we’ll say so, if not we’ll tell you who can.</b>',
-      cta: 'Ask for a call',
-      subject: 'I’d like a call',
-      note: 'No strings attached. Tell us when suits you: we reply ourselves, within one working day.',
-      write: 'Rather write?'
+      cta: 'Send us an email',
+      subject: 'A question for Beavers',
+      note: 'You’ll find us at ciao@thebeavers.company. One of us replies, within one working day.',
+      write: 'Rather use the form?'
     },
     who: {
       lines: ['Hi, we’re Andrea and Lorenzo.', 'Before we tell you what we do, we’d like to know who we’re talking to.'],
@@ -454,7 +454,10 @@ export const en: Dictionary = {
       you: 'you',
       subject: 'Free store review'
     },
-    mail: 'Prefer email?',
+    mailK: 'Send us an email',
+    mailP: 'Your store’s address and two lines on what you need are enough.',
+    mailSubject: 'Free store review',
+    or: 'Or leave your details here:',
     closeLabel: 'The lake in the morning',
     closeAlt: 'The lake in the morning, with the beaver lodge and someone on the jetty',
     closeCap: 'In the morning, we check it ourselves.',
