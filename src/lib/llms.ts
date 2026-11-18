@@ -131,8 +131,9 @@ function pageText(lang: Lang, page: PageKey) {
       return [
         `# ${md(c.title)}`,
         c.lead,
+        `${c.mailK}: ${site.email.value}. ${c.mailP}`,
         ...c.steps.map((step, index) => `${index + 1}. ${step}`),
-        `${c.mail} ${site.email.value}`,
+        c.or,
         c.form.reply
       ];
     }

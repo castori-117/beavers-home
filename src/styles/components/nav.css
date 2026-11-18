@@ -36,8 +36,42 @@
   --nav-cta-fg: var(--night);
 }
 
+/* dark and still over a painting: a little shade behind the words, a touch more weight, nothing dimmed */
+.nav[data-tone="dark"]:not([data-stuck]) {
+  isolation: isolate;
+  text-shadow: 0 1px 14px rgb(7 11 20 / 0.7);
+}
+.nav[data-tone="dark"]:not([data-stuck])::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 -40px;
+  z-index: -1;
+  background: linear-gradient(rgb(7 11 20 / 0.6), rgb(7 11 20 / 0));
+  pointer-events: none;
+  transition: opacity 0.6s var(--e);
+}
+.nav[data-tone="dark"]:not([data-stuck]) .nav-links,
+.nav[data-stuck][data-stuck-tone="dark"] .nav-links {
+  font-weight: var(--w-strong);
+}
+.nav[data-tone="dark"]:not([data-stuck]) .nav-clock b,
+.nav[data-stuck][data-stuck-tone="dark"] .nav-clock b {
+  opacity: 1;
+}
+.nav[data-tone="dark"]:not([data-stuck]) .lang a:not([aria-current]),
+.nav[data-stuck][data-stuck-tone="dark"] .lang a:not([aria-current]) {
+  opacity: 0.78;
+}
+.nav[data-tone="dark"] .btn {
+  text-shadow: none;
+}
+
 /* chapter one turns to day under the nav: follow it, no script needed */
+.site:has(.nt[data-sky]) .nav[data-tone="dark"]:not([data-stuck])::before {
+  opacity: 0;
+}
 .site:has(.nt[data-sky]) .nav[data-tone="dark"]:not([data-stuck]) {
+  text-shadow: none;
   --nav-fg: var(--ink);
   --nav-ai: var(--ai-l);
   --nav-cta-bg: var(--ink);
