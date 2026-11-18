@@ -11,7 +11,7 @@ export function structuredData({ lang, page, base, image }: { lang: Lang; page: 
   const url = absolute(routes[lang][page], base);
   const orgId = absolute('/#organization', base);
   const siteId = absolute('/#website', base);
-  const founders = site.founders.map((name) => ({ '@type': 'Person', name, jobTitle: lang === 'it' ? 'Sviluppatore Shopify' : 'Shopify developer', worksFor: { '@id': orgId } }));
+  const founders = site.profiles.map(({ name, linkedin }) => ({ '@type': 'Person', name, jobTitle: lang === 'it' ? 'Sviluppatore Shopify' : 'Shopify developer', sameAs: [linkedin], worksFor: { '@id': orgId } }));
 
   const organization = {
     '@type': ['Organization', 'ProfessionalService'],

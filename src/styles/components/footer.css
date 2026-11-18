@@ -92,6 +92,10 @@
 .ft-col a:hover {
   background-size: 100% var(--hair);
 }
+/* the first profile link sits a little apart from the lines above */
+.ft-in:first-of-type {
+  margin-top: 10px;
+}
 .ft-mail {
   font-weight: var(--w-black);
 }

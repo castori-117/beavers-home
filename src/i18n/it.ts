@@ -139,6 +139,8 @@ export const it = {
     story: 'Il racconto',
     who: 'Chi siamo',
     whoLines: ['Andrea e Lorenzo,', 'più una squadra di agenti.'],
+    /* the link text for each founder's profile: «Andrea su LinkedIn» */
+    profile: '{n} su LinkedIn',
     country: 'Italia',
     lodge: 'Lodge',
     lodgeLines: ['La tana dove il tuo negozio prende forma.', 'In costruzione.'],

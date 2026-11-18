@@ -4,6 +4,11 @@ export const site = {
   domain: 'thebeavers.company',
   email: { value: 'ciao@thebeavers.company', href: 'mailto:ciao@thebeavers.company' },
   founders: ['Andrea', 'Lorenzo'],
+  /* where each of us can be found; also the sameAs of each founder in the structured data */
+  profiles: [
+    { name: 'Andrea', linkedin: 'https://www.linkedin.com/in/andrea-cazzato-it/' },
+    { name: 'Lorenzo', linkedin: 'https://www.linkedin.com/in/lorenzo-sanseverino-138105385/' }
+  ],
   country: { code: 'IT', it: 'Italia', en: 'Italy' },
   timeZone: 'Europe/Rome',
   founded: '2026',

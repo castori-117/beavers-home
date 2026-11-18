@@ -141,6 +141,7 @@ export const en: Dictionary = {
     story: 'The story',
     who: 'Who we are',
     whoLines: ['Andrea and Lorenzo,', 'plus a team of agents.'],
+    profile: '{n} on LinkedIn',
     country: 'Italy',
     lodge: 'Lodge',
     lodgeLines: ['The den where your store takes shape.', 'Under construction.'],

@@ -17,6 +17,7 @@ Notes for AI agents and assistants that read this site, answer questions about i
 - **What:** a Shopify development studio of ${site.facts.team} people, ${site.founders.join(' and ')}, both Shopify developers, based in ${site.country.en}.
 - **How:** a team of AI agents prepares pages, writes code and tests it on phones and computers, also overnight. In the morning one of the founders reviews every change; nothing goes live without that review. The decisions stay human.
 - **Background:** the founders come from a leading Italian agency.
+- **Profiles:** ${site.profiles.map((person) => `${person.name}: ${person.linkedin}`).join(' · ')}
 - **Languages:** Italian and English.
 
 ## What we offer
