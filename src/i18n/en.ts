@@ -386,14 +386,17 @@ export const en: Dictionary = {
     p: 'More and more people ask an [[assistant|assistant]] like ChatGPT or Gemini for advice before they buy. We set up your store’s products, pages and data so the assistant understands them well, and can recommend them.',
     chat: {
       k: 'Example · someone asks an assistant',
-      q: 'I’m looking for a handmade ceramic mug as a gift. Under 30 euros.',
       replies: 'The assistant replies',
-      a: 'I’d suggest this one, from a small Italian workshop:',
-      product: 'Stoneware mug, forest glaze',
       store: 'yourstore.com',
-      price: '€28',
       note: 'Assistants choose on their own what to recommend. We make sure they understand your products well.',
-      again: 'Ask again'
+      asks: [
+        { art: 'cup', q: 'I’m looking for a handmade ceramic mug as a gift. Under 30 euros.', a: 'I’d suggest this one, from a small Italian workshop:', product: 'Stoneware mug, forest glaze', price: '€28' },
+        { art: 'oil', q: 'A good extra virgin olive oil to give as a gift, arriving by Friday.', a: 'This one comes from a small mill and ships today:', product: 'Extra virgin olive oil, 500 ml tin', price: '€18' },
+        { art: 'pack', q: 'I need a waterproof city backpack for a 14-inch laptop.', a: 'This one has a padded sleeve and a waxed canvas base:', product: 'Waxed canvas backpack, forest green', price: '€89' },
+        { art: 'candle', q: 'A scented candle that doesn’t smell fake, for a new home.', a: 'This one is soy wax, poured by hand:', product: 'Soy candle, wood and fig', price: '€24' },
+        { art: 'sweater', q: 'A warm jumper that doesn’t itch, size M.', a: 'This one is merino wool, made in Italy:', product: 'Merino jumper, mist grey', price: '€79' },
+        { art: 'book', q: 'A beautiful notebook for a graduation gift, with the name engraved.', a: 'This one can be personalised and arrives in three days:', product: 'Leather notebook, engraved', price: '€35' }
+      ]
     },
     next: { k: 'Lodge', v: 'Our next thing' },
     lodgeTitle: 'We’re building Lodge. <b>The den where your store takes shape.</b>',

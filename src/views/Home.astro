@@ -4,7 +4,7 @@ import '../styles/components/home.css';
 import '../styles/components/chat.css';
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import Cup from '../components/Cup.astro';
+import AiChat from '../components/AiChat.astro';
 import Label from '../components/Label.astro';
 import Seal from '../components/Seal.astro';
 import { images, thumbFor } from '../lib/images';
@@ -18,7 +18,6 @@ interface Props {
 const { lang } = Astro.props;
 const t = copy[lang];
 const h = t.home;
-const chat = t.lodge.chat;
 const indexKeys = [...chapterKeys, 'contact'] as const;
 const camera = 'M4 8h3l2-3h6l2 3h3v11H4z';
 ---
@@ -72,27 +71,7 @@ const camera = 'M4 8h3l2-3h6l2 3h3v11H4z';
           <a class="ln" href={routes[lang].lodge}>{h.ai.more} <span class="ar" aria-hidden="true">→</span></a>
         </div>
       </div>
-      <in-view class="chat-wrap ai-chat" data-threshold="0.35">
-        <figure class="chat">
-          <p class="chat-k">{chat.k}</p>
-          <p class="chat-q">{chat.q}</p>
-          <div class="chat-body">
-            <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
-            <div class="chat-a">
-              <p class="chat-k">{chat.replies}</p>
-              <p>{chat.a}</p>
-              <div class="prod">
-                <Cup />
-                <div>
-                  <p class="prod-n">{chat.product}</p>
-                  <p class="prod-s">{chat.store}</p>
-                  <p class="prod-p">{chat.price}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </figure>
-      </in-view>
+      <AiChat lang={lang} class="ai-chat" threshold={0.35} />
     </div>
   </section>
 

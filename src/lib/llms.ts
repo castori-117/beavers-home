@@ -116,8 +116,7 @@ function pageText(lang: Lang, page: PageKey) {
       return [
         `# ${md(l.title)}`,
         md(l.p),
-        `> ${l.chat.q}`,
-        `> ${l.chat.a} ${l.chat.product}, ${l.chat.price}`,
+        ...l.chat.asks.flatMap((ask) => [`> ${ask.q}`, `> ${ask.a} ${ask.product}, ${ask.price}`]),
         l.chat.note,
         `## ${l.next.k}: ${l.next.v}`,
         md(l.lodgeTitle),
