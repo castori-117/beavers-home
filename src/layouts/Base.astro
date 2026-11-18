@@ -1,14 +1,14 @@
 ---
 import '../styles/site.css';
-import Analytics from '@vercel/analytics/astro';
-import SpeedInsights from '@vercel/speed-insights/astro';
+import '../styles/components/terms.css';
+import Consent from '../components/Consent.astro';
 import { getImage } from 'astro:assets';
 import Footer from '../components/Footer.astro';
 import Nav from '../components/Nav.astro';
 import { site } from '../data/site';
 import { pageImage, images } from '../lib/images';
 import { structuredData } from '../lib/seo';
-import { copy, languages, routes, type Lang, type PageKey } from '../i18n';
+import { copy, languages, privacyRoutes, routes, type Lang, type PageKey } from '../i18n';
 
 interface Props {
   lang: Lang;
@@ -18,14 +18,18 @@ interface Props {
   tone?: 'light' | 'dark';
   stuckTone?: 'light' | 'dark';
   intro?: boolean;
+  /* the privacy page: outside the story, but indexed and with its own address in each language */
+  legal?: boolean;
 }
 
-const { lang, page, dark = false, tone = dark ? 'dark' : 'light', stuckTone = dark ? 'dark' : 'light', intro = false } = Astro.props;
+const { lang, page, dark = false, tone = dark ? 'dark' : 'light', stuckTone = dark ? 'dark' : 'light', intro = false, legal = false } = Astro.props;
 const t = copy[lang];
 const base = Astro.site ?? new URL(Astro.url.origin);
 const absolute = (path: string) => new URL(path, base).href;
-const { title, description } = page ? t.meta[page] : t.meta.notFound;
-const url = page ? absolute(routes[lang][page]) : undefined;
+const { title, description } = legal ? t.privacy.meta : page ? t.meta[page] : t.meta.notFound;
+/* every address this page has, one per language */
+const paths: Record<Lang, string> | null = legal ? privacyRoutes : page ? { it: routes.it[page], en: routes.en[page] } : null;
+const url = paths ? absolute(paths[lang]) : undefined;
 const social = await getImage({ src: page ? pageImage[page] : images.lakeDawn, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 82 });
 const image = absolute(social.src);
 const jsonLd = page ? structuredData({ lang, page, base, image }) : null;
@@ -38,14 +42,14 @@ const surface = dark ? '#070b14' : site.themeColor;
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title}</title>
   <meta name="description" content={description}>
-  {page ? <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"> : <meta name="robots" content="noindex, follow">}
+  {paths ? <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"> : <meta name="robots" content="noindex, follow">}
   <meta name="theme-color" content={surface}>
   <meta name="color-scheme" content={dark ? 'dark' : 'light'}>
   <meta name="author" content={site.founders.join(', ')}>
   <meta name="format-detection" content="telephone=no">
   {url && <link rel="canonical" href={url}>}
-  {page && languages.map((code) => <link rel="alternate" hreflang={code} href={absolute(routes[code][page])}>)}
-  {page && <link rel="alternate" hreflang="x-default" href={absolute(routes.it[page])}>}
+  {paths && languages.map((code) => <link rel="alternate" hreflang={code} href={absolute(paths[code])}>)}
+  {paths && <link rel="alternate" hreflang="x-default" href={absolute(paths.it)}>}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content={site.name}>
   <meta property="og:title" content={title}>
@@ -80,13 +84,16 @@ const surface = dark ? '#070b14' : site.themeColor;
     <div class="grain" aria-hidden="true"></div>
     <a class="skip" href="#contenuto">{t.skip}</a>
     <slot name="before" />
-    <Nav lang={lang} page={page} tone={tone} stuckTone={stuckTone} intro={intro} />
+    <Nav lang={lang} page={page} tone={tone} stuckTone={stuckTone} intro={intro} alternates={paths ?? undefined} />
     <main id="contenuto">
       <slot />
     </main>
     <Footer lang={lang} />
   </div>
-  <Analytics />
-  <SpeedInsights />
+  <Consent lang={lang} />
+  <term-tips data-terms={JSON.stringify(t.terms)}></term-tips>
+  <script>
+    import '../elements/term-tips';
+  </script>
 </body>
 </html>

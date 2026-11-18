@@ -176,6 +176,23 @@
   align-items: center;
   gap: 4px 22px;
 }
+.ft-legal-a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: var(--hair);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.ft-legal-a:hover {
+  text-decoration-thickness: var(--stroke);
+}
 .totop {
   display: inline-flex;
   align-items: center;

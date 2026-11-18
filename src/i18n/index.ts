@@ -17,6 +17,9 @@ export const routes: Record<Lang, Record<PageKey, string>> = {
   en: { home: '/en/', night: '/en/how-we-work/', beavers: '/en/why-beavers/', lodge: '/en/looking-ahead/', contact: '/en/write-to-us/' }
 };
 
+/* pages outside the story */
+export const privacyRoutes: Record<Lang, string> = { it: '/privacy/', en: '/en/privacy/' };
+
 /* the chapter that follows each page, for the big link at the end */
 export const nextPage: Record<PageKey, PageKey> = { home: 'night', night: 'beavers', beavers: 'lodge', lodge: 'contact', contact: 'home' };
 

@@ -1,0 +1,24 @@
+---
+import '../styles/components/consent.css';
+import { copy, privacyRoutes, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const c = copy[lang].consent;
+---
+<site-consent>
+  <section class="consent" aria-label={c.label} hidden>
+    <p class="consent-t"><b>{c.label}.</b> {c.text} <a href={`${privacyRoutes[lang]}#statistiche`}>{c.more}</a></p>
+    <div class="consent-b">
+      <button class="consent-btn" type="button" data-consent="no">{c.no}</button>
+      <button class="consent-btn consent-btn--yes" type="button" data-consent="yes">{c.yes}</button>
+    </div>
+  </section>
+</site-consent>
+
+<script>
+  import '../elements/site-consent';
+</script>

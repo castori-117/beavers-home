@@ -2,6 +2,7 @@
 import '../styles/components/night.css';
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import { terms } from '../lib/text';
 import Label from '../components/Label.astro';
 import Mark from '../components/Mark.astro';
 import NextChapter from '../components/NextChapter.astro';
@@ -39,7 +40,7 @@ const OURS = 3;
         <div class="nt-copy in">
           <Label k={t.chapters.night} v={t.pages.night} style="--i: 0" />
           <h1 id="nt-t" class="d2" style="--i: 1" set:html={n.title} />
-          <p class="p" style="--i: 2">{n.intro}</p>
+          <p class="p" style="--i: 2" set:html={terms(n.intro)} />
         </div>
       </div>
       <div class="w nt-ctl">

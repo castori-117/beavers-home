@@ -1,0 +1,63 @@
+/* the privacy page: one readable column, the same voice as the rest */
+.pv-body {
+  grid-column: 3 / span 7;
+}
+.pv-s {
+  padding: 34px 0 38px;
+  border-top: var(--hair) solid var(--rule);
+  scroll-margin-top: calc(var(--nav-h) + 24px);
+}
+.pv-h {
+  margin-bottom: 16px;
+  font-weight: var(--w-strong);
+  font-size: clamp(24px, 2vw, 30px);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+.pv-s .p + .p,
+.pv-l + .p {
+  margin-top: 14px;
+}
+.pv-s .btn {
+  margin-top: 22px;
+}
+.pv-l {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--fs-p);
+  line-height: var(--lh-body);
+}
+.pv-l li {
+  position: relative;
+  padding-left: 22px;
+}
+.pv-l li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  background: var(--ink);
+}
+.pv a {
+  text-underline-offset: 3px;
+}
+.pv-vat {
+  padding-top: 24px;
+  border-top: var(--hair) solid var(--rule);
+  font-size: var(--fs-small);
+}
+@media (max-width: 1060px) {
+  .pv-body {
+    grid-column: 2 / span 10;
+  }
+}
+@media (max-width: 760px) {
+  .pv-body {
+    grid-column: 1 / -1;
+  }
+}

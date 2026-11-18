@@ -18,3 +18,9 @@ Variabili (vedi `.env.example`): `PUBLIC_SITE_URL` (canonical, hreflang, sitemap
 - `src/elements/`: custom element piccoli, solo comportamento. Animazioni, stati e colori restano in CSS (scroll-driven animations, `:has()`, `color-mix()`, `<dialog>` con invoker commands, view transitions).
 - SEO / GEO: `layouts/Base.astro` (meta, hreflang, Open Graph, JSON-LD da `lib/seo.ts`), `pages/sitemap.xml.ts`, `robots.txt.ts`, `llms.txt.ts`, `llms-full.txt.ts`, `agents.md.ts` (pubblicato su `/agents.md`).
 - `npm run fonts` copia Schibsted Grotesk da `@fontsource-variable` in `public/fonts`.
+
+## Privacy, statistiche, glossario
+
+- `/privacy/` e `/en/privacy/`: testi in `i18n` (`privacy`). La P. IVA si aggiunge in `src/data/site.ts` (`legal.vat`) e compare da sola nel footer e nella privacy.
+- Vercel Web Analytics e Speed Insights partono solo dopo il consenso (`components/Consent.astro`, `elements/site-consent.ts`); la scelta resta in `localStorage` (`tb-stats`) e si riapre da qualsiasi `[data-consent-open]`.
+- Parole nuove: nei testi `[[agent|gli agenti]]` diventa un bottone con la spiegazione (`terms` in `i18n`, `elements/term-tips.ts`). Le definizioni stanno in `i18n`, una volta sola.

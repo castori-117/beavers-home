@@ -1,4 +1,5 @@
 import { site } from '../data/site';
+import { plain } from './text';
 import { copy, routes, type Lang, type PageKey } from '../i18n';
 
 const absolute = (path: string, base: URL) => new URL(path, base).href;
@@ -48,7 +49,7 @@ export function structuredData({ lang, page, base, image }: { lang: Lang; page: 
     '@id': absolute(`${routes[lang].home}#service`, base),
     name: lang === 'it' ? 'Sviluppo e cura di negozi Shopify con agenti AI' : 'Shopify store development and care with AI agents',
     serviceType: lang === 'it' ? 'Sviluppo Shopify' : 'Shopify development',
-    description: t.home.sub,
+    description: plain(t.home.sub),
     provider: { '@id': orgId },
     areaServed: site.country[lang],
     availableLanguage: ['it', 'en'],

@@ -1,11 +1,14 @@
 ---
 import '../styles/components/seal.css';
 import '../styles/components/home.css';
+import '../styles/components/chat.css';
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import Cup from '../components/Cup.astro';
 import Label from '../components/Label.astro';
 import Seal from '../components/Seal.astro';
 import { images, thumbFor } from '../lib/images';
+import { terms } from '../lib/text';
 import { chapterKeys, copy, routes, type Lang } from '../i18n';
 
 interface Props {
@@ -15,6 +18,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = copy[lang];
 const h = t.home;
+const chat = t.lodge.chat;
 const indexKeys = [...chapterKeys, 'contact'] as const;
 const camera = 'M4 8h3l2-3h6l2 3h3v11H4z';
 ---
@@ -38,7 +42,7 @@ const camera = 'M4 8h3l2-3h6l2 3h3v11H4z';
       <h1 class="d1 hero-h" set:html={h.title} />
     </div>
     <div class="hero-foot">
-      <p class="hero-sub">{h.sub}</p>
+      <p class="hero-sub" set:html={terms(h.sub)} />
       <span class="hint" aria-hidden="true"><i></i><span class="hint-hover">{h.hintHover}</span><span class="hint-touch">{h.hintTouch}</span></span>
       <a class="btn hero-cta" href={routes[lang].contact}><span>{h.cta}<span class="xs-hide">{h.ctaMore}</span></span> <span class="ar" aria-hidden="true">→</span></a>
     </div>
@@ -54,6 +58,63 @@ const camera = 'M4 8h3l2-3h6l2 3h3v11H4z';
         <p class="p">{h.manifestoFoot}</p>
         <a class="ln" href={routes[lang].night}>{h.manifestoLink} <span class="ar" aria-hidden="true">→</span></a>
       </div>
+    </div>
+  </section>
+
+  <section class="sec sec--flush w ai" aria-labelledby="ai-t">
+    <div class="ai-door">
+      <div class="ai-tx">
+        <Label class="lab--head" k={h.ai.k} v={h.ai.v} />
+        <h2 id="ai-t" class="d2 rv" set:html={h.ai.title} />
+        <p class="p" set:html={terms(h.ai.p)} />
+        <div class="ai-acts">
+          <a class="btn btn--l" href={routes[lang].contact}>{h.ai.cta} <span class="ar" aria-hidden="true">→</span></a>
+          <a class="ln" href={routes[lang].lodge}>{h.ai.more} <span class="ar" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <in-view class="chat-wrap ai-chat" data-threshold="0.35">
+        <figure class="chat">
+          <p class="chat-k">{chat.k}</p>
+          <p class="chat-q">{chat.q}</p>
+          <div class="chat-body">
+            <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="chat-a">
+              <p class="chat-k">{chat.replies}</p>
+              <p>{chat.a}</p>
+              <div class="prod">
+                <Cup />
+                <div>
+                  <p class="prod-n">{chat.product}</p>
+                  <p class="prod-s">{chat.store}</p>
+                  <p class="prod-p">{chat.price}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </figure>
+      </in-view>
+    </div>
+  </section>
+
+  <section class="sec sec--flush w sv" aria-labelledby="sv-t">
+    <div class="g">
+      <div class="sv-h">
+        <Label class="lab--head" k={h.services.k} />
+        <h2 id="sv-t" class="d2 rv" set:html={h.services.title} />
+      </div>
+    </div>
+    <ol class="sv-l">
+      {h.services.items.map((item, index) => (
+        <li class="rv">
+          <span class="sv-n" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+          <h3 class="sv-t" set:html={terms(item.t)} />
+          <p class="sv-d" set:html={terms(item.d)} />
+        </li>
+      ))}
+    </ol>
+    <div class="sv-foot rv">
+      <p class="p">{h.services.foot}</p>
+      <a class="ln" href={routes[lang].contact}>{h.services.link} <span class="ar" aria-hidden="true">→</span></a>
     </div>
   </section>
 
@@ -102,4 +163,5 @@ const camera = 'M4 8h3l2-3h6l2 3h3v11H4z';
 <script>
   import '../elements/home-intro';
   import '../elements/lake-ripples';
+  import '../elements/in-view';
 </script>
