@@ -286,14 +286,15 @@ export const it = {
       end: '…e quello che ti serve.',
       endN: '…e quello che serve a {n}.'
     },
+    /* the way in at the bottom: an email first, the form if they prefer */
     call: {
-      k: 'Parliamone a voce',
-      kN: 'Parliamone a voce, {n}',
+      k: 'Scrivici',
+      kN: 'Scrivici, {n}',
       title: 'Se ti serve qualcosa che non vedi qui, chiedi. <b>Se possiamo farlo bene te lo diciamo, se no ti diciamo chi può.</b>',
-      cta: 'Chiedi una chiamata',
-      subject: 'Vorrei una chiamata',
-      note: 'Senza impegno. Dicci quando ti va bene: ti rispondiamo noi, entro un giorno lavorativo.',
-      write: 'Preferisci scrivere?'
+      cta: 'Scrivici una mail',
+      subject: 'Una domanda per Beavers',
+      note: 'Ci trovi a ciao@thebeavers.company. Risponde uno di noi, entro un giorno lavorativo.',
+      write: 'Preferisci il modulo?'
     },
     /* asked once, a whole screen, before the page: Andrea and Lorenzo say hello first */
     who: {
@@ -456,7 +457,11 @@ export const it = {
       you: 'a te',
       subject: 'Analisi gratuita del negozio'
     },
-    mail: 'Preferisci la mail?',
+    /* the email comes first; the form is there for who prefers it */
+    mailK: 'Scrivici una mail',
+    mailP: 'Bastano l’indirizzo del negozio e due righe su cosa ti serve.',
+    mailSubject: 'Analisi gratuita del negozio',
+    or: 'Oppure lasciaci i tuoi dati qui:',
     closeLabel: 'Il lago al mattino',
     closeAlt: 'Il lago al mattino, con la tana dei castori e una persona sul pontile',
     closeCap: 'Al mattino lo controlliamo noi.',
