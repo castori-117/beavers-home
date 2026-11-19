@@ -586,11 +586,15 @@
   border-radius: var(--r);
   background: var(--night);
   color: var(--moon);
+  --on-surface: var(--moon);
+  --on-surface-2: var(--moon-2);
   transition: background-color 1.2s var(--e), color 1.2s var(--e);
 }
 .vd.p-done {
   background: var(--mist);
   color: var(--ink);
+  --on-surface: var(--ink);
+  --on-surface-2: var(--ink-2);
 }
 .vd-k {
   margin: 0 0 12px;

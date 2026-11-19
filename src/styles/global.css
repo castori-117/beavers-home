@@ -6,7 +6,8 @@
 
 html {
   background: var(--surface);
-  color-scheme: light;
+  /* the page has its own day and night: the phone's automatic dark mode must not repaint it */
+  color-scheme: only light;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -107,4 +108,9 @@ button {
   @view-transition {
     navigation: auto;
   }
+}
+
+/* night pages are already dark: they say so, and nothing repaints them either */
+html.dk {
+  color-scheme: dark;
 }
