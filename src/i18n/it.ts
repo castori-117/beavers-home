@@ -16,7 +16,7 @@ export const it = {
     home: 'Prologo',
     services: 'Cosa facciamo',
     night: 'Come lavoriamo',
-    beavers: 'Perché castori',
+    beavers: 'Perché Beavers',
     lodge: 'Guardiamo avanti',
     contact: 'Scrivici'
   },
@@ -42,7 +42,7 @@ export const it = {
       description: 'Di notte gli agenti AI preparano pagine e codice e li provano su telefoni e computer. Al mattino uno di noi rivede ogni modifica. Un negozio Shopify in settimane, non mesi.'
     },
     beavers: {
-      title: 'Perché castori: chiudiamo le falle del tuo negozio Shopify · Beavers',
+      title: 'Perché Beavers: chiudiamo le falle del tuo negozio Shopify · Beavers',
       description: 'Un negozio perde clienti come una diga perde acqua: pagine lente, carrelli complicati, foto deboli, prodotti introvabili su Google. Troviamo le falle e le chiudiamo.'
     },
     lodge: {
@@ -343,6 +343,11 @@ export const it = {
     }
   },
   beavers: {
+    hat: {
+      q: 'Intendevi <b>perché scegliere noi?</b>',
+      p: 'Questa pagina racconta il nostro nome: <i>beavers</i>, in inglese, vuol dire <b>castori</b>. Se vuoi sapere cosa possiamo fare per il tuo negozio, parti da qui.',
+      cta: 'Cosa facciamo'
+    },
     title: 'Sentiamo dove perde. <b>E chiudiamo la falla.</b>',
     lead: 'Un negozio perde clienti come una diga perde acqua: da piccole falle che nessuno vede. Noi le troviamo e le chiudiamo, una per una. Così vendi di più.',
     damAlt: 'Una diga di rami sul fiume, con una piccola falla da cui esce acqua',

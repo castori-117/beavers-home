@@ -341,6 +341,11 @@ export const en: Dictionary = {
     }
   },
   beavers: {
+    hat: {
+      q: 'Did you mean <b>why choose us?</b>',
+      p: 'This page is about our name and the animal behind it. If you want to know what we can do for your store, start here.',
+      cta: 'What we do'
+    },
     title: 'We hear where it leaks. <b>And we close the gap.</b>',
     lead: 'A store loses customers the way a dam loses water: through small leaks nobody sees. We find them and close them, one by one. So you sell more.',
     damAlt: 'A dam of branches across the river, with a small leak letting water through',
