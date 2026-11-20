@@ -16,7 +16,7 @@ export const it = {
     home: 'Prologo',
     services: 'Cosa facciamo',
     night: 'Come lavoriamo',
-    beavers: 'Perché castori',
+    beavers: 'Perché Beavers',
     lodge: 'Guardiamo avanti',
     contact: 'Scrivici'
   },
@@ -42,7 +42,7 @@ export const it = {
       description: 'Di notte gli agenti AI preparano pagine e codice e li provano su telefoni e computer. Al mattino uno di noi rivede ogni modifica. Un negozio Shopify in settimane, non mesi.'
     },
     beavers: {
-      title: 'Perché castori: chiudiamo le falle del tuo negozio Shopify · Beavers',
+      title: 'Perché Beavers: chiudiamo le falle del tuo negozio Shopify · Beavers',
       description: 'Un negozio perde clienti come una diga perde acqua: pagine lente, carrelli complicati, foto deboli, prodotti introvabili su Google. Troviamo le falle e le chiudiamo.'
     },
     lodge: {
@@ -286,14 +286,15 @@ export const it = {
       end: '…e quello che ti serve.',
       endN: '…e quello che serve a {n}.'
     },
+    /* the way in at the bottom: an email first, the form if they prefer */
     call: {
-      k: 'Parliamone a voce',
-      kN: 'Parliamone a voce, {n}',
+      k: 'Scrivici',
+      kN: 'Scrivici, {n}',
       title: 'Se ti serve qualcosa che non vedi qui, chiedi. <b>Se possiamo farlo bene te lo diciamo, se no ti diciamo chi può.</b>',
-      cta: 'Chiedi una chiamata',
-      subject: 'Vorrei una chiamata',
-      note: 'Senza impegno. Dicci quando ti va bene: ti rispondiamo noi, entro un giorno lavorativo.',
-      write: 'Preferisci scrivere?'
+      cta: 'Scrivici una mail',
+      subject: 'Una domanda per Beavers',
+      note: 'Ci trovi a ciao@thebeavers.company. Risponde uno di noi, entro un giorno lavorativo.',
+      write: 'Preferisci il modulo?'
     },
     /* asked once, a whole screen, before the page: Andrea and Lorenzo say hello first */
     who: {
@@ -342,6 +343,11 @@ export const it = {
     }
   },
   beavers: {
+    hat: {
+      q: 'Intendevi <b>perché scegliere noi?</b>',
+      p: 'Questa pagina racconta il nostro nome: <i>beavers</i>, in inglese, vuol dire <b>castori</b>. Se vuoi sapere cosa possiamo fare per il tuo negozio, parti da qui.',
+      cta: 'Cosa facciamo'
+    },
     title: 'Sentiamo dove perde. <b>E chiudiamo la falla.</b>',
     lead: 'Un negozio perde clienti come una diga perde acqua: da piccole falle che nessuno vede. Noi le troviamo e le chiudiamo, una per una. Così vendi di più.',
     damAlt: 'Una diga di rami sul fiume, con una piccola falla da cui esce acqua',
@@ -456,7 +462,11 @@ export const it = {
       you: 'a te',
       subject: 'Analisi gratuita del negozio'
     },
-    mail: 'Preferisci la mail?',
+    /* the email comes first; the form is there for who prefers it */
+    mailK: 'Scrivici una mail',
+    mailP: 'Bastano l’indirizzo del negozio e due righe su cosa ti serve.',
+    mailSubject: 'Analisi gratuita del negozio',
+    or: 'Oppure lasciaci i tuoi dati qui:',
     closeLabel: 'Il lago al mattino',
     closeAlt: 'Il lago al mattino, con la tana dei castori e una persona sul pontile',
     closeCap: 'Al mattino lo controlliamo noi.',

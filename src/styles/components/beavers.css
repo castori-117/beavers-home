@@ -247,3 +247,59 @@
     justify-self: start;
   }
 }
+
+/* "did you mean why choose us?": the first thing on the page, for whoever came looking for that */
+.hat {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 28px);
+  margin: 0 0 clamp(48px, 5.5vw, 88px);
+  padding: clamp(18px, 2vw, 26px) clamp(20px, 2.4vw, 32px);
+  border-radius: var(--r-md);
+  background: var(--mist);
+}
+.hat-ic {
+  flex: none;
+  width: 22px;
+  height: 22px;
+}
+.hat-t {
+  flex: 1;
+  min-width: 0;
+}
+.hat-q {
+  margin: 0;
+  font-size: clamp(20px, 1.7vw, 26px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.hat-q b {
+  font-weight: 800;
+}
+.hat-p {
+  margin: 6px 0 0;
+  max-width: 46em;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+.hat-p b {
+  color: var(--ink);
+}
+.hat-b {
+  flex: none;
+}
+@media (max-width: 760px) {
+  .hat {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .hat-ic {
+    display: none;
+  }
+  .hat-b {
+    justify-content: space-between;
+  }
+}

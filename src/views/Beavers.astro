@@ -21,6 +21,14 @@ const b = t.beavers;
 <Base lang={lang} page="beavers">
   <section class="cv w" aria-labelledby="cs-t">
     <div class="g in">
+      <aside class="hat">
+        <svg class="hat-ic" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M13 13l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+        <div class="hat-t">
+          <p class="hat-q" set:html={b.hat.q} />
+          <p class="hat-p" set:html={b.hat.p} />
+        </div>
+        <a class="btn hat-b" href={routes[lang].services}>{b.hat.cta} <span class="ar" aria-hidden="true">→</span></a>
+      </aside>
       <Label class="cv-lab" k={t.chapters.beavers} v={t.pages.beavers} style="--i: 0" />
       <h1 id="cs-t" class="d1 cv-h" style="--i: 1" set:html={b.title} />
       <p class="lead cv-body cv-lead" style="--i: 2">{b.lead}</p>

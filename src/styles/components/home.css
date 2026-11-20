@@ -314,6 +314,9 @@ html:active-view-transition-type(intro)::view-transition-new(root) {
     radial-gradient(1px 1px at 8% 76%, var(--moon) 50%, transparent 52%),
     var(--night);
   color: var(--moon);
+  /* a night island on a day page: every text inside follows the dark side */
+  --on-surface: var(--moon);
+  --on-surface-2: var(--moon-2);
 }
 .ai {
   padding-bottom: var(--sec);
