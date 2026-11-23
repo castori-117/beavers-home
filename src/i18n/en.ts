@@ -172,7 +172,13 @@ export const en: Dictionary = {
       title: 'People ask AI now. <b>Is your store there?</b>',
       p: 'More and more people ask an [[assistant|AI assistant]] like ChatGPT or Gemini for advice before they buy. In the free review we check whether it finds and understands your products, and tell you what to fix.',
       cta: 'Check your store',
-      more: 'How it works'
+      more: 'How it works',
+      numsK: 'Why it matters, in three numbers',
+      nums: [
+        { n: '4 in 10', t: 'Italians already use ChatGPT, Gemini or Claude to find information.', src: 'YouGov, September 2026', url: 'https://yougov.com/it-it/reports/55503-ricerca-online-e-ia-nel-2026' },
+        { n: '+90%', t: 'likelier to buy: people who reach an online store from an AI assistant, compared with other visitors.', src: 'Adobe, US stores, September 2026', url: 'https://business.adobe.com/blog/ai-traffic-higher-revenue-per-visit-retail-holiday' },
+        { n: '1 in 2', t: 'Google searches already shows a summary written by AI, before the links.', src: 'McKinsey, 2025', url: 'https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/new-front-door-to-the-internet-winning-in-the-age-of-ai-search' }
+      ]
     },
     us: {
       k: 'Who we are',
@@ -181,11 +187,7 @@ export const en: Dictionary = {
         'We come from a leading Italian agency, where we learned what works and what doesn’t. Today we work our own way: the two of us, with a team of agents that does the heavy lifting.',
         'One of us talks with you, the other guides the agents. No hand-offs: you always talk to the people actually working on your store.'
       ],
-      sign: 'Andrea and Lorenzo',
-      photos: [
-        { name: 'Photo of Andrea', hint: 'Natural light, looking into the camera' },
-        { name: 'Photo of Lorenzo', hint: 'Same light, same place' }
-      ]
+      sign: 'Andrea and Lorenzo'
     },
     index: {
       k: 'The story',

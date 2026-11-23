@@ -19,7 +19,6 @@ const { lang } = Astro.props;
 const t = copy[lang];
 const h = t.home;
 const indexKeys = [...chapterKeys, 'contact'] as const;
-const camera = 'M4 8h3l2-3h6l2 3h3v11H4z';
 ---
 <Base lang={lang} page="home" intro>
   <home-intro slot="before">
@@ -72,23 +71,28 @@ const camera = 'M4 8h3l2-3h6l2 3h3v11H4z';
         </div>
       </div>
       <AiChat lang={lang} class="ai-chat" threshold={0.35} />
+      <div class="ai-nums">
+        <p class="ai-nums-k">{h.ai.numsK}</p>
+        <ul>
+          {h.ai.nums.map((item) => (
+            <li class="rv">
+              <b>{item.n}</b>
+              <span>{item.t}</span>
+              <a href={item.url} rel="noopener" target="_blank">{item.src}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </section>
 
   <section class="sec sec--flush w" aria-labelledby="noi-t">
     <div class="g">
-      <div class="us-ph">
-        {h.us.photos.map((photo) => (
-          <div class="ph rv">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={camera}></path><circle cx="12" cy="13" r="3.5"></circle></svg>
-            <b>{photo.name}</b>
-            <span>{photo.hint}</span>
-          </div>
-        ))}
-      </div>
-      <div class="us-tx">
+      <div class="us-h">
         <Label class="lab--head" k={h.us.k} />
         <h2 id="noi-t" class="d2 rv" set:html={h.us.title} />
+      </div>
+      <div class="us-tx">
         {h.us.p.map((paragraph) => <p class="p">{paragraph}</p>)}
         <p class="sign">{h.us.sign}</p>
       </div>

@@ -171,7 +171,13 @@ export const it = {
       title: 'Oggi si chiede all’AI. <b>Il tuo negozio c’è?</b>',
       p: 'Sempre più persone, prima di comprare, chiedono consiglio a un [[assistant|assistente AI]] come ChatGPT o Gemini. Nell’analisi gratuita controlliamo se trova e capisce i tuoi prodotti, e ti diciamo cosa sistemare.',
       cta: 'Controlla il tuo negozio',
-      more: 'Come funziona'
+      more: 'Come funziona',
+      numsK: 'Perché conta, in tre numeri',
+      nums: [
+        { n: '4 su 10', t: 'italiani usano già ChatGPT, Gemini o Claude per trovare informazioni.', src: 'YouGov, settembre 2026', url: 'https://yougov.com/it-it/reports/55503-ricerca-online-e-ia-nel-2026' },
+        { n: '+90%', t: 'la probabilità di acquisto di chi arriva in un negozio online da un assistente AI, rispetto agli altri visitatori.', src: 'Adobe, negozi USA, settembre 2026', url: 'https://business.adobe.com/blog/ai-traffic-higher-revenue-per-visit-retail-holiday' },
+        { n: '1 su 2', t: 'ricerche su Google mostra già un riassunto scritto dall’AI, prima dei link.', src: 'McKinsey, 2025', url: 'https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/new-front-door-to-the-internet-winning-in-the-age-of-ai-search' }
+      ]
     },
     us: {
       k: 'Chi siamo',
@@ -180,11 +186,7 @@ export const it = {
         'Veniamo da un’importante agenzia italiana, dove abbiamo imparato cosa funziona e cosa no. Oggi lavoriamo a modo nostro: in due, con una squadra di agenti che fa il lavoro pesante.',
         'Uno di noi parla con te, l’altro guida gli agenti. Nessun passaggio di mano: parli sempre con chi lavora davvero al tuo negozio.'
       ],
-      sign: 'Andrea e Lorenzo',
-      photos: [
-        { name: 'Foto di Andrea', hint: 'Luce naturale, sguardo in camera' },
-        { name: 'Foto di Lorenzo', hint: 'Stessa luce, stesso posto' }
-      ]
+      sign: 'Andrea e Lorenzo'
     },
     index: {
       k: 'Il racconto',

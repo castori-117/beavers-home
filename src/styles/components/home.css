@@ -345,50 +345,69 @@ html:active-view-transition-type(intro)::view-transition-new(root) {
 .ai-door .ai-chat {
   grid-column: 8 / span 5;
 }
+/* why it matters: three numbers with their sources, under the chat */
+.ai-nums {
+  grid-column: 1 / -1;
+  margin-top: clamp(44px, 5vw, 80px);
+  padding-top: clamp(24px, 2.6vw, 36px);
+  border-top: 1px solid rgb(232 238 245 / 0.18);
+}
+.ai-nums-k {
+  font-size: var(--fs-xs);
+  font-weight: var(--w-black);
+  letter-spacing: 0.02em;
+  color: var(--moon-2);
+}
+.ai-nums ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(22px, 3vw, 48px);
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.ai-nums li {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ai-nums b {
+  font-size: clamp(40px, 4.4vw, 68px);
+  font-weight: var(--w-black);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--ice);
+}
+.ai-nums span {
+  max-width: 22em;
+  font-size: var(--fs-small);
+  line-height: 1.45;
+  color: var(--moon);
+}
+.ai-nums a {
+  align-self: flex-start;
+  min-height: 24px;
+  font-size: var(--fs-xs);
+  color: var(--moon-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 860px) {
+  .ai-nums ul {
+    grid-template-columns: 1fr;
+  }
+}
 
 
 /* ---------- who we are ---------- */
-.us-ph {
+.us-h {
   grid-column: 1 / span 6;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--gap);
-  align-items: start;
-}
-.ph {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 4px;
-  padding: 18px;
-  border-radius: var(--r-md);
-  background: var(--mist);
-  color: var(--ink-2);
-}
-.ph + .ph {
-  margin-top: 72px;
-}
-.ph svg {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-}
-.ph b {
-  font-weight: var(--w-black);
-  font-size: var(--fs-small);
-  color: var(--ink);
-}
-.ph span {
-  font-size: var(--fs-xs);
-  line-height: 1.4;
 }
 .us-tx {
   grid-column: 8 / span 5;
-  align-self: center;
+  padding-top: clamp(40px, 4vw, 58px);
 }
-.us-tx .p {
+.us-tx .p + .p {
   margin-top: 24px;
 }
 .sign {
@@ -455,7 +474,7 @@ html:active-view-transition-type(intro)::view-transition-new(root) {
 
 @media (max-width: 860px) {
   .mf .st,
-  .us-ph,
+  .us-h,
   .us-tx,
   .ai-tx,
   .ai-door .ai-chat {
@@ -465,7 +484,7 @@ html:active-view-transition-type(intro)::view-transition-new(root) {
     margin-top: 44px;
   }
   .us-tx {
-    margin-top: 48px;
+    padding-top: 28px;
   }
   .ix a {
     row-gap: 10px;
@@ -497,9 +516,6 @@ html:active-view-transition-type(intro)::view-transition-new(root) {
   }
   .hero-cta {
     justify-self: start;
-  }
-  .ph + .ph {
-    margin-top: 40px;
   }
   /* on a phone the panel keeps its rounded corners, a little tighter */
   .ai-door {
