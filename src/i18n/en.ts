@@ -53,7 +53,7 @@ export const en: Dictionary = {
     },
     contact: {
       title: 'Write to us: a free review of your Shopify store · Beavers',
-      description: 'The first step is free: send us your store’s address and we reply with a short list of fixes, with a price next to each item. One of us replies, not a bot.'
+      description: 'The first step is free: send us your store’s address and we reply with a short list of what to fix. One of us replies, not a bot.'
     },
     notFound: {
       title: 'Page not found · Beavers',
@@ -166,13 +166,31 @@ export const en: Dictionary = {
     manifesto: ['While you sleep', ', <b>the agents get the work ready.</b> In the morning', ' <b>we check it ourselves.</b>'],
     manifestoFoot: 'That’s how a new store arrives in weeks, not months. And no change goes live before we’ve looked at it.',
     manifestoLink: 'See how we work',
+    nightAlt: 'Night on the lake: the moon, the forest and a beaver lodge on the water, then the same lake in the morning',
+    care: {
+      k: 'Our way',
+      v: 'Fast, but made by hand',
+      title: 'Anyone can be fast today. <b><em class="hand">Care</em> is another matter.</b>',
+      lead: 'Anyone can use AI agents. We use them to free up the time for what a machine doesn’t do: design every page, choose every detail, redo it until it’s right. People stay at the centre: you, and the people who buy from you.',
+      notes: ['redone from scratch', '+4 px, as drawn', 'warmer photo', 'the brand’s colours', 'a chosen typeface, not a default'],
+      workK: 'Our work',
+      workTitle: 'Want to see our work?',
+      workP: 'We’re happy to show you, with everything behind it: the drawings, the tests, the versions we redid.',
+      workCta: 'Write to us'
+    },
     ai: {
       k: 'Get found by AI',
       v: 'Part of the free review',
       title: 'People ask AI now. <b>Is your store there?</b>',
       p: 'More and more people ask an [[assistant|AI assistant]] like ChatGPT or Gemini for advice before they buy. In the free review we check whether it finds and understands your products, and tell you what to fix.',
       cta: 'Check your store',
-      more: 'How it works'
+      more: 'How it works',
+      numsK: 'Why it matters, in three numbers',
+      nums: [
+        { n: '4 in 10', t: 'Italians already use ChatGPT, Gemini or Claude to find information.', src: 'YouGov, September 2026', url: 'https://yougov.com/it-it/reports/55503-ricerca-online-e-ia-nel-2026' },
+        { n: '+90%', t: 'likelier to buy: people who reach an online store from an AI assistant, compared with other visitors.', src: 'Adobe, US stores, September 2026', url: 'https://business.adobe.com/blog/ai-traffic-higher-revenue-per-visit-retail-holiday' },
+        { n: '1 in 2', t: 'Google searches already show a summary written by AI, before the links.', src: 'McKinsey, 2025', url: 'https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/new-front-door-to-the-internet-winning-in-the-age-of-ai-search' }
+      ]
     },
     us: {
       k: 'Who we are',
@@ -181,11 +199,7 @@ export const en: Dictionary = {
         'We come from a leading Italian agency, where we learned what works and what doesn’t. Today we work our own way: the two of us, with a team of agents that does the heavy lifting.',
         'One of us talks with you, the other guides the agents. No hand-offs: you always talk to the people actually working on your store.'
       ],
-      sign: 'Andrea and Lorenzo',
-      photos: [
-        { name: 'Photo of Andrea', hint: 'Natural light, looking into the camera' },
-        { name: 'Photo of Lorenzo', hint: 'Same light, same place' }
-      ]
+      sign: 'Andrea and Lorenzo'
     },
     index: {
       k: 'The story',
@@ -193,11 +207,23 @@ export const en: Dictionary = {
       items: {
         services: 'New stores, redesigns, SEO and GEO, custom development.',
         night: 'Agents at night, us in the morning. And weeks, not months.',
-        beavers: 'They hear where it leaks, and they close the gap. We do the same with your store.',
+        beavers: 'Beavers hear where it leaks, and close the gap. We do the same with your store.',
         lodge: 'Get found by AI. And the lodge we’re building.',
         contact: 'The first step is free. One of us replies.'
       }
     }
+  },
+  care: {
+    k: 'Our way',
+    v: 'Fast, but made by hand',
+    title: 'The agents give us time. <b>We spend it on <em class="hand">care</em>.</b>',
+    items: [
+      { b: 'Drawn by hand', t: 'Every page designed for your brand, not taken from a theme.' },
+      { b: 'Redone until it’s right', t: 'The site next to the design, on computer and phone, detail by detail.' },
+      { b: 'People at the centre', t: 'You always talk to the people actually working on your store.' }
+    ],
+    cta: 'Want to see our work?',
+    ctaB: 'Write to us'
   },
   services: {
     title: 'From the first sketch <b>to a store that sells.</b>',
@@ -434,8 +460,8 @@ export const en: Dictionary = {
     lead: 'Three steps, no strings attached. At the end you know what to do, and what it costs.',
     steps: [
       'You send us your store’s address.',
-      'We look at it calmly, through the eyes of ChatGPT and Gemini too, and send you a short list, with a price next to each item.',
-      'If it convinces you, we fix it. If not, the list is yours to keep.'
+      'We look at it calmly, through the eyes of ChatGPT and Gemini too, and send you a short list of what to fix.',
+      'If you’re interested, we talk it through: we look at what you need together and tell you what it costs. If not, the list is yours to keep.'
     ],
     form: {
       s1: 'Hi, I’m',

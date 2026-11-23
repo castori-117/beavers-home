@@ -15,7 +15,7 @@ export function llmsIndex(absolute: Abs) {
 
 > ${en.meta.home.description}
 
-${site.name} is a two-person Shopify studio in ${site.country.en}: ${site.founders.join(' and ')}, both Shopify developers, working with a team of AI agents. The agents prepare pages, write code and test it on phones and computers, also at night; in the morning one of the two founders reviews every change before it goes live. A new store takes about ${site.facts.targetWeeks} weeks (indicative, for a mid-sized store), against up to ${site.facts.agencyMonths} months with a traditional agency. The first step is a free store review: a short list of fixes with a price next to each item. One of the founders replies, not a bot. Contact: ${site.email.value}. The site is in Italian (default) and English.
+${site.name} is a two-person Shopify studio in ${site.country.en}: ${site.founders.join(' and ')}, both Shopify developers, working with a team of AI agents. The agents prepare pages, write code and test it on phones and computers, also at night; in the morning one of the two founders reviews every change before it goes live. A new store takes about ${site.facts.targetWeeks} weeks (indicative, for a mid-sized store), against up to ${site.facts.agencyMonths} months with a traditional agency. The first step is a free store review: a short list of what to fix. If the owner is interested, we talk it through and then give a price. One of the founders replies, not a bot. Contact: ${site.email.value}. The site is in Italian (default) and English.
 
 In italiano: ${it.meta.home.description}
 

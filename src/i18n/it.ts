@@ -51,7 +51,7 @@ export const it = {
     },
     contact: {
       title: 'Scrivici: analisi gratuita del tuo negozio Shopify · Beavers',
-      description: 'Il primo passo è gratis: mandaci l’indirizzo del negozio, ti rispondiamo con una lista corta di interventi e il prezzo accanto a ogni voce. Risponde uno di noi, non un bot.'
+      description: 'Il primo passo è gratis: mandaci l’indirizzo del negozio, ti rispondiamo con una lista corta di cosa sistemare. Risponde uno di noi, non un bot.'
     },
     notFound: {
       title: 'Pagina non trovata · Beavers',
@@ -165,13 +165,31 @@ export const it = {
     manifesto: ['Mentre tu dormi', ', <b>gli agenti preparano il lavoro.</b> Al mattino', ' <b>lo controlliamo noi.</b>'],
     manifestoFoot: 'Così un negozio nuovo arriva in settimane, non in mesi. E ogni modifica, prima di andare online, passa dai nostri occhi.',
     manifestoLink: 'Guarda come lavoriamo',
+    nightAlt: 'Notte sul lago: la luna, il bosco e una tana di castori sull’acqua, poi lo stesso lago al mattino',
+    care: {
+      k: 'Il nostro modo',
+      v: 'Veloci, ma fatti a mano',
+      title: 'Oggi la velocità la danno tutti. <b>La <em class="hand">cura</em> no.</b>',
+      lead: 'Gli agenti AI li sa usare chiunque. Noi li usiamo per liberare il tempo che serve a ciò che una macchina non fa: disegnare ogni pagina, sceglierne ogni dettaglio, rifarla finché non è giusta. Al centro ci sono le persone: tu, e chi compra da te.',
+      notes: ['rifatta da capo', '+4 px, come nel disegno', 'foto più calda', 'i colori del marchio', 'un carattere scelto, non di serie'],
+      workK: 'I nostri lavori',
+      workTitle: 'Vuoi vedere i nostri lavori?',
+      workP: 'Te li mostriamo volentieri, con quello che c’è dietro: i disegni, le prove, le versioni rifatte.',
+      workCta: 'Scrivici'
+    },
     ai: {
       k: 'Fatti trovare dall’AI',
       v: 'Dentro l’analisi gratuita',
       title: 'Oggi si chiede all’AI. <b>Il tuo negozio c’è?</b>',
       p: 'Sempre più persone, prima di comprare, chiedono consiglio a un [[assistant|assistente AI]] come ChatGPT o Gemini. Nell’analisi gratuita controlliamo se trova e capisce i tuoi prodotti, e ti diciamo cosa sistemare.',
       cta: 'Controlla il tuo negozio',
-      more: 'Come funziona'
+      more: 'Come funziona',
+      numsK: 'Perché conta, in tre numeri',
+      nums: [
+        { n: '4 su 10', t: 'italiani usano già ChatGPT, Gemini o Claude per trovare informazioni.', src: 'YouGov, settembre 2026', url: 'https://yougov.com/it-it/reports/55503-ricerca-online-e-ia-nel-2026' },
+        { n: '+90%', t: 'la probabilità di acquisto di chi arriva in un negozio online da un assistente AI, rispetto agli altri visitatori.', src: 'Adobe, negozi USA, settembre 2026', url: 'https://business.adobe.com/blog/ai-traffic-higher-revenue-per-visit-retail-holiday' },
+        { n: '1 su 2', t: 'ricerche su Google mostra già un riassunto scritto dall’AI, prima dei link.', src: 'McKinsey, 2025', url: 'https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/new-front-door-to-the-internet-winning-in-the-age-of-ai-search' }
+      ]
     },
     us: {
       k: 'Chi siamo',
@@ -180,11 +198,7 @@ export const it = {
         'Veniamo da un’importante agenzia italiana, dove abbiamo imparato cosa funziona e cosa no. Oggi lavoriamo a modo nostro: in due, con una squadra di agenti che fa il lavoro pesante.',
         'Uno di noi parla con te, l’altro guida gli agenti. Nessun passaggio di mano: parli sempre con chi lavora davvero al tuo negozio.'
       ],
-      sign: 'Andrea e Lorenzo',
-      photos: [
-        { name: 'Foto di Andrea', hint: 'Luce naturale, sguardo in camera' },
-        { name: 'Foto di Lorenzo', hint: 'Stessa luce, stesso posto' }
-      ]
+      sign: 'Andrea e Lorenzo'
     },
     index: {
       k: 'Il racconto',
@@ -192,11 +206,23 @@ export const it = {
       items: {
         services: 'Negozi nuovi, restyling, SEO e GEO, sviluppo su misura.',
         night: 'Di notte gli agenti, al mattino noi. E settimane, non mesi.',
-        beavers: 'Sentono dove perde, e chiudono la falla. Noi lo facciamo con il tuo negozio.',
+        beavers: 'I castori sentono dove perde, e chiudono la falla. Noi lo facciamo con il tuo negozio.',
         lodge: 'Fatti trovare dall’AI. E la tana che stiamo costruendo.',
         contact: 'Il primo passo è gratis. Risponde uno di noi.'
       }
     }
+  },
+  care: {
+    k: 'Il nostro modo',
+    v: 'Veloci, ma fatti a mano',
+    title: 'Gli agenti ci danno il tempo. <b>Noi lo spendiamo nella <em class="hand">cura</em>.</b>',
+    items: [
+      { b: 'Disegnato a mano', t: 'Ogni pagina pensata per il tuo marchio, non presa da un tema.' },
+      { b: 'Rifatto finché è giusto', t: 'Il sito accanto al disegno, su computer e telefono, dettaglio per dettaglio.' },
+      { b: 'Le persone al centro', t: 'Parli sempre con chi lavora davvero al tuo negozio.' }
+    ],
+    cta: 'Vuoi vedere i nostri lavori?',
+    ctaB: 'Scrivici'
   },
   services: {
     title: 'Dal primo schizzo <b>al negozio che vende.</b>',
@@ -437,8 +463,8 @@ export const it = {
     lead: 'Tre passi, senza impegno. Alla fine sai cosa fare, e quanto costa.',
     steps: [
       'Ci mandi l’indirizzo del tuo negozio.',
-      'Lo guardiamo con calma, anche con gli occhi di ChatGPT e Gemini, e ti mandiamo una lista corta, con il prezzo accanto a ogni voce.',
-      'Se ti convince, lo sistemiamo. Se no, la lista resta tua.'
+      'Lo guardiamo con calma, anche con gli occhi di ChatGPT e Gemini, e ti mandiamo una lista corta di cosa sistemare.',
+      'Se ti interessa, ne parliamo: guardiamo insieme cosa ti serve e ti diciamo quanto costa. Se no, la lista resta tua.'
     ],
     form: {
       s1: 'Ciao, sono',

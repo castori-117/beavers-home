@@ -345,50 +345,69 @@ html:active-view-transition-type(intro)::view-transition-new(root) {
 .ai-door .ai-chat {
   grid-column: 8 / span 5;
 }
+/* why it matters: three numbers with their sources, under the chat */
+.ai-nums {
+  grid-column: 1 / -1;
+  margin-top: clamp(44px, 5vw, 80px);
+  padding-top: clamp(24px, 2.6vw, 36px);
+  border-top: 1px solid rgb(232 238 245 / 0.18);
+}
+.ai-nums-k {
+  font-size: var(--fs-xs);
+  font-weight: var(--w-black);
+  letter-spacing: 0.02em;
+  color: var(--moon-2);
+}
+.ai-nums ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(22px, 3vw, 48px);
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.ai-nums li {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ai-nums b {
+  font-size: clamp(40px, 4.4vw, 68px);
+  font-weight: var(--w-black);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--ice);
+}
+.ai-nums span {
+  max-width: 22em;
+  font-size: var(--fs-small);
+  line-height: 1.45;
+  color: var(--moon);
+}
+.ai-nums a {
+  align-self: flex-start;
+  min-height: 24px;
+  font-size: var(--fs-xs);
+  color: var(--moon-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 860px) {
+  .ai-nums ul {
+    grid-template-columns: 1fr;
+  }
+}
 
 
 /* ---------- who we are ---------- */
-.us-ph {
+.us-h {
   grid-column: 1 / span 6;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--gap);
-  align-items: start;
-}
-.ph {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 4px;
-  padding: 18px;
-  border-radius: var(--r-md);
-  background: var(--mist);
-  color: var(--ink-2);
-}
-.ph + .ph {
-  margin-top: 72px;
-}
-.ph svg {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-}
-.ph b {
-  font-weight: var(--w-black);
-  font-size: var(--fs-small);
-  color: var(--ink);
-}
-.ph span {
-  font-size: var(--fs-xs);
-  line-height: 1.4;
 }
 .us-tx {
   grid-column: 8 / span 5;
-  align-self: center;
+  padding-top: clamp(40px, 4vw, 58px);
 }
-.us-tx .p {
+.us-tx .p + .p {
   margin-top: 24px;
 }
 .sign {
@@ -455,7 +474,7 @@ html:active-view-transition-type(intro)::view-transition-new(root) {
 
 @media (max-width: 860px) {
   .mf .st,
-  .us-ph,
+  .us-h,
   .us-tx,
   .ai-tx,
   .ai-door .ai-chat {
@@ -465,7 +484,7 @@ html:active-view-transition-type(intro)::view-transition-new(root) {
     margin-top: 44px;
   }
   .us-tx {
-    margin-top: 48px;
+    padding-top: 28px;
   }
   .ix a {
     row-gap: 10px;
@@ -498,12 +517,216 @@ html:active-view-transition-type(intro)::view-transition-new(root) {
   .hero-cta {
     justify-self: start;
   }
-  .ph + .ph {
-    margin-top: 40px;
-  }
   /* on a phone the panel keeps its rounded corners, a little tighter */
   .ai-door {
     border-radius: var(--r-md);
     padding-inline: var(--gut);
+  }
+}
+
+/* ---------- prologue: the night on the lake, played once when it comes into view (the full one is in How we work) ---------- */
+.nm {
+  --day: 0;
+  grid-column: 1 / -1;
+  margin-top: var(--sec-head);
+}
+.nm-pic {
+  position: relative;
+  height: clamp(280px, 34vw, 540px);
+  overflow: hidden;
+  border-radius: var(--r-xs);
+  background: var(--night);
+}
+.nm-pic img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 50%;
+}
+.nm-pic .nm-day {
+  opacity: var(--day);
+}
+.nm-flies {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.nm-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px clamp(24px, 3vw, 44px);
+  margin-top: clamp(18px, 2vw, 28px);
+}
+.nm-time {
+  min-width: 2.9em;
+  font-weight: var(--w-black);
+  font-size: clamp(34px, 3.4vw, 54px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.nm-caps {
+  display: grid;
+}
+.nm-cap {
+  grid-area: 1 / 1;
+  max-width: 34em;
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.45;
+  color: var(--ink-2);
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+.nm[data-cap="0"] .nm-cap:nth-child(1),
+.nm[data-cap="1"] .nm-cap:nth-child(2),
+.nm[data-cap="2"] .nm-cap:nth-child(3),
+.nm[data-cap="3"] .nm-cap:nth-child(4) {
+  opacity: 1;
+  transform: none;
+}
+@media (max-width: 860px) {
+  .nm-pic {
+    height: 300px;
+  }
+  .nm-row {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nm-cap {
+    transition: none;
+  }
+}
+
+/* ---------- our way: care, not only speed. A real sheet with pen marks ---------- */
+.cu-lab {
+  grid-column: 1 / -1;
+}
+.cu-h {
+  grid-column: 1 / span 9;
+}
+.cu-lead {
+  grid-column: 7 / span 6;
+  margin-top: clamp(24px, 2.6vw, 40px);
+}
+.cu-k {
+  font-size: var(--fs-small);
+  font-weight: var(--w-black);
+  letter-spacing: -0.005em;
+}
+.cu-proof {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  align-items: center;
+  margin-top: clamp(56px, 6vw, 96px);
+}
+.cu-sheet {
+  position: relative;
+  grid-column: 1 / span 7;
+  padding: clamp(16px, 2vw, 28px);
+  border-radius: var(--r);
+  background: var(--mist);
+}
+.cu-draw {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.cu-page { fill: var(--paper); stroke: var(--line); stroke-width: 1.5; }
+.cu-bar { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; }
+.cu-tone { fill: #374536; }
+.cu-tone2 { fill: var(--line); }
+.cu-hero { fill: #c9c3b4; }
+.cu-ink { fill: #f7f6f1; }
+.cu-ink2 { fill: #f7f6f1; opacity: 0.75; }
+.cu-card { fill: var(--mist-2); }
+.cu-sw { stroke: var(--ink); stroke-width: 1; }
+.cu-sw1 { fill: #374536; }
+.cu-sw2 { fill: #f7f6f1; }
+.cu-aa { font-family: Georgia, "Times New Roman", serif; font-size: 76px; fill: var(--ink); }
+.cu-pen {
+  stroke: var(--signal);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+.cu-note {
+  position: absolute;
+  padding: 4px 9px;
+  border-radius: var(--pill);
+  background: var(--paper);
+  box-shadow: 0 0 0 var(--stroke) var(--signal);
+  font-size: 13px;
+  font-weight: var(--w-strong);
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--ink);
+}
+.cu-n1 { left: 39%; top: 1%; }
+.cu-n2 { left: 16%; bottom: 1%; }
+.cu-n3 { left: 62%; top: 21%; }
+.cu-n4 { left: 72%; top: 43%; }
+.cu-n5 { right: 3%; bottom: 8%; max-width: 12em; white-space: normal; text-align: right; }
+.cu-cap {
+  grid-column: 9 / span 4;
+}
+.cu-case {
+  margin-top: 8px;
+  font-size: clamp(24px, 2.2vw, 34px);
+  font-weight: var(--w-strong);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.cu-inv {
+  max-width: 24em;
+  margin: 14px 0 26px;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .cu-pen {
+      animation: cu-pen linear both;
+      animation-timeline: view();
+      animation-range: entry 30% cover 45%;
+    }
+    @keyframes cu-pen {
+      from { stroke-dashoffset: 1; }
+      to { stroke-dashoffset: 0; }
+    }
+  }
+}
+@media (max-width: 860px) {
+  .cu-h,
+  .cu-lead,
+  .cu-sheet,
+  .cu-cap {
+    grid-column: 1 / -1;
+  }
+  .cu-cap {
+    margin-top: 32px;
+  }
+  .cu-note {
+    padding: 3px 7px;
+    font-size: 11.5px;
+  }
+  .cu-n3,
+  .cu-n5 {
+    display: none;
+  }
+  .cu-n4 {
+    left: auto;
+    right: 3%;
   }
 }

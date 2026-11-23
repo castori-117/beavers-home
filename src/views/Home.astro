@@ -2,6 +2,7 @@
 import '../styles/components/seal.css';
 import '../styles/components/home.css';
 import '../styles/components/chat.css';
+import '../styles/components/care.css';
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import AiChat from '../components/AiChat.astro';
@@ -19,7 +20,10 @@ const { lang } = Astro.props;
 const t = copy[lang];
 const h = t.home;
 const indexKeys = [...chapterKeys, 'contact'] as const;
-const camera = 'M4 8h3l2-3h6l2 3h3v11H4z';
+const care = h.care;
+/* the night in the prologue: same clock as How we work, 22:00 → 09:00 */
+const START = 22 * 60;
+const SPAN = 660;
 ---
 <Base lang={lang} page="home" intro>
   <home-intro slot="before">
@@ -53,11 +57,65 @@ const camera = 'M4 8h3l2-3h6l2 3h3v11H4z';
       <p id="mf-t" class="st rv">
         <Fragment set:html={h.manifesto[0]} /> <span class="pill" aria-hidden="true"><Image src={images.lakeNight} widths={[160, 320]} sizes="8em" alt="" loading="lazy" decoding="async" /></span><Fragment set:html={h.manifesto[1]} /> <span class="pill" aria-hidden="true"><Image src={images.lakeMorning} widths={[160, 320]} sizes="8em" alt="" loading="lazy" decoding="async" /></span><Fragment set:html={h.manifesto[2]} />
       </p>
+      <night-shift class="nm-wrap" data-wait data-keys="0,1" data-start={START} data-span={SPAN} style="display: contents">
+        <div class="nm rv" data-cap="0">
+          <div class="nm-pic">
+            <Image src={images.lakeNight} widths={[640, 960, 1280, 1600, 2400]} sizes="(max-width: 1600px) 100vw, 1600px" alt={h.nightAlt} loading="lazy" decoding="async" />
+            <Image class="nm-day" src={images.lakeMorning} widths={[640, 960, 1280, 1600, 2400]} sizes="(max-width: 1600px) 100vw, 1600px" alt="" loading="lazy" decoding="async" />
+            <canvas class="nm-flies" aria-hidden="true"></canvas>
+          </div>
+          <div class="nm-row">
+            <p class="nm-time" aria-hidden="true" data-clock>22:00</p>
+            <div class="nm-caps" aria-live="polite">
+              {t.night.caps.map((caption) => <p class="nm-cap">{caption}</p>)}
+            </div>
+          </div>
+        </div>
+      </night-shift>
       <div class="mf-foot rv">
         <p class="p">{h.manifestoFoot}</p>
         <a class="ln" href={routes[lang].night}>{h.manifestoLink} <span class="ar" aria-hidden="true">→</span></a>
       </div>
     </div>
+  </section>
+
+  <section class="sec sec--flush w cu" aria-labelledby="cu-t">
+    <div class="g">
+      <Label class="cu-lab lab--head rv" k={care.k} v={care.v} />
+      <h2 id="cu-t" class="d2 cu-h rv" set:html={care.title} />
+      <p class="lead cu-lead rv">{care.lead}</p>
+    </div>
+    <figure class="cu-proof">
+      <div class="cu-sheet rv" aria-hidden="true">
+        <svg class="cu-draw" viewBox="0 0 640 440" fill="none">
+          <rect class="cu-page" x="40" y="24" width="400" height="392" rx="10"></rect>
+          <rect class="cu-bar" x="40" y="24" width="400" height="44" rx="10"></rect>
+          <rect class="cu-tone" x="64" y="40" width="72" height="12" rx="3"></rect>
+          <rect class="cu-tone2" x="300" y="42" width="40" height="8" rx="2"></rect>
+          <rect class="cu-tone2" x="350" y="42" width="40" height="8" rx="2"></rect>
+          <rect class="cu-tone2" x="400" y="42" width="20" height="8" rx="2"></rect>
+          <rect class="cu-hero" x="64" y="88" width="352" height="150" rx="6"></rect>
+          <rect class="cu-ink" x="84" y="190" width="170" height="16" rx="3"></rect>
+          <rect class="cu-ink2" x="84" y="214" width="110" height="8" rx="2"></rect>
+          <rect class="cu-card" x="64" y="258" width="108" height="132" rx="6"></rect>
+          <rect class="cu-card" x="186" y="258" width="108" height="132" rx="6"></rect>
+          <rect class="cu-card" x="308" y="258" width="108" height="132" rx="6"></rect>
+          <ellipse class="cu-pen" cx="240" cy="46" rx="230" ry="34" pathLength="1"></ellipse>
+          <path class="cu-pen" d="M172 404 L186 404 M172 398 L172 410 M186 398 L186 410" pathLength="1"></path>
+          <path class="cu-pen" d="M440 160 C 470 150, 480 120, 470 104" pathLength="1"></path>
+          <circle class="cu-sw cu-sw1" cx="530" cy="250" r="26"></circle>
+          <circle class="cu-sw cu-sw2" cx="590" cy="250" r="26"></circle>
+          <text class="cu-aa" x="520" y="370">Aa</text>
+        </svg>
+        {care.notes.map((note, index) => <span class={`cu-note cu-n${index + 1}`}>{note}</span>)}
+      </div>
+      <figcaption class="cu-cap rv">
+        <p class="cu-k">{care.workK}</p>
+        <p class="cu-case">{care.workTitle}</p>
+        <p class="cu-inv">{care.workP}</p>
+        <a class="btn" href={routes[lang].contact}>{care.workCta} <span class="ar" aria-hidden="true">→</span></a>
+      </figcaption>
+    </figure>
   </section>
 
   <section class="sec sec--flush w ai" aria-labelledby="ai-t">
@@ -72,23 +130,28 @@ const camera = 'M4 8h3l2-3h6l2 3h3v11H4z';
         </div>
       </div>
       <AiChat lang={lang} class="ai-chat" threshold={0.35} />
+      <div class="ai-nums">
+        <p class="ai-nums-k">{h.ai.numsK}</p>
+        <ul>
+          {h.ai.nums.map((item) => (
+            <li class="rv">
+              <b>{item.n}</b>
+              <span>{item.t}</span>
+              <a href={item.url} rel="noopener" target="_blank">{item.src}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </section>
 
   <section class="sec sec--flush w" aria-labelledby="noi-t">
     <div class="g">
-      <div class="us-ph">
-        {h.us.photos.map((photo) => (
-          <div class="ph rv">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={camera}></path><circle cx="12" cy="13" r="3.5"></circle></svg>
-            <b>{photo.name}</b>
-            <span>{photo.hint}</span>
-          </div>
-        ))}
-      </div>
-      <div class="us-tx">
+      <div class="us-h">
         <Label class="lab--head" k={h.us.k} />
         <h2 id="noi-t" class="d2 rv" set:html={h.us.title} />
+      </div>
+      <div class="us-tx">
         {h.us.p.map((paragraph) => <p class="p">{paragraph}</p>)}
         <p class="sign">{h.us.sign}</p>
       </div>
@@ -121,4 +184,5 @@ const camera = 'M4 8h3l2-3h6l2 3h3v11H4z';
   import '../elements/home-intro';
   import '../elements/lake-ripples';
   import '../elements/in-view';
+  import '../elements/night-shift';
 </script>
