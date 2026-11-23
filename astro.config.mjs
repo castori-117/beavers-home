@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
 
 const env = loadEnv(process.env.NODE_ENV || 'production', process.cwd(), 'PUBLIC_');
-const site = process.env.PUBLIC_SITE_URL || env.PUBLIC_SITE_URL || 'https://thebeavers.company';
+const site = process.env.PUBLIC_SITE_URL || env.PUBLIC_SITE_URL || 'https://www.thebeavers.company';
 const CSS_INLINE_LIMIT = 16 * 1024;
 if (!/^https?:\/\//.test(site)) throw new Error('Set PUBLIC_SITE_URL to an absolute http(s) URL.');
 
