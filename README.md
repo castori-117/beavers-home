@@ -27,6 +27,6 @@ Variabili (vedi `.env.example`): `PUBLIC_SITE_URL` (canonical, hreflang, sitemap
 
 ## Dominio e indicizzazione
 
-- L'indirizzo principale è `www.thebeavers.company`. `vercel.json` porta `thebeavers.company` su www con un redirect permanente (308), così Google vede un solo sito. In Vercel, nelle impostazioni dei domini, non va attivato il redirect contrario (da www al dominio nudo): farebbe un giro infinito.
+- L'indirizzo principale è `www.thebeavers.company`. Il redirect permanente (308) da `thebeavers.company` a www è impostato in Vercel, nella pagina Domains del progetto: lì va tenuto, non in `vercel.json`.
 - Le intestazioni (cache, tipi di file, sicurezza) stanno in `vercel.json`: Vercel non legge i file `_headers`.
 - Dopo ogni pubblicazione con pagine nuove o cambiate: `npm run indexnow` avvisa Bing (e gli altri motori che usano IndexNow).
