@@ -7,6 +7,7 @@ import { terms } from '../lib/text';
 import Label from '../components/Label.astro';
 import Mark from '../components/Mark.astro';
 import NextChapter from '../components/NextChapter.astro';
+import Care from '../components/Care.astro';
 import { images } from '../lib/images';
 import { copy, routes, type Lang } from '../i18n';
 
@@ -108,6 +109,8 @@ const b = t.beavers;
       </div>
     </beaver-facts>
   </section>
+
+  <Care lang={lang} />
 
   <NextChapter lang={lang} page="beavers" />
 </Base>

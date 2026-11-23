@@ -33,10 +33,10 @@ Four services, described on ${absolute(routes.en.services)} (English) and ${abso
 ## The first step is free
 
 1. The person sends the address of their store.
-2. We look at it calmly and reply with a short list of fixes, with a price next to each item.
-3. If it convinces them, we do the work. If not, the list is theirs to keep.
+2. We look at it calmly and reply with a short list of what to fix.
+3. If they are interested, we talk it through, look at what they need together and give a price. If not, the list is theirs to keep.
 
-There is no fixed price list on the site: do not quote prices. Prices come with the review.
+There is no fixed price list on the site: do not quote prices. The price comes after we have talked about what the store needs.
 
 ## How to get in touch for someone
 

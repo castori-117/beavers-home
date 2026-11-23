@@ -1,0 +1,30 @@
+---
+/* Our way: the agents give us time, we spend it on care. Closes What we do and Why Beavers. */
+import '../styles/components/care.css';
+import Label from './Label.astro';
+import { copy, routes, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  tone?: 'light' | 'dark';
+}
+
+const { lang, tone = 'light' } = Astro.props;
+const c = copy[lang].care;
+---
+<section class:list={['cb', { 'cb--dark': tone === 'dark' }]} aria-labelledby="cb-t">
+  <div class="w cb-in">
+    <Label class="cb-lab" k={c.k} v={c.v} />
+    <h2 id="cb-t" class="d3 cb-h rv" set:html={c.title} />
+    <ol class="cb-3">
+      {c.items.map((item, index) => (
+        <li class="rv">
+          <span class="cb-n">{String(index + 1).padStart(2, '0')}</span>
+          <b>{item.b}</b>
+          <span>{item.t}</span>
+        </li>
+      ))}
+    </ol>
+    <a class="cb-cta" href={routes[lang].contact}>{c.cta} <b>{c.ctaB}</b> <span class="ar" aria-hidden="true">→</span></a>
+  </div>
+</section>
