@@ -165,7 +165,6 @@ export const it = {
     manifesto: ['Mentre tu dormi', ', <b>gli agenti preparano il lavoro.</b> Al mattino', ' <b>lo controlliamo noi.</b>'],
     manifestoFoot: 'Così un negozio nuovo arriva in settimane, non in mesi. E ogni modifica, prima di andare online, passa dai nostri occhi.',
     manifestoLink: 'Guarda come lavoriamo',
-    nightAlt: 'Notte sul lago: la luna, il bosco e una tana di castori sull’acqua, poi lo stesso lago al mattino',
     care: {
       k: 'Il nostro modo',
       v: 'Veloci, ma fatti a mano',

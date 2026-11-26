@@ -1,7 +1,6 @@
 /* One night on the lake. The night plays once by itself, then the sun can be dragged along the line.
    This writes only --day, the clock and three flags ([data-cap], [data-day], [data-sky]); CSS mixes the rest.
-   The agents are fireflies on a canvas, awake between 23:00 and 06:00.
-   With data-wait (the small one in the home's prologue) the night starts only once it is well in view. */
+   The agents are fireflies on a canvas, awake between 23:00 and 06:00. */
 interface Firefly {
   cx: number; cy: number; ax: number; ay: number;
   w1: number; w2: number; w3: number;
@@ -44,10 +43,9 @@ export class NightShift extends HTMLElement {
   controller?: AbortController;
   observer?: IntersectionObserver;
   sizer?: ResizeObserver;
-  starter?: IntersectionObserver;
 
   connectedCallback() {
-    this.section = this.querySelector('.nt, .nm');
+    this.section = this.querySelector('.nt');
     this.range = this.querySelector('input[type="range"]');
     this.clockEl = this.querySelector('[data-clock]');
     this.ticks = [...this.querySelectorAll<HTMLButtonElement>('[data-key]')];
@@ -73,16 +71,7 @@ export class NightShift extends HTMLElement {
     if (this.section) this.observer.observe(this.section);
 
     if (this.still) this.set(NightShift.FIRST_FRAME);
-    else if (this.hasAttribute('data-wait') && this.section) {
-      this.set(0);
-      this.starter = new IntersectionObserver(([entry]) => {
-        if (!entry.isIntersecting) return;
-        this.starter?.disconnect();
-        this.play = { t0: performance.now() };
-        this.loop();
-      }, { threshold: 0.45 });
-      this.starter.observe(this.section);
-    } else this.play = { t0: performance.now() };
+    else this.play = { t0: performance.now() };
     this.loop();
   }
 
@@ -90,7 +79,6 @@ export class NightShift extends HTMLElement {
     this.controller?.abort();
     this.observer?.disconnect();
     this.sizer?.disconnect();
-    this.starter?.disconnect();
     cancelAnimationFrame(this.frame);
   }
 

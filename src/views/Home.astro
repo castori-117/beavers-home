@@ -21,9 +21,6 @@ const t = copy[lang];
 const h = t.home;
 const indexKeys = [...chapterKeys, 'contact'] as const;
 const care = h.care;
-/* the night in the prologue: same clock as How we work, 22:00 → 09:00 */
-const START = 22 * 60;
-const SPAN = 660;
 ---
 <Base lang={lang} page="home" intro>
   <home-intro slot="before">
@@ -57,21 +54,6 @@ const SPAN = 660;
       <p id="mf-t" class="st rv">
         <Fragment set:html={h.manifesto[0]} /> <span class="pill" aria-hidden="true"><Image src={images.lakeNight} widths={[160, 320]} sizes="8em" alt="" loading="lazy" decoding="async" /></span><Fragment set:html={h.manifesto[1]} /> <span class="pill" aria-hidden="true"><Image src={images.lakeMorning} widths={[160, 320]} sizes="8em" alt="" loading="lazy" decoding="async" /></span><Fragment set:html={h.manifesto[2]} />
       </p>
-      <night-shift class="nm-wrap" data-wait data-keys="0,1" data-start={START} data-span={SPAN} style="display: contents">
-        <div class="nm rv" data-cap="0">
-          <div class="nm-pic">
-            <Image src={images.lakeNight} widths={[640, 960, 1280, 1600, 2400]} sizes="(max-width: 1600px) 100vw, 1600px" alt={h.nightAlt} loading="lazy" decoding="async" />
-            <Image class="nm-day" src={images.lakeMorning} widths={[640, 960, 1280, 1600, 2400]} sizes="(max-width: 1600px) 100vw, 1600px" alt="" loading="lazy" decoding="async" />
-            <canvas class="nm-flies" aria-hidden="true"></canvas>
-          </div>
-          <div class="nm-row">
-            <p class="nm-time" aria-hidden="true" data-clock>22:00</p>
-            <div class="nm-caps" aria-live="polite">
-              {t.night.caps.map((caption) => <p class="nm-cap">{caption}</p>)}
-            </div>
-          </div>
-        </div>
-      </night-shift>
       <div class="mf-foot rv">
         <p class="p">{h.manifestoFoot}</p>
         <a class="ln" href={routes[lang].night}>{h.manifestoLink} <span class="ar" aria-hidden="true">→</span></a>
@@ -184,5 +166,4 @@ const SPAN = 660;
   import '../elements/home-intro';
   import '../elements/lake-ripples';
   import '../elements/in-view';
-  import '../elements/night-shift';
 </script>
