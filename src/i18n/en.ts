@@ -166,7 +166,6 @@ export const en: Dictionary = {
     manifesto: ['While you sleep', ', <b>the agents get the work ready.</b> In the morning', ' <b>we check it ourselves.</b>'],
     manifestoFoot: 'That’s how a new store arrives in weeks, not months. And no change goes live before we’ve looked at it.',
     manifestoLink: 'See how we work',
-    nightAlt: 'Night on the lake: the moon, the forest and a beaver lodge on the water, then the same lake in the morning',
     care: {
       k: 'Our way',
       v: 'Fast, but made by hand',
